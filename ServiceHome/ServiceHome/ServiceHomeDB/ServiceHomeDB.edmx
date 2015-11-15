@@ -1,0 +1,2510 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ServiceHomeDB.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AUTHORMODULES">
+          <Key>
+            <PropertyRef Name="AUTHOR_ID" />
+          </Key>
+          <Property Name="AUTHOR_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MASTER_ID" Type="int" />
+          <Property Name="MODULE_ID" Type="int" />
+          <Property Name="CT" Type="datetime" />
+          <Property Name="CU_ID" Type="int" />
+          <Property Name="R_ADD" Type="bit" Nullable="false" />
+          <Property Name="R_DELETE" Type="bit" Nullable="false" />
+          <Property Name="R_UPDATE" Type="bit" Nullable="false" />
+          <Property Name="R_QUERY" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CASH_LOG">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USERID" Type="int" />
+          <Property Name="TYPE" Type="int" Nullable="false" />
+          <Property Name="COUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="OP_TIME" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CITY">
+          <Key>
+            <PropertyRef Name="CITYID" />
+          </Key>
+          <Property Name="CITYID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PROVINCEID" Type="int" />
+          <Property Name="CITYNAME" Type="binary" MaxLength="50" />
+          <Property Name="CT" Type="datetime" />
+          <Property Name="ISOPEN" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="COMMISION_RULE">
+          <Key>
+            <PropertyRef Name="RULE_ID" />
+          </Key>
+          <Property Name="RULE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CITYID" Type="int" />
+          <Property Name="RULE_NAME" Type="varchar" MaxLength="50" />
+          <Property Name="CT" Type="datetime" />
+          <Property Name="CU_ID" Type="int" />
+          <Property Name="ISOPEN" Type="bit" />
+          <Property Name="DEFAULT_RATE" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="COMMISION_RULE_ITEM">
+          <Key>
+            <PropertyRef Name="RULE_ITEM_ID" />
+          </Key>
+          <Property Name="RULE_ITEM_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SERVICEID" Type="int" />
+          <Property Name="RULE_ID" Type="int" />
+          <Property Name="RULE_RATE" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="CT" Type="datetime" />
+          <Property Name="UPDATE_TIME" Type="datetime" />
+          <Property Name="US_ID" Type="binary" MaxLength="10" />
+          <Property Name="CU_ID" Type="binary" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="COMPANY_CHILD">
+          <Key>
+            <PropertyRef Name="CHILD_ID" />
+          </Key>
+          <Property Name="CHILD_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CITYID" Type="int" />
+          <Property Name="CHILD_NAME" Type="binary" MaxLength="100" Nullable="false" />
+          <Property Name="CHILD_MANAGER" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="COMPANY_DETAIL_ITEM">
+          <Key>
+            <PropertyRef Name="ITEM_ID" />
+          </Key>
+          <Property Name="ITEM_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CHILD_ID" Type="int" />
+          <Property Name="DETAIL_CODE" Type="varchar" MaxLength="10" />
+          <Property Name="CODE" Type="varchar" MaxLength="50" />
+          <Property Name="DETAIL" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="COUPON_INFO">
+          <Key>
+            <PropertyRef Name="COUPON_ID" />
+          </Key>
+          <Property Name="COUPON_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CITY_SERVICE_ID" Type="int" />
+          <Property Name="COUPON_NAME" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="SUMMARY" Type="binary" MaxLength="200" />
+          <Property Name="PIC" Type="binary" MaxLength="200" />
+          <Property Name="PROVISION" Type="text" />
+          <Property Name="DOWNLOADS" Type="int" Nullable="false" />
+          <Property Name="DOWNLOAD_FLAG" Type="bit" Nullable="false" />
+          <Property Name="START_TIME" Type="datetime" Nullable="false" />
+          <Property Name="END_TIME" Type="datetime" Nullable="false" />
+          <Property Name="SUBMIT_TIME" Type="datetime" Nullable="false" />
+          <Property Name="ISSUE_TIME" Type="datetime" />
+        </EntityType>
+        <EntityType Name="COUPON_RECORD">
+          <Key>
+            <PropertyRef Name="RECORD_ID" />
+          </Key>
+          <Property Name="RECORD_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="COUPON_ID" Type="int" />
+          <Property Name="USERID" Type="int" />
+          <Property Name="CITY_SERVICE_ID" Type="int" />
+          <Property Name="PHONE" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="DOWNLOAD_TIME" Type="datetime" Nullable="false" />
+          <Property Name="ISUSED" Type="bit" Nullable="false" />
+          <Property Name="USETIME" Type="datetime" />
+          <Property Name="CHANNEL" Type="smallint" />
+          <Property Name="START_TIME" Type="datetime" Nullable="false" />
+          <Property Name="END_TIME" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DETAIL_ITEM">
+          <Key>
+            <PropertyRef Name="DETAIL_CODE" />
+          </Key>
+          <Property Name="DETAIL_CODE" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="DETAIL_NAME" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EXTRA_DEMAND">
+          <Key>
+            <PropertyRef Name="EXTRA_ID" />
+          </Key>
+          <Property Name="EXTRA_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ORDERID" Type="int" />
+          <Property Name="SPECIAL_ID" Type="int" />
+          <Property Name="REMARK" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="FEEDBACK">
+          <Key>
+            <PropertyRef Name="FEEDBACK_ID" />
+          </Key>
+          <Property Name="FEEDBACK_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CONTENT" Type="varchar" MaxLength="500" />
+          <Property Name="STAFFID" Type="int" />
+          <Property Name="USERID" Type="int" />
+        </EntityType>
+        <EntityType Name="MASTERS">
+          <Key>
+            <PropertyRef Name="MASTER_ID" />
+          </Key>
+          <Property Name="MASTER_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PASSWORD" Type="varchar" MaxLength="20" />
+          <Property Name="MASTER_NAME" Type="varchar" MaxLength="20" />
+          <Property Name="PHONE" Type="varchar" MaxLength="20" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="MEMBERSHIP_PACKAGE">
+          <Key>
+            <PropertyRef Name="MEM_PACK_ID" />
+          </Key>
+          <Property Name="MEM_PACK_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PACK_NAME" Type="varchar" MaxLength="50" />
+          <Property Name="CT" Type="datetime" />
+          <Property Name="ISOPEN" Type="bit" />
+          <Property Name="CU_ID" Type="int" />
+          <Property Name="PACK_TYPE_ID" Type="int" />
+          <Property Name="REMARK" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="MODULES">
+          <Key>
+            <PropertyRef Name="MODULE_ID" />
+          </Key>
+          <Property Name="MODULE_ID" Type="int" Nullable="false" />
+          <Property Name="MODULE_NAME" Type="varchar" MaxLength="20" />
+          <Property Name="MODULE_URL" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="OPERATION_LOG">
+          <Key>
+            <PropertyRef Name="LOG_ID" />
+          </Key>
+          <Property Name="LOG_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TYPE" Type="varchar" MaxLength="1" />
+          <Property Name="CONTENT" Type="varchar" MaxLength="500" />
+          <Property Name="CT" Type="datetime" />
+          <Property Name="APPID" Type="binary" MaxLength="2" />
+          <Property Name="IP" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="ORDER_ITEM">
+          <Key>
+            <PropertyRef Name="ORDER_DETAIL_ID" />
+          </Key>
+          <Property Name="ORDER_DETAIL_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ORDERID" Type="int" />
+          <Property Name="RATEPLAN_ID" Type="int" />
+          <Property Name="CT" Type="datetime" />
+          <Property Name="QUANTITY" Type="int" />
+        </EntityType>
+        <EntityType Name="ORDERS">
+          <Key>
+            <PropertyRef Name="ORDERID" />
+          </Key>
+          <Property Name="ORDERID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="STAFFID" Type="int" />
+          <Property Name="USERID" Type="int" />
+          <Property Name="CT" Type="datetime" />
+          <Property Name="BEGINTIME" Type="datetime" />
+          <Property Name="ENDTIME" Type="datetime" />
+          <Property Name="STATUS" Type="varchar" MaxLength="1" />
+          <Property Name="ISREJECT" Type="bit" />
+          <Property Name="REJECT_TYPE" Type="binary" MaxLength="1" />
+          <Property Name="REJECT_DETAIL" Type="varchar" MaxLength="50" />
+          <Property Name="STARRATE" Type="varchar" MaxLength="1" />
+          <Property Name="USERCOMMENT" Type="binary" MaxLength="50" />
+          <Property Name="REMARK" Type="varchar" MaxLength="500" />
+          <Property Name="PAY_TYPE" Type="varchar" MaxLength="10" />
+          <Property Name="ISCASHPAYED" Type="bit" />
+          <Property Name="ALLCOUNT" Type="float" />
+          <Property Name="ORDERCOST" Type="float" />
+          <Property Name="ORDERINCOME" Type="float" />
+          <Property Name="SERVICE_LOCATION" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="SERVICE_POS" Type="varchar" MaxLength="100" />
+          <Property Name="ACTUAL_START_TIME" Type="datetime" />
+          <Property Name="ACTUAL_END_TIME" Type="datetime" />
+          <Property Name="ISGIVENTIP" Type="bit" />
+          <Property Name="AMOUNT_TIP" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="PACK_TYPE">
+          <Key>
+            <PropertyRef Name="PACK_TYPE_ID" />
+          </Key>
+          <Property Name="PACK_TYPE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PACK_TYPE_NAME" Type="varchar" MaxLength="20" />
+          <Property Name="PACK_TYPE_CODE" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="PROVICE">
+          <Key>
+            <PropertyRef Name="PROVINCEID" />
+          </Key>
+          <Property Name="PROVINCEID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PROVINCENAME" Type="binary" MaxLength="50" />
+          <Property Name="CT" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PROVINCE_BASIC_SERVICE">
+          <Key>
+            <PropertyRef Name="CITY_SERVICE_ID" />
+          </Key>
+          <Property Name="CITY_SERVICE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SERVICE_ITEM_ID" Type="int" />
+          <Property Name="CITYID" Type="int" />
+          <Property Name="ISOPEN" Type="bit" />
+          <Property Name="CT" Type="datetime" />
+          <Property Name="SERVICECOST" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="CUID" Type="int" />
+        </EntityType>
+        <EntityType Name="RATEPLAN">
+          <Key>
+            <PropertyRef Name="RATEPLAN_ID" />
+          </Key>
+          <Property Name="RATEPLAN_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CITY_SERVICE_ID" Type="int" />
+          <Property Name="RATEPLAN_NAME" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="COST" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="单位名称" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="REALMESSAGE">
+          <Key>
+            <PropertyRef Name="MESSAGE_ID" />
+          </Key>
+          <Property Name="MESSAGE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CONTENT" Type="varchar" MaxLength="500" />
+          <Property Name="ISSUCESS" Type="bit" />
+          <Property Name="RETRY_COUNT" Type="int" />
+          <Property Name="CT" Type="datetime" />
+          <Property Name="ISOUTDATE" Type="bit" />
+        </EntityType>
+        <EntityType Name="REBACK_ITEM">
+          <Key>
+            <PropertyRef Name="REBACK_ITEM_ID" />
+          </Key>
+          <Property Name="REBACK_ITEM_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RECHARGE_ID" Type="int" />
+          <Property Name="CITY_SERVICE_ID" Type="int" />
+          <Property Name="COUNT" Type="int" />
+          <Property Name="QUANTITY" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RECHARGE">
+          <Key>
+            <PropertyRef Name="RECHARGE_ID" />
+          </Key>
+          <Property Name="RECHARGE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MEM_PACK_ID" Type="int" />
+          <Property Name="RECHARGE_NAME" Type="varchar" MaxLength="20" />
+          <Property Name="RECHARGE_COUNT" Type="int" />
+          <Property Name="GIFT_COUNT" Type="int" />
+          <Property Name="ISCASHGIFT" Type="bit" />
+        </EntityType>
+        <EntityType Name="SALRY">
+          <Key>
+            <PropertyRef Name="SALARY_ID" />
+          </Key>
+          <Property Name="SALARY_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="STAFFID" Type="int" />
+          <Property Name="YEAR" Type="int" />
+          <Property Name="MONTH" Type="int" />
+          <Property Name="COMPLETE_ORDER_COUNT" Type="int" />
+          <Property Name="REJECT_ORDER_COUNT" Type="int" />
+          <Property Name="INCOME" Type="float" />
+          <Property Name="TARE" Type="float" />
+        </EntityType>
+        <EntityType Name="SELFSERVICE">
+          <Key>
+            <PropertyRef Name="SPECIAL_ID" />
+          </Key>
+          <Property Name="SPECIAL_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CITY_SERVICE_ID" Type="int" />
+          <Property Name="SELFSERVICE_NAME" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ISOPEN" Type="bit" />
+          <Property Name="COST" Type="float" Nullable="false" />
+          <Property Name="ISHOURCOST" Type="bit" />
+          <Property Name="ISAREACOST" Type="bit" />
+        </EntityType>
+        <EntityType Name="SERVICE_ITEM">
+          <Key>
+            <PropertyRef Name="SERVICE_ID" />
+          </Key>
+          <Property Name="SERVICE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PARENT_SERVICE_ID" Type="int" />
+          <Property Name="SERVICE_ITEM_NAME" Type="binary" MaxLength="20" Nullable="false" />
+          <Property Name="SERVICECONTENT" Type="binary" MaxLength="100" />
+          <Property Name="CT" Type="datetime" />
+          <Property Name="URL" Type="varchar" MaxLength="100" />
+          <Property Name="ISLEAF" Type="bit" />
+          <Property Name="PICURL" Type="varchar" MaxLength="50" />
+          <Property Name="LEAF_DEPT" Type="int" />
+        </EntityType>
+        <EntityType Name="STAFF">
+          <Key>
+            <PropertyRef Name="STAFFID" />
+          </Key>
+          <Property Name="STAFFID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="STAFFNAME" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="PASSWORD" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ADDR" Type="varchar" MaxLength="50" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="20" />
+          <Property Name="PHONE" Type="varchar" MaxLength="20" />
+          <Property Name="CT" Type="datetime" />
+          <Property Name="LASTUPDATETIME" Type="datetime" />
+          <Property Name="IDCARD" Type="varchar" MaxLength="18" />
+          <Property Name="URL" Type="binary" MaxLength="50" />
+          <Property Name="SEX" Type="int" Nullable="false" />
+          <Property Name="QQ" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="STATE" Type="int" Nullable="false" />
+          <Property Name="LASTIP" Type="varchar" MaxLength="20" />
+          <Property Name="LASTACTION" Type="datetime" />
+          <Property Name="STAFF_LEVEL" Type="int" />
+        </EntityType>
+        <EntityType Name="STAFF_LEVEL">
+          <Key>
+            <PropertyRef Name="LEVELID" />
+          </Key>
+          <Property Name="LEVELID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LEVELNAME" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="等级说明" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="USER">
+          <Key>
+            <PropertyRef Name="USERID" />
+          </Key>
+          <Property Name="USERID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USERNAME" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="PASSWORD" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ADDR" Type="varchar" MaxLength="50" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="20" />
+          <Property Name="PHONE" Type="varchar" MaxLength="20" />
+          <Property Name="CT" Type="datetime" />
+          <Property Name="LASTUPDATETIME" Type="datetime" />
+          <Property Name="IDCARD" Type="varchar" MaxLength="18" />
+          <Property Name="QQ" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="STATE" Type="int" Nullable="false" />
+          <Property Name="LASTIP" Type="varchar" MaxLength="20" />
+          <Property Name="LASTACTION" Type="datetime" />
+          <Property Name="USER_LEVEL" Type="int" />
+          <Property Name="CASH_ALL" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USER_LEVEL">
+          <Key>
+            <PropertyRef Name="LEVELID" />
+          </Key>
+          <Property Name="LEVELID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LEVELNAME" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="LEVEL_DESC" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="WORKOFF">
+          <Key>
+            <PropertyRef Name="OFFID" />
+          </Key>
+          <Property Name="OFFID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="STAFFID" Type="int" />
+          <Property Name="OFFDATE" Type="datetime" />
+          <Property Name="CT" Type="datetime" />
+          <Property Name="REMARK" Type="binary" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_AUTHORMO_REFERENCE_MASTERS">
+          <End Role="MASTERS" Type="Self.MASTERS" Multiplicity="0..1" />
+          <End Role="AUTHORMODULES" Type="Self.AUTHORMODULES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MASTERS">
+              <PropertyRef Name="MASTER_ID" />
+            </Principal>
+            <Dependent Role="AUTHORMODULES">
+              <PropertyRef Name="MASTER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AUTHORMO_REFERENCE_MODULES">
+          <End Role="MODULES" Type="Self.MODULES" Multiplicity="0..1" />
+          <End Role="AUTHORMODULES" Type="Self.AUTHORMODULES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MODULES">
+              <PropertyRef Name="MODULE_ID" />
+            </Principal>
+            <Dependent Role="AUTHORMODULES">
+              <PropertyRef Name="MODULE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CASH_LOG_REFERENCE_USER">
+          <End Role="USER" Type="Self.USER" Multiplicity="0..1" />
+          <End Role="CASH_LOG" Type="Self.CASH_LOG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="USERID" />
+            </Principal>
+            <Dependent Role="CASH_LOG">
+              <PropertyRef Name="USERID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CITY_REFERENCE_PROVICE">
+          <End Role="PROVICE" Type="Self.PROVICE" Multiplicity="0..1" />
+          <End Role="CITY" Type="Self.CITY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVICE">
+              <PropertyRef Name="PROVINCEID" />
+            </Principal>
+            <Dependent Role="CITY">
+              <PropertyRef Name="PROVINCEID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COMMISIO_REFERENCE_CITY">
+          <End Role="CITY" Type="Self.CITY" Multiplicity="0..1" />
+          <End Role="COMMISION_RULE" Type="Self.COMMISION_RULE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CITY">
+              <PropertyRef Name="CITYID" />
+            </Principal>
+            <Dependent Role="COMMISION_RULE">
+              <PropertyRef Name="CITYID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COMMISIO_REFERENCE_COMMISIO">
+          <End Role="COMMISION_RULE" Type="Self.COMMISION_RULE" Multiplicity="0..1" />
+          <End Role="COMMISION_RULE_ITEM" Type="Self.COMMISION_RULE_ITEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMMISION_RULE">
+              <PropertyRef Name="RULE_ID" />
+            </Principal>
+            <Dependent Role="COMMISION_RULE_ITEM">
+              <PropertyRef Name="RULE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COMMISIO_REFERENCE_SERVICE_">
+          <End Role="SERVICE_ITEM" Type="Self.SERVICE_ITEM" Multiplicity="0..1" />
+          <End Role="COMMISION_RULE_ITEM" Type="Self.COMMISION_RULE_ITEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SERVICE_ITEM">
+              <PropertyRef Name="SERVICE_ID" />
+            </Principal>
+            <Dependent Role="COMMISION_RULE_ITEM">
+              <PropertyRef Name="SERVICEID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COMPANY__REFERENCE_CITY">
+          <End Role="CITY" Type="Self.CITY" Multiplicity="0..1" />
+          <End Role="COMPANY_CHILD" Type="Self.COMPANY_CHILD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CITY">
+              <PropertyRef Name="CITYID" />
+            </Principal>
+            <Dependent Role="COMPANY_CHILD">
+              <PropertyRef Name="CITYID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COMPANY__REFERENCE_COMPANY_">
+          <End Role="COMPANY_CHILD" Type="Self.COMPANY_CHILD" Multiplicity="0..1" />
+          <End Role="COMPANY_DETAIL_ITEM" Type="Self.COMPANY_DETAIL_ITEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMPANY_CHILD">
+              <PropertyRef Name="CHILD_ID" />
+            </Principal>
+            <Dependent Role="COMPANY_DETAIL_ITEM">
+              <PropertyRef Name="CHILD_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COMPANY__REFERENCE_DETAIL_I">
+          <End Role="DETAIL_ITEM" Type="Self.DETAIL_ITEM" Multiplicity="0..1" />
+          <End Role="COMPANY_DETAIL_ITEM" Type="Self.COMPANY_DETAIL_ITEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DETAIL_ITEM">
+              <PropertyRef Name="DETAIL_CODE" />
+            </Principal>
+            <Dependent Role="COMPANY_DETAIL_ITEM">
+              <PropertyRef Name="DETAIL_CODE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COUPON_I_REFERENCE_PROVINCE">
+          <End Role="PROVINCE_BASIC_SERVICE" Type="Self.PROVINCE_BASIC_SERVICE" Multiplicity="0..1" />
+          <End Role="COUPON_INFO" Type="Self.COUPON_INFO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVINCE_BASIC_SERVICE">
+              <PropertyRef Name="CITY_SERVICE_ID" />
+            </Principal>
+            <Dependent Role="COUPON_INFO">
+              <PropertyRef Name="CITY_SERVICE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COUPON_R_REFERENCE_COUPON_I">
+          <End Role="COUPON_INFO" Type="Self.COUPON_INFO" Multiplicity="0..1" />
+          <End Role="COUPON_RECORD" Type="Self.COUPON_RECORD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COUPON_INFO">
+              <PropertyRef Name="COUPON_ID" />
+            </Principal>
+            <Dependent Role="COUPON_RECORD">
+              <PropertyRef Name="COUPON_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COUPON_R_REFERENCE_PROVINCE">
+          <End Role="PROVINCE_BASIC_SERVICE" Type="Self.PROVINCE_BASIC_SERVICE" Multiplicity="0..1" />
+          <End Role="COUPON_RECORD" Type="Self.COUPON_RECORD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVINCE_BASIC_SERVICE">
+              <PropertyRef Name="CITY_SERVICE_ID" />
+            </Principal>
+            <Dependent Role="COUPON_RECORD">
+              <PropertyRef Name="CITY_SERVICE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COUPON_R_REFERENCE_USER">
+          <End Role="USER" Type="Self.USER" Multiplicity="0..1" />
+          <End Role="COUPON_RECORD" Type="Self.COUPON_RECORD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="USERID" />
+            </Principal>
+            <Dependent Role="COUPON_RECORD">
+              <PropertyRef Name="USERID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EXTRA_DE_REFERENCE_ORDERS">
+          <End Role="ORDERS" Type="Self.ORDERS" Multiplicity="0..1" />
+          <End Role="EXTRA_DEMAND" Type="Self.EXTRA_DEMAND" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ORDERS">
+              <PropertyRef Name="ORDERID" />
+            </Principal>
+            <Dependent Role="EXTRA_DEMAND">
+              <PropertyRef Name="ORDERID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EXTRA_DE_REFERENCE_SELFSERV">
+          <End Role="SELFSERVICE" Type="Self.SELFSERVICE" Multiplicity="0..1" />
+          <End Role="EXTRA_DEMAND" Type="Self.EXTRA_DEMAND" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SELFSERVICE">
+              <PropertyRef Name="SPECIAL_ID" />
+            </Principal>
+            <Dependent Role="EXTRA_DEMAND">
+              <PropertyRef Name="SPECIAL_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MEMBERSH_REFERENCE_MASTERS">
+          <End Role="MASTERS" Type="Self.MASTERS" Multiplicity="0..1" />
+          <End Role="MEMBERSHIP_PACKAGE" Type="Self.MEMBERSHIP_PACKAGE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MASTERS">
+              <PropertyRef Name="MASTER_ID" />
+            </Principal>
+            <Dependent Role="MEMBERSHIP_PACKAGE">
+              <PropertyRef Name="CU_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MEMBERSH_REFERENCE_PACK_TYP">
+          <End Role="PACK_TYPE" Type="Self.PACK_TYPE" Multiplicity="0..1" />
+          <End Role="MEMBERSHIP_PACKAGE" Type="Self.MEMBERSHIP_PACKAGE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PACK_TYPE">
+              <PropertyRef Name="PACK_TYPE_ID" />
+            </Principal>
+            <Dependent Role="MEMBERSHIP_PACKAGE">
+              <PropertyRef Name="PACK_TYPE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ORDER_IT_REFERENCE_ORDERS">
+          <End Role="ORDERS" Type="Self.ORDERS" Multiplicity="0..1" />
+          <End Role="ORDER_ITEM" Type="Self.ORDER_ITEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ORDERS">
+              <PropertyRef Name="ORDERID" />
+            </Principal>
+            <Dependent Role="ORDER_ITEM">
+              <PropertyRef Name="ORDERID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ORDER_IT_REFERENCE_RATEPLAN">
+          <End Role="RATEPLAN" Type="Self.RATEPLAN" Multiplicity="0..1" />
+          <End Role="ORDER_ITEM" Type="Self.ORDER_ITEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RATEPLAN">
+              <PropertyRef Name="RATEPLAN_ID" />
+            </Principal>
+            <Dependent Role="ORDER_ITEM">
+              <PropertyRef Name="RATEPLAN_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ORDERS_REFERENCE_STAFF">
+          <End Role="STAFF" Type="Self.STAFF" Multiplicity="0..1" />
+          <End Role="ORDERS" Type="Self.ORDERS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STAFF">
+              <PropertyRef Name="STAFFID" />
+            </Principal>
+            <Dependent Role="ORDERS">
+              <PropertyRef Name="STAFFID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ORDERS_REFERENCE_USER">
+          <End Role="USER" Type="Self.USER" Multiplicity="0..1" />
+          <End Role="ORDERS" Type="Self.ORDERS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="USERID" />
+            </Principal>
+            <Dependent Role="ORDERS">
+              <PropertyRef Name="USERID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PROVINCE_REFERENCE_CITY">
+          <End Role="CITY" Type="Self.CITY" Multiplicity="0..1" />
+          <End Role="PROVINCE_BASIC_SERVICE" Type="Self.PROVINCE_BASIC_SERVICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CITY">
+              <PropertyRef Name="CITYID" />
+            </Principal>
+            <Dependent Role="PROVINCE_BASIC_SERVICE">
+              <PropertyRef Name="CITYID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PROVINCE_REFERENCE_SERVICE_">
+          <End Role="SERVICE_ITEM" Type="Self.SERVICE_ITEM" Multiplicity="0..1" />
+          <End Role="PROVINCE_BASIC_SERVICE" Type="Self.PROVINCE_BASIC_SERVICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SERVICE_ITEM">
+              <PropertyRef Name="SERVICE_ID" />
+            </Principal>
+            <Dependent Role="PROVINCE_BASIC_SERVICE">
+              <PropertyRef Name="SERVICE_ITEM_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RATEPLAN_REFERENCE_PROVINCE">
+          <End Role="PROVINCE_BASIC_SERVICE" Type="Self.PROVINCE_BASIC_SERVICE" Multiplicity="0..1" />
+          <End Role="RATEPLAN" Type="Self.RATEPLAN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVINCE_BASIC_SERVICE">
+              <PropertyRef Name="CITY_SERVICE_ID" />
+            </Principal>
+            <Dependent Role="RATEPLAN">
+              <PropertyRef Name="CITY_SERVICE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_REBACK_I_REFERENCE_PROVINCE">
+          <End Role="PROVINCE_BASIC_SERVICE" Type="Self.PROVINCE_BASIC_SERVICE" Multiplicity="0..1" />
+          <End Role="REBACK_ITEM" Type="Self.REBACK_ITEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVINCE_BASIC_SERVICE">
+              <PropertyRef Name="CITY_SERVICE_ID" />
+            </Principal>
+            <Dependent Role="REBACK_ITEM">
+              <PropertyRef Name="CITY_SERVICE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_REBACK_I_REFERENCE_RECHARGE">
+          <End Role="RECHARGE" Type="Self.RECHARGE" Multiplicity="0..1" />
+          <End Role="REBACK_ITEM" Type="Self.REBACK_ITEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RECHARGE">
+              <PropertyRef Name="RECHARGE_ID" />
+            </Principal>
+            <Dependent Role="REBACK_ITEM">
+              <PropertyRef Name="RECHARGE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RECHARGE_REFERENCE_MEMBERSH">
+          <End Role="MEMBERSHIP_PACKAGE" Type="Self.MEMBERSHIP_PACKAGE" Multiplicity="0..1" />
+          <End Role="RECHARGE" Type="Self.RECHARGE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MEMBERSHIP_PACKAGE">
+              <PropertyRef Name="MEM_PACK_ID" />
+            </Principal>
+            <Dependent Role="RECHARGE">
+              <PropertyRef Name="MEM_PACK_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SALRY_REFERENCE_STAFF">
+          <End Role="STAFF" Type="Self.STAFF" Multiplicity="0..1" />
+          <End Role="SALRY" Type="Self.SALRY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STAFF">
+              <PropertyRef Name="STAFFID" />
+            </Principal>
+            <Dependent Role="SALRY">
+              <PropertyRef Name="STAFFID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SELFSERV_REFERENCE_PROVINCE">
+          <End Role="PROVINCE_BASIC_SERVICE" Type="Self.PROVINCE_BASIC_SERVICE" Multiplicity="0..1" />
+          <End Role="SELFSERVICE" Type="Self.SELFSERVICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVINCE_BASIC_SERVICE">
+              <PropertyRef Name="CITY_SERVICE_ID" />
+            </Principal>
+            <Dependent Role="SELFSERVICE">
+              <PropertyRef Name="CITY_SERVICE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SERVICE__REFERENCE_SERVICE_">
+          <End Role="SERVICE_ITEM" Type="Self.SERVICE_ITEM" Multiplicity="0..1" />
+          <End Role="SERVICE_ITEM1" Type="Self.SERVICE_ITEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SERVICE_ITEM">
+              <PropertyRef Name="SERVICE_ID" />
+            </Principal>
+            <Dependent Role="SERVICE_ITEM1">
+              <PropertyRef Name="PARENT_SERVICE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_STAFF_REFERENCE_STAFF_LE">
+          <End Role="STAFF_LEVEL" Type="Self.STAFF_LEVEL" Multiplicity="0..1" />
+          <End Role="STAFF" Type="Self.STAFF" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STAFF_LEVEL">
+              <PropertyRef Name="LEVELID" />
+            </Principal>
+            <Dependent Role="STAFF">
+              <PropertyRef Name="STAFF_LEVEL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_REFERENCE_USER_LEV">
+          <End Role="USER_LEVEL" Type="Self.USER_LEVEL" Multiplicity="0..1" />
+          <End Role="USER" Type="Self.USER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER_LEVEL">
+              <PropertyRef Name="LEVELID" />
+            </Principal>
+            <Dependent Role="USER">
+              <PropertyRef Name="USER_LEVEL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WORKOFF_REFERENCE_STAFF">
+          <End Role="STAFF" Type="Self.STAFF" Multiplicity="0..1" />
+          <End Role="WORKOFF" Type="Self.WORKOFF" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STAFF">
+              <PropertyRef Name="STAFFID" />
+            </Principal>
+            <Dependent Role="WORKOFF">
+              <PropertyRef Name="STAFFID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ServiceHomeDBStoreContainer">
+          <EntitySet Name="AUTHORMODULES" EntityType="Self.AUTHORMODULES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CASH_LOG" EntityType="Self.CASH_LOG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CITY" EntityType="Self.CITY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="COMMISION_RULE" EntityType="Self.COMMISION_RULE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="COMMISION_RULE_ITEM" EntityType="Self.COMMISION_RULE_ITEM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="COMPANY_CHILD" EntityType="Self.COMPANY_CHILD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="COMPANY_DETAIL_ITEM" EntityType="Self.COMPANY_DETAIL_ITEM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="COUPON_INFO" EntityType="Self.COUPON_INFO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="COUPON_RECORD" EntityType="Self.COUPON_RECORD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DETAIL_ITEM" EntityType="Self.DETAIL_ITEM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EXTRA_DEMAND" EntityType="Self.EXTRA_DEMAND" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FEEDBACK" EntityType="Self.FEEDBACK" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MASTERS" EntityType="Self.MASTERS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MEMBERSHIP_PACKAGE" EntityType="Self.MEMBERSHIP_PACKAGE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MODULES" EntityType="Self.MODULES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OPERATION_LOG" EntityType="Self.OPERATION_LOG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ORDER_ITEM" EntityType="Self.ORDER_ITEM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ORDERS" EntityType="Self.ORDERS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PACK_TYPE" EntityType="Self.PACK_TYPE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PROVICE" EntityType="Self.PROVICE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PROVINCE_BASIC_SERVICE" EntityType="Self.PROVINCE_BASIC_SERVICE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RATEPLAN" EntityType="Self.RATEPLAN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="REALMESSAGE" EntityType="Self.REALMESSAGE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="REBACK_ITEM" EntityType="Self.REBACK_ITEM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RECHARGE" EntityType="Self.RECHARGE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SALRY" EntityType="Self.SALRY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SELFSERVICE" EntityType="Self.SELFSERVICE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SERVICE_ITEM" EntityType="Self.SERVICE_ITEM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="STAFF" EntityType="Self.STAFF" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="STAFF_LEVEL" EntityType="Self.STAFF_LEVEL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USER" EntityType="Self.USER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USER_LEVEL" EntityType="Self.USER_LEVEL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WORKOFF" EntityType="Self.WORKOFF" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AUTHORMO_REFERENCE_MASTERS" Association="Self.FK_AUTHORMO_REFERENCE_MASTERS">
+            <End Role="MASTERS" EntitySet="MASTERS" />
+            <End Role="AUTHORMODULES" EntitySet="AUTHORMODULES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AUTHORMO_REFERENCE_MODULES" Association="Self.FK_AUTHORMO_REFERENCE_MODULES">
+            <End Role="MODULES" EntitySet="MODULES" />
+            <End Role="AUTHORMODULES" EntitySet="AUTHORMODULES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CASH_LOG_REFERENCE_USER" Association="Self.FK_CASH_LOG_REFERENCE_USER">
+            <End Role="USER" EntitySet="USER" />
+            <End Role="CASH_LOG" EntitySet="CASH_LOG" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CITY_REFERENCE_PROVICE" Association="Self.FK_CITY_REFERENCE_PROVICE">
+            <End Role="PROVICE" EntitySet="PROVICE" />
+            <End Role="CITY" EntitySet="CITY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COMMISIO_REFERENCE_CITY" Association="Self.FK_COMMISIO_REFERENCE_CITY">
+            <End Role="CITY" EntitySet="CITY" />
+            <End Role="COMMISION_RULE" EntitySet="COMMISION_RULE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COMMISIO_REFERENCE_COMMISIO" Association="Self.FK_COMMISIO_REFERENCE_COMMISIO">
+            <End Role="COMMISION_RULE" EntitySet="COMMISION_RULE" />
+            <End Role="COMMISION_RULE_ITEM" EntitySet="COMMISION_RULE_ITEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COMMISIO_REFERENCE_SERVICE_" Association="Self.FK_COMMISIO_REFERENCE_SERVICE_">
+            <End Role="SERVICE_ITEM" EntitySet="SERVICE_ITEM" />
+            <End Role="COMMISION_RULE_ITEM" EntitySet="COMMISION_RULE_ITEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COMPANY__REFERENCE_CITY" Association="Self.FK_COMPANY__REFERENCE_CITY">
+            <End Role="CITY" EntitySet="CITY" />
+            <End Role="COMPANY_CHILD" EntitySet="COMPANY_CHILD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COMPANY__REFERENCE_COMPANY_" Association="Self.FK_COMPANY__REFERENCE_COMPANY_">
+            <End Role="COMPANY_CHILD" EntitySet="COMPANY_CHILD" />
+            <End Role="COMPANY_DETAIL_ITEM" EntitySet="COMPANY_DETAIL_ITEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COMPANY__REFERENCE_DETAIL_I" Association="Self.FK_COMPANY__REFERENCE_DETAIL_I">
+            <End Role="DETAIL_ITEM" EntitySet="DETAIL_ITEM" />
+            <End Role="COMPANY_DETAIL_ITEM" EntitySet="COMPANY_DETAIL_ITEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COUPON_I_REFERENCE_PROVINCE" Association="Self.FK_COUPON_I_REFERENCE_PROVINCE">
+            <End Role="PROVINCE_BASIC_SERVICE" EntitySet="PROVINCE_BASIC_SERVICE" />
+            <End Role="COUPON_INFO" EntitySet="COUPON_INFO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COUPON_R_REFERENCE_COUPON_I" Association="Self.FK_COUPON_R_REFERENCE_COUPON_I">
+            <End Role="COUPON_INFO" EntitySet="COUPON_INFO" />
+            <End Role="COUPON_RECORD" EntitySet="COUPON_RECORD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COUPON_R_REFERENCE_PROVINCE" Association="Self.FK_COUPON_R_REFERENCE_PROVINCE">
+            <End Role="PROVINCE_BASIC_SERVICE" EntitySet="PROVINCE_BASIC_SERVICE" />
+            <End Role="COUPON_RECORD" EntitySet="COUPON_RECORD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COUPON_R_REFERENCE_USER" Association="Self.FK_COUPON_R_REFERENCE_USER">
+            <End Role="USER" EntitySet="USER" />
+            <End Role="COUPON_RECORD" EntitySet="COUPON_RECORD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EXTRA_DE_REFERENCE_ORDERS" Association="Self.FK_EXTRA_DE_REFERENCE_ORDERS">
+            <End Role="ORDERS" EntitySet="ORDERS" />
+            <End Role="EXTRA_DEMAND" EntitySet="EXTRA_DEMAND" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EXTRA_DE_REFERENCE_SELFSERV" Association="Self.FK_EXTRA_DE_REFERENCE_SELFSERV">
+            <End Role="SELFSERVICE" EntitySet="SELFSERVICE" />
+            <End Role="EXTRA_DEMAND" EntitySet="EXTRA_DEMAND" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MEMBERSH_REFERENCE_MASTERS" Association="Self.FK_MEMBERSH_REFERENCE_MASTERS">
+            <End Role="MASTERS" EntitySet="MASTERS" />
+            <End Role="MEMBERSHIP_PACKAGE" EntitySet="MEMBERSHIP_PACKAGE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MEMBERSH_REFERENCE_PACK_TYP" Association="Self.FK_MEMBERSH_REFERENCE_PACK_TYP">
+            <End Role="PACK_TYPE" EntitySet="PACK_TYPE" />
+            <End Role="MEMBERSHIP_PACKAGE" EntitySet="MEMBERSHIP_PACKAGE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ORDER_IT_REFERENCE_ORDERS" Association="Self.FK_ORDER_IT_REFERENCE_ORDERS">
+            <End Role="ORDERS" EntitySet="ORDERS" />
+            <End Role="ORDER_ITEM" EntitySet="ORDER_ITEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ORDER_IT_REFERENCE_RATEPLAN" Association="Self.FK_ORDER_IT_REFERENCE_RATEPLAN">
+            <End Role="RATEPLAN" EntitySet="RATEPLAN" />
+            <End Role="ORDER_ITEM" EntitySet="ORDER_ITEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ORDERS_REFERENCE_STAFF" Association="Self.FK_ORDERS_REFERENCE_STAFF">
+            <End Role="STAFF" EntitySet="STAFF" />
+            <End Role="ORDERS" EntitySet="ORDERS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ORDERS_REFERENCE_USER" Association="Self.FK_ORDERS_REFERENCE_USER">
+            <End Role="USER" EntitySet="USER" />
+            <End Role="ORDERS" EntitySet="ORDERS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PROVINCE_REFERENCE_CITY" Association="Self.FK_PROVINCE_REFERENCE_CITY">
+            <End Role="CITY" EntitySet="CITY" />
+            <End Role="PROVINCE_BASIC_SERVICE" EntitySet="PROVINCE_BASIC_SERVICE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PROVINCE_REFERENCE_SERVICE_" Association="Self.FK_PROVINCE_REFERENCE_SERVICE_">
+            <End Role="SERVICE_ITEM" EntitySet="SERVICE_ITEM" />
+            <End Role="PROVINCE_BASIC_SERVICE" EntitySet="PROVINCE_BASIC_SERVICE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RATEPLAN_REFERENCE_PROVINCE" Association="Self.FK_RATEPLAN_REFERENCE_PROVINCE">
+            <End Role="PROVINCE_BASIC_SERVICE" EntitySet="PROVINCE_BASIC_SERVICE" />
+            <End Role="RATEPLAN" EntitySet="RATEPLAN" />
+          </AssociationSet>
+          <AssociationSet Name="FK_REBACK_I_REFERENCE_PROVINCE" Association="Self.FK_REBACK_I_REFERENCE_PROVINCE">
+            <End Role="PROVINCE_BASIC_SERVICE" EntitySet="PROVINCE_BASIC_SERVICE" />
+            <End Role="REBACK_ITEM" EntitySet="REBACK_ITEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_REBACK_I_REFERENCE_RECHARGE" Association="Self.FK_REBACK_I_REFERENCE_RECHARGE">
+            <End Role="RECHARGE" EntitySet="RECHARGE" />
+            <End Role="REBACK_ITEM" EntitySet="REBACK_ITEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RECHARGE_REFERENCE_MEMBERSH" Association="Self.FK_RECHARGE_REFERENCE_MEMBERSH">
+            <End Role="MEMBERSHIP_PACKAGE" EntitySet="MEMBERSHIP_PACKAGE" />
+            <End Role="RECHARGE" EntitySet="RECHARGE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SALRY_REFERENCE_STAFF" Association="Self.FK_SALRY_REFERENCE_STAFF">
+            <End Role="STAFF" EntitySet="STAFF" />
+            <End Role="SALRY" EntitySet="SALRY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SELFSERV_REFERENCE_PROVINCE" Association="Self.FK_SELFSERV_REFERENCE_PROVINCE">
+            <End Role="PROVINCE_BASIC_SERVICE" EntitySet="PROVINCE_BASIC_SERVICE" />
+            <End Role="SELFSERVICE" EntitySet="SELFSERVICE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SERVICE__REFERENCE_SERVICE_" Association="Self.FK_SERVICE__REFERENCE_SERVICE_">
+            <End Role="SERVICE_ITEM" EntitySet="SERVICE_ITEM" />
+            <End Role="SERVICE_ITEM1" EntitySet="SERVICE_ITEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_STAFF_REFERENCE_STAFF_LE" Association="Self.FK_STAFF_REFERENCE_STAFF_LE">
+            <End Role="STAFF_LEVEL" EntitySet="STAFF_LEVEL" />
+            <End Role="STAFF" EntitySet="STAFF" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_REFERENCE_USER_LEV" Association="Self.FK_USER_REFERENCE_USER_LEV">
+            <End Role="USER_LEVEL" EntitySet="USER_LEVEL" />
+            <End Role="USER" EntitySet="USER" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WORKOFF_REFERENCE_STAFF" Association="Self.FK_WORKOFF_REFERENCE_STAFF">
+            <End Role="STAFF" EntitySet="STAFF" />
+            <End Role="WORKOFF" EntitySet="WORKOFF" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ServiceHomeDB" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AUTHORMODULES">
+          <Key>
+            <PropertyRef Name="AUTHOR_ID" />
+          </Key>
+          <Property Name="AUTHOR_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MASTER_ID" Type="Int32" />
+          <Property Name="MODULE_ID" Type="Int32" />
+          <Property Name="CT" Type="DateTime" Precision="3" />
+          <Property Name="CU_ID" Type="Int32" />
+          <Property Name="R_ADD" Type="Boolean" Nullable="false" />
+          <Property Name="R_DELETE" Type="Boolean" Nullable="false" />
+          <Property Name="R_UPDATE" Type="Boolean" Nullable="false" />
+          <Property Name="R_QUERY" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="MASTERS" Relationship="Self.FK_AUTHORMO_REFERENCE_MASTERS" FromRole="AUTHORMODULES" ToRole="MASTERS" />
+          <NavigationProperty Name="MODULES" Relationship="Self.FK_AUTHORMO_REFERENCE_MODULES" FromRole="AUTHORMODULES" ToRole="MODULES" />
+        </EntityType>
+        <EntityType Name="CASH_LOG">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USERID" Type="Int32" />
+          <Property Name="TYPE" Type="Int32" Nullable="false" />
+          <Property Name="COUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="OP_TIME" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="USER" Relationship="Self.FK_CASH_LOG_REFERENCE_USER" FromRole="CASH_LOG" ToRole="USER" />
+        </EntityType>
+        <EntityType Name="CITY">
+          <Key>
+            <PropertyRef Name="CITYID" />
+          </Key>
+          <Property Name="CITYID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PROVINCEID" Type="Int32" />
+          <Property Name="CITYNAME" Type="Binary" MaxLength="50" FixedLength="true" />
+          <Property Name="CT" Type="DateTime" Precision="3" />
+          <Property Name="ISOPEN" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="PROVICE" Relationship="Self.FK_CITY_REFERENCE_PROVICE" FromRole="CITY" ToRole="PROVICE" />
+          <NavigationProperty Name="COMMISION_RULE" Relationship="Self.FK_COMMISIO_REFERENCE_CITY" FromRole="CITY" ToRole="COMMISION_RULE" />
+          <NavigationProperty Name="COMPANY_CHILD" Relationship="Self.FK_COMPANY__REFERENCE_CITY" FromRole="CITY" ToRole="COMPANY_CHILD" />
+          <NavigationProperty Name="PROVINCE_BASIC_SERVICE" Relationship="Self.FK_PROVINCE_REFERENCE_CITY" FromRole="CITY" ToRole="PROVINCE_BASIC_SERVICE" />
+        </EntityType>
+        <EntityType Name="COMMISION_RULE">
+          <Key>
+            <PropertyRef Name="RULE_ID" />
+          </Key>
+          <Property Name="RULE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CITYID" Type="Int32" />
+          <Property Name="RULE_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CT" Type="DateTime" Precision="3" />
+          <Property Name="CU_ID" Type="Int32" />
+          <Property Name="ISOPEN" Type="Boolean" />
+          <Property Name="DEFAULT_RATE" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="CITY" Relationship="Self.FK_COMMISIO_REFERENCE_CITY" FromRole="COMMISION_RULE" ToRole="CITY" />
+          <NavigationProperty Name="COMMISION_RULE_ITEM" Relationship="Self.FK_COMMISIO_REFERENCE_COMMISIO" FromRole="COMMISION_RULE" ToRole="COMMISION_RULE_ITEM" />
+        </EntityType>
+        <EntityType Name="COMMISION_RULE_ITEM">
+          <Key>
+            <PropertyRef Name="RULE_ITEM_ID" />
+          </Key>
+          <Property Name="RULE_ITEM_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SERVICEID" Type="Int32" />
+          <Property Name="RULE_ID" Type="Int32" />
+          <Property Name="RULE_RATE" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="CT" Type="DateTime" Precision="3" />
+          <Property Name="UPDATE_TIME" Type="DateTime" Precision="3" />
+          <Property Name="US_ID" Type="Binary" MaxLength="10" FixedLength="true" />
+          <Property Name="CU_ID" Type="Binary" MaxLength="10" FixedLength="true" />
+          <NavigationProperty Name="COMMISION_RULE" Relationship="Self.FK_COMMISIO_REFERENCE_COMMISIO" FromRole="COMMISION_RULE_ITEM" ToRole="COMMISION_RULE" />
+          <NavigationProperty Name="SERVICE_ITEM" Relationship="Self.FK_COMMISIO_REFERENCE_SERVICE_" FromRole="COMMISION_RULE_ITEM" ToRole="SERVICE_ITEM" />
+        </EntityType>
+        <EntityType Name="COMPANY_CHILD">
+          <Key>
+            <PropertyRef Name="CHILD_ID" />
+          </Key>
+          <Property Name="CHILD_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CITYID" Type="Int32" />
+          <Property Name="CHILD_NAME" Type="Binary" MaxLength="100" FixedLength="true" Nullable="false" />
+          <Property Name="CHILD_MANAGER" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CITY" Relationship="Self.FK_COMPANY__REFERENCE_CITY" FromRole="COMPANY_CHILD" ToRole="CITY" />
+          <NavigationProperty Name="COMPANY_DETAIL_ITEM" Relationship="Self.FK_COMPANY__REFERENCE_COMPANY_" FromRole="COMPANY_CHILD" ToRole="COMPANY_DETAIL_ITEM" />
+        </EntityType>
+        <EntityType Name="COMPANY_DETAIL_ITEM">
+          <Key>
+            <PropertyRef Name="ITEM_ID" />
+          </Key>
+          <Property Name="ITEM_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CHILD_ID" Type="Int32" />
+          <Property Name="DETAIL_CODE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DETAIL" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="COMPANY_CHILD" Relationship="Self.FK_COMPANY__REFERENCE_COMPANY_" FromRole="COMPANY_DETAIL_ITEM" ToRole="COMPANY_CHILD" />
+          <NavigationProperty Name="DETAIL_ITEM" Relationship="Self.FK_COMPANY__REFERENCE_DETAIL_I" FromRole="COMPANY_DETAIL_ITEM" ToRole="DETAIL_ITEM" />
+        </EntityType>
+        <EntityType Name="COUPON_INFO">
+          <Key>
+            <PropertyRef Name="COUPON_ID" />
+          </Key>
+          <Property Name="COUPON_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CITY_SERVICE_ID" Type="Int32" />
+          <Property Name="COUPON_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SUMMARY" Type="Binary" MaxLength="200" FixedLength="true" />
+          <Property Name="PIC" Type="Binary" MaxLength="200" FixedLength="true" />
+          <Property Name="PROVISION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DOWNLOADS" Type="Int32" Nullable="false" />
+          <Property Name="DOWNLOAD_FLAG" Type="Boolean" Nullable="false" />
+          <Property Name="START_TIME" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="END_TIME" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SUBMIT_TIME" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ISSUE_TIME" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="PROVINCE_BASIC_SERVICE" Relationship="Self.FK_COUPON_I_REFERENCE_PROVINCE" FromRole="COUPON_INFO" ToRole="PROVINCE_BASIC_SERVICE" />
+          <NavigationProperty Name="COUPON_RECORD" Relationship="Self.FK_COUPON_R_REFERENCE_COUPON_I" FromRole="COUPON_INFO" ToRole="COUPON_RECORD" />
+        </EntityType>
+        <EntityType Name="COUPON_RECORD">
+          <Key>
+            <PropertyRef Name="RECORD_ID" />
+          </Key>
+          <Property Name="RECORD_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="COUPON_ID" Type="Int32" />
+          <Property Name="USERID" Type="Int32" />
+          <Property Name="CITY_SERVICE_ID" Type="Int32" />
+          <Property Name="PHONE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DOWNLOAD_TIME" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ISUSED" Type="Boolean" Nullable="false" />
+          <Property Name="USETIME" Type="DateTime" Precision="3" />
+          <Property Name="CHANNEL" Type="Int16" />
+          <Property Name="START_TIME" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="END_TIME" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="COUPON_INFO" Relationship="Self.FK_COUPON_R_REFERENCE_COUPON_I" FromRole="COUPON_RECORD" ToRole="COUPON_INFO" />
+          <NavigationProperty Name="PROVINCE_BASIC_SERVICE" Relationship="Self.FK_COUPON_R_REFERENCE_PROVINCE" FromRole="COUPON_RECORD" ToRole="PROVINCE_BASIC_SERVICE" />
+          <NavigationProperty Name="USER" Relationship="Self.FK_COUPON_R_REFERENCE_USER" FromRole="COUPON_RECORD" ToRole="USER" />
+        </EntityType>
+        <EntityType Name="DETAIL_ITEM">
+          <Key>
+            <PropertyRef Name="DETAIL_CODE" />
+          </Key>
+          <Property Name="DETAIL_CODE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DETAIL_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="COMPANY_DETAIL_ITEM" Relationship="Self.FK_COMPANY__REFERENCE_DETAIL_I" FromRole="DETAIL_ITEM" ToRole="COMPANY_DETAIL_ITEM" />
+        </EntityType>
+        <EntityType Name="EXTRA_DEMAND">
+          <Key>
+            <PropertyRef Name="EXTRA_ID" />
+          </Key>
+          <Property Name="EXTRA_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ORDERID" Type="Int32" />
+          <Property Name="SPECIAL_ID" Type="Int32" />
+          <Property Name="REMARK" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ORDERS" Relationship="Self.FK_EXTRA_DE_REFERENCE_ORDERS" FromRole="EXTRA_DEMAND" ToRole="ORDERS" />
+          <NavigationProperty Name="SELFSERVICE" Relationship="Self.FK_EXTRA_DE_REFERENCE_SELFSERV" FromRole="EXTRA_DEMAND" ToRole="SELFSERVICE" />
+        </EntityType>
+        <EntityType Name="FEEDBACK">
+          <Key>
+            <PropertyRef Name="FEEDBACK_ID" />
+          </Key>
+          <Property Name="FEEDBACK_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CONTENT" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="STAFFID" Type="Int32" />
+          <Property Name="USERID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="MASTERS">
+          <Key>
+            <PropertyRef Name="MASTER_ID" />
+          </Key>
+          <Property Name="MASTER_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PASSWORD" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="MASTER_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PHONE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="AUTHORMODULES" Relationship="Self.FK_AUTHORMO_REFERENCE_MASTERS" FromRole="MASTERS" ToRole="AUTHORMODULES" />
+          <NavigationProperty Name="MEMBERSHIP_PACKAGE" Relationship="Self.FK_MEMBERSH_REFERENCE_MASTERS" FromRole="MASTERS" ToRole="MEMBERSHIP_PACKAGE" />
+        </EntityType>
+        <EntityType Name="MEMBERSHIP_PACKAGE">
+          <Key>
+            <PropertyRef Name="MEM_PACK_ID" />
+          </Key>
+          <Property Name="MEM_PACK_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PACK_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CT" Type="DateTime" Precision="3" />
+          <Property Name="ISOPEN" Type="Boolean" />
+          <Property Name="CU_ID" Type="Int32" />
+          <Property Name="PACK_TYPE_ID" Type="Int32" />
+          <Property Name="REMARK" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MASTERS" Relationship="Self.FK_MEMBERSH_REFERENCE_MASTERS" FromRole="MEMBERSHIP_PACKAGE" ToRole="MASTERS" />
+          <NavigationProperty Name="PACK_TYPE" Relationship="Self.FK_MEMBERSH_REFERENCE_PACK_TYP" FromRole="MEMBERSHIP_PACKAGE" ToRole="PACK_TYPE" />
+          <NavigationProperty Name="RECHARGE" Relationship="Self.FK_RECHARGE_REFERENCE_MEMBERSH" FromRole="MEMBERSHIP_PACKAGE" ToRole="RECHARGE" />
+        </EntityType>
+        <EntityType Name="MODULES">
+          <Key>
+            <PropertyRef Name="MODULE_ID" />
+          </Key>
+          <Property Name="MODULE_ID" Type="Int32" Nullable="false" />
+          <Property Name="MODULE_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="MODULE_URL" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="AUTHORMODULES" Relationship="Self.FK_AUTHORMO_REFERENCE_MODULES" FromRole="MODULES" ToRole="AUTHORMODULES" />
+        </EntityType>
+        <EntityType Name="OPERATION_LOG">
+          <Key>
+            <PropertyRef Name="LOG_ID" />
+          </Key>
+          <Property Name="LOG_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TYPE" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="CONTENT" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CT" Type="DateTime" Precision="3" />
+          <Property Name="APPID" Type="Binary" MaxLength="2" FixedLength="true" />
+          <Property Name="IP" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ORDER_ITEM">
+          <Key>
+            <PropertyRef Name="ORDER_DETAIL_ID" />
+          </Key>
+          <Property Name="ORDER_DETAIL_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ORDERID" Type="Int32" />
+          <Property Name="RATEPLAN_ID" Type="Int32" />
+          <Property Name="CT" Type="DateTime" Precision="3" />
+          <Property Name="QUANTITY" Type="Int32" />
+          <NavigationProperty Name="ORDERS" Relationship="Self.FK_ORDER_IT_REFERENCE_ORDERS" FromRole="ORDER_ITEM" ToRole="ORDERS" />
+          <NavigationProperty Name="RATEPLAN" Relationship="Self.FK_ORDER_IT_REFERENCE_RATEPLAN" FromRole="ORDER_ITEM" ToRole="RATEPLAN" />
+        </EntityType>
+        <EntityType Name="ORDERS">
+          <Key>
+            <PropertyRef Name="ORDERID" />
+          </Key>
+          <Property Name="ORDERID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="STAFFID" Type="Int32" />
+          <Property Name="USERID" Type="Int32" />
+          <Property Name="CT" Type="DateTime" Precision="3" />
+          <Property Name="BEGINTIME" Type="DateTime" Precision="3" />
+          <Property Name="ENDTIME" Type="DateTime" Precision="3" />
+          <Property Name="STATUS" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="ISREJECT" Type="Boolean" />
+          <Property Name="REJECT_TYPE" Type="Binary" MaxLength="1" FixedLength="true" />
+          <Property Name="REJECT_DETAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="STARRATE" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="USERCOMMENT" Type="Binary" MaxLength="50" FixedLength="true" />
+          <Property Name="REMARK" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="PAY_TYPE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ISCASHPAYED" Type="Boolean" />
+          <Property Name="ALLCOUNT" Type="Double" />
+          <Property Name="ORDERCOST" Type="Double" />
+          <Property Name="ORDERINCOME" Type="Double" />
+          <Property Name="SERVICE_LOCATION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SERVICE_POS" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ACTUAL_START_TIME" Type="DateTime" Precision="3" />
+          <Property Name="ACTUAL_END_TIME" Type="DateTime" Precision="3" />
+          <Property Name="ISGIVENTIP" Type="Boolean" />
+          <Property Name="AMOUNT_TIP" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="EXTRA_DEMAND" Relationship="Self.FK_EXTRA_DE_REFERENCE_ORDERS" FromRole="ORDERS" ToRole="EXTRA_DEMAND" />
+          <NavigationProperty Name="ORDER_ITEM" Relationship="Self.FK_ORDER_IT_REFERENCE_ORDERS" FromRole="ORDERS" ToRole="ORDER_ITEM" />
+          <NavigationProperty Name="STAFF" Relationship="Self.FK_ORDERS_REFERENCE_STAFF" FromRole="ORDERS" ToRole="STAFF" />
+          <NavigationProperty Name="USER" Relationship="Self.FK_ORDERS_REFERENCE_USER" FromRole="ORDERS" ToRole="USER" />
+        </EntityType>
+        <EntityType Name="PACK_TYPE">
+          <Key>
+            <PropertyRef Name="PACK_TYPE_ID" />
+          </Key>
+          <Property Name="PACK_TYPE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PACK_TYPE_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PACK_TYPE_CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MEMBERSHIP_PACKAGE" Relationship="Self.FK_MEMBERSH_REFERENCE_PACK_TYP" FromRole="PACK_TYPE" ToRole="MEMBERSHIP_PACKAGE" />
+        </EntityType>
+        <EntityType Name="PROVICE">
+          <Key>
+            <PropertyRef Name="PROVINCEID" />
+          </Key>
+          <Property Name="PROVINCEID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PROVINCENAME" Type="Binary" MaxLength="50" FixedLength="true" />
+          <Property Name="CT" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CITY" Relationship="Self.FK_CITY_REFERENCE_PROVICE" FromRole="PROVICE" ToRole="CITY" />
+        </EntityType>
+        <EntityType Name="PROVINCE_BASIC_SERVICE">
+          <Key>
+            <PropertyRef Name="CITY_SERVICE_ID" />
+          </Key>
+          <Property Name="CITY_SERVICE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SERVICE_ITEM_ID" Type="Int32" />
+          <Property Name="CITYID" Type="Int32" />
+          <Property Name="ISOPEN" Type="Boolean" />
+          <Property Name="CT" Type="DateTime" Precision="3" />
+          <Property Name="SERVICECOST" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="CUID" Type="Int32" />
+          <NavigationProperty Name="CITY" Relationship="Self.FK_PROVINCE_REFERENCE_CITY" FromRole="PROVINCE_BASIC_SERVICE" ToRole="CITY" />
+          <NavigationProperty Name="COUPON_INFO" Relationship="Self.FK_COUPON_I_REFERENCE_PROVINCE" FromRole="PROVINCE_BASIC_SERVICE" ToRole="COUPON_INFO" />
+          <NavigationProperty Name="COUPON_RECORD" Relationship="Self.FK_COUPON_R_REFERENCE_PROVINCE" FromRole="PROVINCE_BASIC_SERVICE" ToRole="COUPON_RECORD" />
+          <NavigationProperty Name="SERVICE_ITEM" Relationship="Self.FK_PROVINCE_REFERENCE_SERVICE_" FromRole="PROVINCE_BASIC_SERVICE" ToRole="SERVICE_ITEM" />
+          <NavigationProperty Name="RATEPLAN" Relationship="Self.FK_RATEPLAN_REFERENCE_PROVINCE" FromRole="PROVINCE_BASIC_SERVICE" ToRole="RATEPLAN" />
+          <NavigationProperty Name="REBACK_ITEM" Relationship="Self.FK_REBACK_I_REFERENCE_PROVINCE" FromRole="PROVINCE_BASIC_SERVICE" ToRole="REBACK_ITEM" />
+          <NavigationProperty Name="SELFSERVICE" Relationship="Self.FK_SELFSERV_REFERENCE_PROVINCE" FromRole="PROVINCE_BASIC_SERVICE" ToRole="SELFSERVICE" />
+        </EntityType>
+        <EntityType Name="RATEPLAN">
+          <Key>
+            <PropertyRef Name="RATEPLAN_ID" />
+          </Key>
+          <Property Name="RATEPLAN_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CITY_SERVICE_ID" Type="Int32" />
+          <Property Name="RATEPLAN_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="COST" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="单位名称" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ORDER_ITEM" Relationship="Self.FK_ORDER_IT_REFERENCE_RATEPLAN" FromRole="RATEPLAN" ToRole="ORDER_ITEM" />
+          <NavigationProperty Name="PROVINCE_BASIC_SERVICE" Relationship="Self.FK_RATEPLAN_REFERENCE_PROVINCE" FromRole="RATEPLAN" ToRole="PROVINCE_BASIC_SERVICE" />
+        </EntityType>
+        <EntityType Name="REALMESSAGE">
+          <Key>
+            <PropertyRef Name="MESSAGE_ID" />
+          </Key>
+          <Property Name="MESSAGE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CONTENT" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ISSUCESS" Type="Boolean" />
+          <Property Name="RETRY_COUNT" Type="Int32" />
+          <Property Name="CT" Type="DateTime" Precision="3" />
+          <Property Name="ISOUTDATE" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="REBACK_ITEM">
+          <Key>
+            <PropertyRef Name="REBACK_ITEM_ID" />
+          </Key>
+          <Property Name="REBACK_ITEM_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RECHARGE_ID" Type="Int32" />
+          <Property Name="CITY_SERVICE_ID" Type="Int32" />
+          <Property Name="COUNT" Type="Int32" />
+          <Property Name="QUANTITY" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PROVINCE_BASIC_SERVICE" Relationship="Self.FK_REBACK_I_REFERENCE_PROVINCE" FromRole="REBACK_ITEM" ToRole="PROVINCE_BASIC_SERVICE" />
+          <NavigationProperty Name="RECHARGE" Relationship="Self.FK_REBACK_I_REFERENCE_RECHARGE" FromRole="REBACK_ITEM" ToRole="RECHARGE" />
+        </EntityType>
+        <EntityType Name="RECHARGE">
+          <Key>
+            <PropertyRef Name="RECHARGE_ID" />
+          </Key>
+          <Property Name="RECHARGE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MEM_PACK_ID" Type="Int32" />
+          <Property Name="RECHARGE_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="RECHARGE_COUNT" Type="Int32" />
+          <Property Name="GIFT_COUNT" Type="Int32" />
+          <Property Name="ISCASHGIFT" Type="Boolean" />
+          <NavigationProperty Name="MEMBERSHIP_PACKAGE" Relationship="Self.FK_RECHARGE_REFERENCE_MEMBERSH" FromRole="RECHARGE" ToRole="MEMBERSHIP_PACKAGE" />
+          <NavigationProperty Name="REBACK_ITEM" Relationship="Self.FK_REBACK_I_REFERENCE_RECHARGE" FromRole="RECHARGE" ToRole="REBACK_ITEM" />
+        </EntityType>
+        <EntityType Name="SALRY">
+          <Key>
+            <PropertyRef Name="SALARY_ID" />
+          </Key>
+          <Property Name="SALARY_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="STAFFID" Type="Int32" />
+          <Property Name="YEAR" Type="Int32" />
+          <Property Name="MONTH" Type="Int32" />
+          <Property Name="COMPLETE_ORDER_COUNT" Type="Int32" />
+          <Property Name="REJECT_ORDER_COUNT" Type="Int32" />
+          <Property Name="INCOME" Type="Double" />
+          <Property Name="TARE" Type="Double" />
+          <NavigationProperty Name="STAFF" Relationship="Self.FK_SALRY_REFERENCE_STAFF" FromRole="SALRY" ToRole="STAFF" />
+        </EntityType>
+        <EntityType Name="SELFSERVICE">
+          <Key>
+            <PropertyRef Name="SPECIAL_ID" />
+          </Key>
+          <Property Name="SPECIAL_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CITY_SERVICE_ID" Type="Int32" />
+          <Property Name="SELFSERVICE_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ISOPEN" Type="Boolean" />
+          <Property Name="COST" Type="Double" Nullable="false" />
+          <Property Name="ISHOURCOST" Type="Boolean" />
+          <Property Name="ISAREACOST" Type="Boolean" />
+          <NavigationProperty Name="EXTRA_DEMAND" Relationship="Self.FK_EXTRA_DE_REFERENCE_SELFSERV" FromRole="SELFSERVICE" ToRole="EXTRA_DEMAND" />
+          <NavigationProperty Name="PROVINCE_BASIC_SERVICE" Relationship="Self.FK_SELFSERV_REFERENCE_PROVINCE" FromRole="SELFSERVICE" ToRole="PROVINCE_BASIC_SERVICE" />
+        </EntityType>
+        <EntityType Name="SERVICE_ITEM">
+          <Key>
+            <PropertyRef Name="SERVICE_ID" />
+          </Key>
+          <Property Name="SERVICE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PARENT_SERVICE_ID" Type="Int32" />
+          <Property Name="SERVICE_ITEM_NAME" Type="Binary" MaxLength="20" FixedLength="true" Nullable="false" />
+          <Property Name="SERVICECONTENT" Type="Binary" MaxLength="100" FixedLength="true" />
+          <Property Name="CT" Type="DateTime" Precision="3" />
+          <Property Name="URL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ISLEAF" Type="Boolean" />
+          <Property Name="PICURL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LEAF_DEPT" Type="Int32" />
+          <NavigationProperty Name="COMMISION_RULE_ITEM" Relationship="Self.FK_COMMISIO_REFERENCE_SERVICE_" FromRole="SERVICE_ITEM" ToRole="COMMISION_RULE_ITEM" />
+          <NavigationProperty Name="PROVINCE_BASIC_SERVICE" Relationship="Self.FK_PROVINCE_REFERENCE_SERVICE_" FromRole="SERVICE_ITEM" ToRole="PROVINCE_BASIC_SERVICE" />
+          <NavigationProperty Name="SERVICE_ITEM1" Relationship="Self.FK_SERVICE__REFERENCE_SERVICE_" FromRole="SERVICE_ITEM" ToRole="SERVICE_ITEM1" />
+          <NavigationProperty Name="SERVICE_ITEM2" Relationship="Self.FK_SERVICE__REFERENCE_SERVICE_" FromRole="SERVICE_ITEM1" ToRole="SERVICE_ITEM" />
+        </EntityType>
+        <EntityType Name="STAFF">
+          <Key>
+            <PropertyRef Name="STAFFID" />
+          </Key>
+          <Property Name="STAFFID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="STAFFNAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PASSWORD" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ADDR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PHONE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CT" Type="DateTime" Precision="3" />
+          <Property Name="LASTUPDATETIME" Type="DateTime" Precision="3" />
+          <Property Name="IDCARD" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
+          <Property Name="URL" Type="Binary" MaxLength="50" FixedLength="true" />
+          <Property Name="SEX" Type="Int32" Nullable="false" />
+          <Property Name="QQ" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="STATE" Type="Int32" Nullable="false" />
+          <Property Name="LASTIP" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="LASTACTION" Type="DateTime" Precision="3" />
+          <Property Name="STAFF_LEVEL" Type="Int32" />
+          <NavigationProperty Name="ORDERS" Relationship="Self.FK_ORDERS_REFERENCE_STAFF" FromRole="STAFF" ToRole="ORDERS" />
+          <NavigationProperty Name="SALRY" Relationship="Self.FK_SALRY_REFERENCE_STAFF" FromRole="STAFF" ToRole="SALRY" />
+          <NavigationProperty Name="STAFF_LEVEL1" Relationship="Self.FK_STAFF_REFERENCE_STAFF_LE" FromRole="STAFF" ToRole="STAFF_LEVEL" />
+          <NavigationProperty Name="WORKOFF" Relationship="Self.FK_WORKOFF_REFERENCE_STAFF" FromRole="STAFF" ToRole="WORKOFF" />
+        </EntityType>
+        <EntityType Name="STAFF_LEVEL">
+          <Key>
+            <PropertyRef Name="LEVELID" />
+          </Key>
+          <Property Name="LEVELID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LEVELNAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="等级说明" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="STAFF" Relationship="Self.FK_STAFF_REFERENCE_STAFF_LE" FromRole="STAFF_LEVEL" ToRole="STAFF" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="USER">
+          <Key>
+            <PropertyRef Name="USERID" />
+          </Key>
+          <Property Name="USERID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USERNAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PASSWORD" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ADDR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PHONE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CT" Type="DateTime" Precision="3" />
+          <Property Name="LASTUPDATETIME" Type="DateTime" Precision="3" />
+          <Property Name="IDCARD" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
+          <Property Name="QQ" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="STATE" Type="Int32" Nullable="false" />
+          <Property Name="LASTIP" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="LASTACTION" Type="DateTime" Precision="3" />
+          <Property Name="USER_LEVEL" Type="Int32" />
+          <Property Name="CASH_ALL" Type="Double" Nullable="false" />
+          <NavigationProperty Name="CASH_LOG" Relationship="Self.FK_CASH_LOG_REFERENCE_USER" FromRole="USER" ToRole="CASH_LOG" />
+          <NavigationProperty Name="COUPON_RECORD" Relationship="Self.FK_COUPON_R_REFERENCE_USER" FromRole="USER" ToRole="COUPON_RECORD" />
+          <NavigationProperty Name="ORDERS" Relationship="Self.FK_ORDERS_REFERENCE_USER" FromRole="USER" ToRole="ORDERS" />
+          <NavigationProperty Name="USER_LEVEL1" Relationship="Self.FK_USER_REFERENCE_USER_LEV" FromRole="USER" ToRole="USER_LEVEL" />
+        </EntityType>
+        <EntityType Name="USER_LEVEL">
+          <Key>
+            <PropertyRef Name="LEVELID" />
+          </Key>
+          <Property Name="LEVELID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LEVELNAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LEVEL_DESC" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="USER" Relationship="Self.FK_USER_REFERENCE_USER_LEV" FromRole="USER_LEVEL" ToRole="USER" />
+        </EntityType>
+        <EntityType Name="WORKOFF">
+          <Key>
+            <PropertyRef Name="OFFID" />
+          </Key>
+          <Property Name="OFFID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="STAFFID" Type="Int32" />
+          <Property Name="OFFDATE" Type="DateTime" Precision="3" />
+          <Property Name="CT" Type="DateTime" Precision="3" />
+          <Property Name="REMARK" Type="Binary" MaxLength="50" FixedLength="true" />
+          <NavigationProperty Name="STAFF" Relationship="Self.FK_WORKOFF_REFERENCE_STAFF" FromRole="WORKOFF" ToRole="STAFF" />
+        </EntityType>
+        <Association Name="FK_AUTHORMO_REFERENCE_MASTERS">
+          <End Role="MASTERS" Type="Self.MASTERS" Multiplicity="0..1" />
+          <End Role="AUTHORMODULES" Type="Self.AUTHORMODULES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MASTERS">
+              <PropertyRef Name="MASTER_ID" />
+            </Principal>
+            <Dependent Role="AUTHORMODULES">
+              <PropertyRef Name="MASTER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AUTHORMO_REFERENCE_MODULES">
+          <End Role="MODULES" Type="Self.MODULES" Multiplicity="0..1" />
+          <End Role="AUTHORMODULES" Type="Self.AUTHORMODULES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MODULES">
+              <PropertyRef Name="MODULE_ID" />
+            </Principal>
+            <Dependent Role="AUTHORMODULES">
+              <PropertyRef Name="MODULE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CASH_LOG_REFERENCE_USER">
+          <End Role="USER" Type="Self.USER" Multiplicity="0..1" />
+          <End Role="CASH_LOG" Type="Self.CASH_LOG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="USERID" />
+            </Principal>
+            <Dependent Role="CASH_LOG">
+              <PropertyRef Name="USERID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CITY_REFERENCE_PROVICE">
+          <End Role="PROVICE" Type="Self.PROVICE" Multiplicity="0..1" />
+          <End Role="CITY" Type="Self.CITY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVICE">
+              <PropertyRef Name="PROVINCEID" />
+            </Principal>
+            <Dependent Role="CITY">
+              <PropertyRef Name="PROVINCEID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COMMISIO_REFERENCE_CITY">
+          <End Role="CITY" Type="Self.CITY" Multiplicity="0..1" />
+          <End Role="COMMISION_RULE" Type="Self.COMMISION_RULE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CITY">
+              <PropertyRef Name="CITYID" />
+            </Principal>
+            <Dependent Role="COMMISION_RULE">
+              <PropertyRef Name="CITYID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COMPANY__REFERENCE_CITY">
+          <End Role="CITY" Type="Self.CITY" Multiplicity="0..1" />
+          <End Role="COMPANY_CHILD" Type="Self.COMPANY_CHILD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CITY">
+              <PropertyRef Name="CITYID" />
+            </Principal>
+            <Dependent Role="COMPANY_CHILD">
+              <PropertyRef Name="CITYID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PROVINCE_REFERENCE_CITY">
+          <End Role="CITY" Type="Self.CITY" Multiplicity="0..1" />
+          <End Role="PROVINCE_BASIC_SERVICE" Type="Self.PROVINCE_BASIC_SERVICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CITY">
+              <PropertyRef Name="CITYID" />
+            </Principal>
+            <Dependent Role="PROVINCE_BASIC_SERVICE">
+              <PropertyRef Name="CITYID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COMMISIO_REFERENCE_COMMISIO">
+          <End Role="COMMISION_RULE" Type="Self.COMMISION_RULE" Multiplicity="0..1" />
+          <End Role="COMMISION_RULE_ITEM" Type="Self.COMMISION_RULE_ITEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMMISION_RULE">
+              <PropertyRef Name="RULE_ID" />
+            </Principal>
+            <Dependent Role="COMMISION_RULE_ITEM">
+              <PropertyRef Name="RULE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COMMISIO_REFERENCE_SERVICE_">
+          <End Role="SERVICE_ITEM" Type="Self.SERVICE_ITEM" Multiplicity="0..1" />
+          <End Role="COMMISION_RULE_ITEM" Type="Self.COMMISION_RULE_ITEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SERVICE_ITEM">
+              <PropertyRef Name="SERVICE_ID" />
+            </Principal>
+            <Dependent Role="COMMISION_RULE_ITEM">
+              <PropertyRef Name="SERVICEID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COMPANY__REFERENCE_COMPANY_">
+          <End Role="COMPANY_CHILD" Type="Self.COMPANY_CHILD" Multiplicity="0..1" />
+          <End Role="COMPANY_DETAIL_ITEM" Type="Self.COMPANY_DETAIL_ITEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMPANY_CHILD">
+              <PropertyRef Name="CHILD_ID" />
+            </Principal>
+            <Dependent Role="COMPANY_DETAIL_ITEM">
+              <PropertyRef Name="CHILD_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COMPANY__REFERENCE_DETAIL_I">
+          <End Role="DETAIL_ITEM" Type="Self.DETAIL_ITEM" Multiplicity="0..1" />
+          <End Role="COMPANY_DETAIL_ITEM" Type="Self.COMPANY_DETAIL_ITEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DETAIL_ITEM">
+              <PropertyRef Name="DETAIL_CODE" />
+            </Principal>
+            <Dependent Role="COMPANY_DETAIL_ITEM">
+              <PropertyRef Name="DETAIL_CODE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COUPON_I_REFERENCE_PROVINCE">
+          <End Role="PROVINCE_BASIC_SERVICE" Type="Self.PROVINCE_BASIC_SERVICE" Multiplicity="0..1" />
+          <End Role="COUPON_INFO" Type="Self.COUPON_INFO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVINCE_BASIC_SERVICE">
+              <PropertyRef Name="CITY_SERVICE_ID" />
+            </Principal>
+            <Dependent Role="COUPON_INFO">
+              <PropertyRef Name="CITY_SERVICE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COUPON_R_REFERENCE_COUPON_I">
+          <End Role="COUPON_INFO" Type="Self.COUPON_INFO" Multiplicity="0..1" />
+          <End Role="COUPON_RECORD" Type="Self.COUPON_RECORD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COUPON_INFO">
+              <PropertyRef Name="COUPON_ID" />
+            </Principal>
+            <Dependent Role="COUPON_RECORD">
+              <PropertyRef Name="COUPON_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COUPON_R_REFERENCE_PROVINCE">
+          <End Role="PROVINCE_BASIC_SERVICE" Type="Self.PROVINCE_BASIC_SERVICE" Multiplicity="0..1" />
+          <End Role="COUPON_RECORD" Type="Self.COUPON_RECORD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVINCE_BASIC_SERVICE">
+              <PropertyRef Name="CITY_SERVICE_ID" />
+            </Principal>
+            <Dependent Role="COUPON_RECORD">
+              <PropertyRef Name="CITY_SERVICE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COUPON_R_REFERENCE_USER">
+          <End Role="USER" Type="Self.USER" Multiplicity="0..1" />
+          <End Role="COUPON_RECORD" Type="Self.COUPON_RECORD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="USERID" />
+            </Principal>
+            <Dependent Role="COUPON_RECORD">
+              <PropertyRef Name="USERID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EXTRA_DE_REFERENCE_ORDERS">
+          <End Role="ORDERS" Type="Self.ORDERS" Multiplicity="0..1" />
+          <End Role="EXTRA_DEMAND" Type="Self.EXTRA_DEMAND" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ORDERS">
+              <PropertyRef Name="ORDERID" />
+            </Principal>
+            <Dependent Role="EXTRA_DEMAND">
+              <PropertyRef Name="ORDERID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EXTRA_DE_REFERENCE_SELFSERV">
+          <End Role="SELFSERVICE" Type="Self.SELFSERVICE" Multiplicity="0..1" />
+          <End Role="EXTRA_DEMAND" Type="Self.EXTRA_DEMAND" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SELFSERVICE">
+              <PropertyRef Name="SPECIAL_ID" />
+            </Principal>
+            <Dependent Role="EXTRA_DEMAND">
+              <PropertyRef Name="SPECIAL_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MEMBERSH_REFERENCE_MASTERS">
+          <End Role="MASTERS" Type="Self.MASTERS" Multiplicity="0..1" />
+          <End Role="MEMBERSHIP_PACKAGE" Type="Self.MEMBERSHIP_PACKAGE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MASTERS">
+              <PropertyRef Name="MASTER_ID" />
+            </Principal>
+            <Dependent Role="MEMBERSHIP_PACKAGE">
+              <PropertyRef Name="CU_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MEMBERSH_REFERENCE_PACK_TYP">
+          <End Role="PACK_TYPE" Type="Self.PACK_TYPE" Multiplicity="0..1" />
+          <End Role="MEMBERSHIP_PACKAGE" Type="Self.MEMBERSHIP_PACKAGE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PACK_TYPE">
+              <PropertyRef Name="PACK_TYPE_ID" />
+            </Principal>
+            <Dependent Role="MEMBERSHIP_PACKAGE">
+              <PropertyRef Name="PACK_TYPE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RECHARGE_REFERENCE_MEMBERSH">
+          <End Role="MEMBERSHIP_PACKAGE" Type="Self.MEMBERSHIP_PACKAGE" Multiplicity="0..1" />
+          <End Role="RECHARGE" Type="Self.RECHARGE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MEMBERSHIP_PACKAGE">
+              <PropertyRef Name="MEM_PACK_ID" />
+            </Principal>
+            <Dependent Role="RECHARGE">
+              <PropertyRef Name="MEM_PACK_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ORDER_IT_REFERENCE_ORDERS">
+          <End Role="ORDERS" Type="Self.ORDERS" Multiplicity="0..1" />
+          <End Role="ORDER_ITEM" Type="Self.ORDER_ITEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ORDERS">
+              <PropertyRef Name="ORDERID" />
+            </Principal>
+            <Dependent Role="ORDER_ITEM">
+              <PropertyRef Name="ORDERID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ORDER_IT_REFERENCE_RATEPLAN">
+          <End Role="RATEPLAN" Type="Self.RATEPLAN" Multiplicity="0..1" />
+          <End Role="ORDER_ITEM" Type="Self.ORDER_ITEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RATEPLAN">
+              <PropertyRef Name="RATEPLAN_ID" />
+            </Principal>
+            <Dependent Role="ORDER_ITEM">
+              <PropertyRef Name="RATEPLAN_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ORDERS_REFERENCE_STAFF">
+          <End Role="STAFF" Type="Self.STAFF" Multiplicity="0..1" />
+          <End Role="ORDERS" Type="Self.ORDERS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STAFF">
+              <PropertyRef Name="STAFFID" />
+            </Principal>
+            <Dependent Role="ORDERS">
+              <PropertyRef Name="STAFFID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ORDERS_REFERENCE_USER">
+          <End Role="USER" Type="Self.USER" Multiplicity="0..1" />
+          <End Role="ORDERS" Type="Self.ORDERS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="USERID" />
+            </Principal>
+            <Dependent Role="ORDERS">
+              <PropertyRef Name="USERID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PROVINCE_REFERENCE_SERVICE_">
+          <End Role="SERVICE_ITEM" Type="Self.SERVICE_ITEM" Multiplicity="0..1" />
+          <End Role="PROVINCE_BASIC_SERVICE" Type="Self.PROVINCE_BASIC_SERVICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SERVICE_ITEM">
+              <PropertyRef Name="SERVICE_ID" />
+            </Principal>
+            <Dependent Role="PROVINCE_BASIC_SERVICE">
+              <PropertyRef Name="SERVICE_ITEM_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RATEPLAN_REFERENCE_PROVINCE">
+          <End Role="PROVINCE_BASIC_SERVICE" Type="Self.PROVINCE_BASIC_SERVICE" Multiplicity="0..1" />
+          <End Role="RATEPLAN" Type="Self.RATEPLAN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVINCE_BASIC_SERVICE">
+              <PropertyRef Name="CITY_SERVICE_ID" />
+            </Principal>
+            <Dependent Role="RATEPLAN">
+              <PropertyRef Name="CITY_SERVICE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_REBACK_I_REFERENCE_PROVINCE">
+          <End Role="PROVINCE_BASIC_SERVICE" Type="Self.PROVINCE_BASIC_SERVICE" Multiplicity="0..1" />
+          <End Role="REBACK_ITEM" Type="Self.REBACK_ITEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVINCE_BASIC_SERVICE">
+              <PropertyRef Name="CITY_SERVICE_ID" />
+            </Principal>
+            <Dependent Role="REBACK_ITEM">
+              <PropertyRef Name="CITY_SERVICE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SELFSERV_REFERENCE_PROVINCE">
+          <End Role="PROVINCE_BASIC_SERVICE" Type="Self.PROVINCE_BASIC_SERVICE" Multiplicity="0..1" />
+          <End Role="SELFSERVICE" Type="Self.SELFSERVICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVINCE_BASIC_SERVICE">
+              <PropertyRef Name="CITY_SERVICE_ID" />
+            </Principal>
+            <Dependent Role="SELFSERVICE">
+              <PropertyRef Name="CITY_SERVICE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_REBACK_I_REFERENCE_RECHARGE">
+          <End Role="RECHARGE" Type="Self.RECHARGE" Multiplicity="0..1" />
+          <End Role="REBACK_ITEM" Type="Self.REBACK_ITEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RECHARGE">
+              <PropertyRef Name="RECHARGE_ID" />
+            </Principal>
+            <Dependent Role="REBACK_ITEM">
+              <PropertyRef Name="RECHARGE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SALRY_REFERENCE_STAFF">
+          <End Role="STAFF" Type="Self.STAFF" Multiplicity="0..1" />
+          <End Role="SALRY" Type="Self.SALRY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STAFF">
+              <PropertyRef Name="STAFFID" />
+            </Principal>
+            <Dependent Role="SALRY">
+              <PropertyRef Name="STAFFID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SERVICE__REFERENCE_SERVICE_">
+          <End Role="SERVICE_ITEM" Type="Self.SERVICE_ITEM" Multiplicity="0..1" />
+          <End Role="SERVICE_ITEM1" Type="Self.SERVICE_ITEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SERVICE_ITEM">
+              <PropertyRef Name="SERVICE_ID" />
+            </Principal>
+            <Dependent Role="SERVICE_ITEM1">
+              <PropertyRef Name="PARENT_SERVICE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_STAFF_REFERENCE_STAFF_LE">
+          <End Role="STAFF_LEVEL" Type="Self.STAFF_LEVEL" Multiplicity="0..1" />
+          <End Role="STAFF" Type="Self.STAFF" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STAFF_LEVEL">
+              <PropertyRef Name="LEVELID" />
+            </Principal>
+            <Dependent Role="STAFF">
+              <PropertyRef Name="STAFF_LEVEL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WORKOFF_REFERENCE_STAFF">
+          <End Role="STAFF" Type="Self.STAFF" Multiplicity="0..1" />
+          <End Role="WORKOFF" Type="Self.WORKOFF" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STAFF">
+              <PropertyRef Name="STAFFID" />
+            </Principal>
+            <Dependent Role="WORKOFF">
+              <PropertyRef Name="STAFFID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_REFERENCE_USER_LEV">
+          <End Role="USER_LEVEL" Type="Self.USER_LEVEL" Multiplicity="0..1" />
+          <End Role="USER" Type="Self.USER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER_LEVEL">
+              <PropertyRef Name="LEVELID" />
+            </Principal>
+            <Dependent Role="USER">
+              <PropertyRef Name="USER_LEVEL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="housekeepingEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AUTHORMODULES" EntityType="Self.AUTHORMODULES" />
+          <EntitySet Name="CASH_LOG" EntityType="Self.CASH_LOG" />
+          <EntitySet Name="CITY" EntityType="Self.CITY" />
+          <EntitySet Name="COMMISION_RULE" EntityType="Self.COMMISION_RULE" />
+          <EntitySet Name="COMMISION_RULE_ITEM" EntityType="Self.COMMISION_RULE_ITEM" />
+          <EntitySet Name="COMPANY_CHILD" EntityType="Self.COMPANY_CHILD" />
+          <EntitySet Name="COMPANY_DETAIL_ITEM" EntityType="Self.COMPANY_DETAIL_ITEM" />
+          <EntitySet Name="COUPON_INFO" EntityType="Self.COUPON_INFO" />
+          <EntitySet Name="COUPON_RECORD" EntityType="Self.COUPON_RECORD" />
+          <EntitySet Name="DETAIL_ITEM" EntityType="Self.DETAIL_ITEM" />
+          <EntitySet Name="EXTRA_DEMAND" EntityType="Self.EXTRA_DEMAND" />
+          <EntitySet Name="FEEDBACK" EntityType="Self.FEEDBACK" />
+          <EntitySet Name="MASTERS" EntityType="Self.MASTERS" />
+          <EntitySet Name="MEMBERSHIP_PACKAGE" EntityType="Self.MEMBERSHIP_PACKAGE" />
+          <EntitySet Name="MODULES" EntityType="Self.MODULES" />
+          <EntitySet Name="OPERATION_LOG" EntityType="Self.OPERATION_LOG" />
+          <EntitySet Name="ORDER_ITEM" EntityType="Self.ORDER_ITEM" />
+          <EntitySet Name="ORDERS" EntityType="Self.ORDERS" />
+          <EntitySet Name="PACK_TYPE" EntityType="Self.PACK_TYPE" />
+          <EntitySet Name="PROVICE" EntityType="Self.PROVICE" />
+          <EntitySet Name="PROVINCE_BASIC_SERVICE" EntityType="Self.PROVINCE_BASIC_SERVICE" />
+          <EntitySet Name="RATEPLAN" EntityType="Self.RATEPLAN" />
+          <EntitySet Name="REALMESSAGE" EntityType="Self.REALMESSAGE" />
+          <EntitySet Name="REBACK_ITEM" EntityType="Self.REBACK_ITEM" />
+          <EntitySet Name="RECHARGE" EntityType="Self.RECHARGE" />
+          <EntitySet Name="SALRY" EntityType="Self.SALRY" />
+          <EntitySet Name="SELFSERVICE" EntityType="Self.SELFSERVICE" />
+          <EntitySet Name="SERVICE_ITEM" EntityType="Self.SERVICE_ITEM" />
+          <EntitySet Name="STAFF" EntityType="Self.STAFF" />
+          <EntitySet Name="STAFF_LEVEL" EntityType="Self.STAFF_LEVEL" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="USER" EntityType="Self.USER" />
+          <EntitySet Name="USER_LEVEL" EntityType="Self.USER_LEVEL" />
+          <EntitySet Name="WORKOFF" EntityType="Self.WORKOFF" />
+          <AssociationSet Name="FK_AUTHORMO_REFERENCE_MASTERS" Association="Self.FK_AUTHORMO_REFERENCE_MASTERS">
+            <End Role="MASTERS" EntitySet="MASTERS" />
+            <End Role="AUTHORMODULES" EntitySet="AUTHORMODULES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AUTHORMO_REFERENCE_MODULES" Association="Self.FK_AUTHORMO_REFERENCE_MODULES">
+            <End Role="MODULES" EntitySet="MODULES" />
+            <End Role="AUTHORMODULES" EntitySet="AUTHORMODULES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CASH_LOG_REFERENCE_USER" Association="Self.FK_CASH_LOG_REFERENCE_USER">
+            <End Role="USER" EntitySet="USER" />
+            <End Role="CASH_LOG" EntitySet="CASH_LOG" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CITY_REFERENCE_PROVICE" Association="Self.FK_CITY_REFERENCE_PROVICE">
+            <End Role="PROVICE" EntitySet="PROVICE" />
+            <End Role="CITY" EntitySet="CITY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COMMISIO_REFERENCE_CITY" Association="Self.FK_COMMISIO_REFERENCE_CITY">
+            <End Role="CITY" EntitySet="CITY" />
+            <End Role="COMMISION_RULE" EntitySet="COMMISION_RULE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COMPANY__REFERENCE_CITY" Association="Self.FK_COMPANY__REFERENCE_CITY">
+            <End Role="CITY" EntitySet="CITY" />
+            <End Role="COMPANY_CHILD" EntitySet="COMPANY_CHILD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PROVINCE_REFERENCE_CITY" Association="Self.FK_PROVINCE_REFERENCE_CITY">
+            <End Role="CITY" EntitySet="CITY" />
+            <End Role="PROVINCE_BASIC_SERVICE" EntitySet="PROVINCE_BASIC_SERVICE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COMMISIO_REFERENCE_COMMISIO" Association="Self.FK_COMMISIO_REFERENCE_COMMISIO">
+            <End Role="COMMISION_RULE" EntitySet="COMMISION_RULE" />
+            <End Role="COMMISION_RULE_ITEM" EntitySet="COMMISION_RULE_ITEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COMMISIO_REFERENCE_SERVICE_" Association="Self.FK_COMMISIO_REFERENCE_SERVICE_">
+            <End Role="SERVICE_ITEM" EntitySet="SERVICE_ITEM" />
+            <End Role="COMMISION_RULE_ITEM" EntitySet="COMMISION_RULE_ITEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COMPANY__REFERENCE_COMPANY_" Association="Self.FK_COMPANY__REFERENCE_COMPANY_">
+            <End Role="COMPANY_CHILD" EntitySet="COMPANY_CHILD" />
+            <End Role="COMPANY_DETAIL_ITEM" EntitySet="COMPANY_DETAIL_ITEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COMPANY__REFERENCE_DETAIL_I" Association="Self.FK_COMPANY__REFERENCE_DETAIL_I">
+            <End Role="DETAIL_ITEM" EntitySet="DETAIL_ITEM" />
+            <End Role="COMPANY_DETAIL_ITEM" EntitySet="COMPANY_DETAIL_ITEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COUPON_I_REFERENCE_PROVINCE" Association="Self.FK_COUPON_I_REFERENCE_PROVINCE">
+            <End Role="PROVINCE_BASIC_SERVICE" EntitySet="PROVINCE_BASIC_SERVICE" />
+            <End Role="COUPON_INFO" EntitySet="COUPON_INFO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COUPON_R_REFERENCE_COUPON_I" Association="Self.FK_COUPON_R_REFERENCE_COUPON_I">
+            <End Role="COUPON_INFO" EntitySet="COUPON_INFO" />
+            <End Role="COUPON_RECORD" EntitySet="COUPON_RECORD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COUPON_R_REFERENCE_PROVINCE" Association="Self.FK_COUPON_R_REFERENCE_PROVINCE">
+            <End Role="PROVINCE_BASIC_SERVICE" EntitySet="PROVINCE_BASIC_SERVICE" />
+            <End Role="COUPON_RECORD" EntitySet="COUPON_RECORD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COUPON_R_REFERENCE_USER" Association="Self.FK_COUPON_R_REFERENCE_USER">
+            <End Role="USER" EntitySet="USER" />
+            <End Role="COUPON_RECORD" EntitySet="COUPON_RECORD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EXTRA_DE_REFERENCE_ORDERS" Association="Self.FK_EXTRA_DE_REFERENCE_ORDERS">
+            <End Role="ORDERS" EntitySet="ORDERS" />
+            <End Role="EXTRA_DEMAND" EntitySet="EXTRA_DEMAND" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EXTRA_DE_REFERENCE_SELFSERV" Association="Self.FK_EXTRA_DE_REFERENCE_SELFSERV">
+            <End Role="SELFSERVICE" EntitySet="SELFSERVICE" />
+            <End Role="EXTRA_DEMAND" EntitySet="EXTRA_DEMAND" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MEMBERSH_REFERENCE_MASTERS" Association="Self.FK_MEMBERSH_REFERENCE_MASTERS">
+            <End Role="MASTERS" EntitySet="MASTERS" />
+            <End Role="MEMBERSHIP_PACKAGE" EntitySet="MEMBERSHIP_PACKAGE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MEMBERSH_REFERENCE_PACK_TYP" Association="Self.FK_MEMBERSH_REFERENCE_PACK_TYP">
+            <End Role="PACK_TYPE" EntitySet="PACK_TYPE" />
+            <End Role="MEMBERSHIP_PACKAGE" EntitySet="MEMBERSHIP_PACKAGE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RECHARGE_REFERENCE_MEMBERSH" Association="Self.FK_RECHARGE_REFERENCE_MEMBERSH">
+            <End Role="MEMBERSHIP_PACKAGE" EntitySet="MEMBERSHIP_PACKAGE" />
+            <End Role="RECHARGE" EntitySet="RECHARGE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ORDER_IT_REFERENCE_ORDERS" Association="Self.FK_ORDER_IT_REFERENCE_ORDERS">
+            <End Role="ORDERS" EntitySet="ORDERS" />
+            <End Role="ORDER_ITEM" EntitySet="ORDER_ITEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ORDER_IT_REFERENCE_RATEPLAN" Association="Self.FK_ORDER_IT_REFERENCE_RATEPLAN">
+            <End Role="RATEPLAN" EntitySet="RATEPLAN" />
+            <End Role="ORDER_ITEM" EntitySet="ORDER_ITEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ORDERS_REFERENCE_STAFF" Association="Self.FK_ORDERS_REFERENCE_STAFF">
+            <End Role="STAFF" EntitySet="STAFF" />
+            <End Role="ORDERS" EntitySet="ORDERS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ORDERS_REFERENCE_USER" Association="Self.FK_ORDERS_REFERENCE_USER">
+            <End Role="USER" EntitySet="USER" />
+            <End Role="ORDERS" EntitySet="ORDERS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PROVINCE_REFERENCE_SERVICE_" Association="Self.FK_PROVINCE_REFERENCE_SERVICE_">
+            <End Role="SERVICE_ITEM" EntitySet="SERVICE_ITEM" />
+            <End Role="PROVINCE_BASIC_SERVICE" EntitySet="PROVINCE_BASIC_SERVICE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RATEPLAN_REFERENCE_PROVINCE" Association="Self.FK_RATEPLAN_REFERENCE_PROVINCE">
+            <End Role="PROVINCE_BASIC_SERVICE" EntitySet="PROVINCE_BASIC_SERVICE" />
+            <End Role="RATEPLAN" EntitySet="RATEPLAN" />
+          </AssociationSet>
+          <AssociationSet Name="FK_REBACK_I_REFERENCE_PROVINCE" Association="Self.FK_REBACK_I_REFERENCE_PROVINCE">
+            <End Role="PROVINCE_BASIC_SERVICE" EntitySet="PROVINCE_BASIC_SERVICE" />
+            <End Role="REBACK_ITEM" EntitySet="REBACK_ITEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SELFSERV_REFERENCE_PROVINCE" Association="Self.FK_SELFSERV_REFERENCE_PROVINCE">
+            <End Role="PROVINCE_BASIC_SERVICE" EntitySet="PROVINCE_BASIC_SERVICE" />
+            <End Role="SELFSERVICE" EntitySet="SELFSERVICE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_REBACK_I_REFERENCE_RECHARGE" Association="Self.FK_REBACK_I_REFERENCE_RECHARGE">
+            <End Role="RECHARGE" EntitySet="RECHARGE" />
+            <End Role="REBACK_ITEM" EntitySet="REBACK_ITEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SALRY_REFERENCE_STAFF" Association="Self.FK_SALRY_REFERENCE_STAFF">
+            <End Role="STAFF" EntitySet="STAFF" />
+            <End Role="SALRY" EntitySet="SALRY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SERVICE__REFERENCE_SERVICE_" Association="Self.FK_SERVICE__REFERENCE_SERVICE_">
+            <End Role="SERVICE_ITEM" EntitySet="SERVICE_ITEM" />
+            <End Role="SERVICE_ITEM1" EntitySet="SERVICE_ITEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_STAFF_REFERENCE_STAFF_LE" Association="Self.FK_STAFF_REFERENCE_STAFF_LE">
+            <End Role="STAFF_LEVEL" EntitySet="STAFF_LEVEL" />
+            <End Role="STAFF" EntitySet="STAFF" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WORKOFF_REFERENCE_STAFF" Association="Self.FK_WORKOFF_REFERENCE_STAFF">
+            <End Role="STAFF" EntitySet="STAFF" />
+            <End Role="WORKOFF" EntitySet="WORKOFF" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_REFERENCE_USER_LEV" Association="Self.FK_USER_REFERENCE_USER_LEV">
+            <End Role="USER_LEVEL" EntitySet="USER_LEVEL" />
+            <End Role="USER" EntitySet="USER" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ServiceHomeDBStoreContainer" CdmEntityContainer="housekeepingEntities">
+          <EntitySetMapping Name="AUTHORMODULES">
+            <EntityTypeMapping TypeName="ServiceHomeDB.AUTHORMODULES">
+              <MappingFragment StoreEntitySet="AUTHORMODULES">
+                <ScalarProperty Name="AUTHOR_ID" ColumnName="AUTHOR_ID" />
+                <ScalarProperty Name="MASTER_ID" ColumnName="MASTER_ID" />
+                <ScalarProperty Name="MODULE_ID" ColumnName="MODULE_ID" />
+                <ScalarProperty Name="CT" ColumnName="CT" />
+                <ScalarProperty Name="CU_ID" ColumnName="CU_ID" />
+                <ScalarProperty Name="R_ADD" ColumnName="R_ADD" />
+                <ScalarProperty Name="R_DELETE" ColumnName="R_DELETE" />
+                <ScalarProperty Name="R_UPDATE" ColumnName="R_UPDATE" />
+                <ScalarProperty Name="R_QUERY" ColumnName="R_QUERY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CASH_LOG">
+            <EntityTypeMapping TypeName="ServiceHomeDB.CASH_LOG">
+              <MappingFragment StoreEntitySet="CASH_LOG">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="USERID" ColumnName="USERID" />
+                <ScalarProperty Name="TYPE" ColumnName="TYPE" />
+                <ScalarProperty Name="COUNT" ColumnName="COUNT" />
+                <ScalarProperty Name="OP_TIME" ColumnName="OP_TIME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CITY">
+            <EntityTypeMapping TypeName="ServiceHomeDB.CITY">
+              <MappingFragment StoreEntitySet="CITY">
+                <ScalarProperty Name="CITYID" ColumnName="CITYID" />
+                <ScalarProperty Name="PROVINCEID" ColumnName="PROVINCEID" />
+                <ScalarProperty Name="CITYNAME" ColumnName="CITYNAME" />
+                <ScalarProperty Name="CT" ColumnName="CT" />
+                <ScalarProperty Name="ISOPEN" ColumnName="ISOPEN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COMMISION_RULE">
+            <EntityTypeMapping TypeName="ServiceHomeDB.COMMISION_RULE">
+              <MappingFragment StoreEntitySet="COMMISION_RULE">
+                <ScalarProperty Name="RULE_ID" ColumnName="RULE_ID" />
+                <ScalarProperty Name="CITYID" ColumnName="CITYID" />
+                <ScalarProperty Name="RULE_NAME" ColumnName="RULE_NAME" />
+                <ScalarProperty Name="CT" ColumnName="CT" />
+                <ScalarProperty Name="CU_ID" ColumnName="CU_ID" />
+                <ScalarProperty Name="ISOPEN" ColumnName="ISOPEN" />
+                <ScalarProperty Name="DEFAULT_RATE" ColumnName="DEFAULT_RATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COMMISION_RULE_ITEM">
+            <EntityTypeMapping TypeName="ServiceHomeDB.COMMISION_RULE_ITEM">
+              <MappingFragment StoreEntitySet="COMMISION_RULE_ITEM">
+                <ScalarProperty Name="RULE_ITEM_ID" ColumnName="RULE_ITEM_ID" />
+                <ScalarProperty Name="SERVICEID" ColumnName="SERVICEID" />
+                <ScalarProperty Name="RULE_ID" ColumnName="RULE_ID" />
+                <ScalarProperty Name="RULE_RATE" ColumnName="RULE_RATE" />
+                <ScalarProperty Name="CT" ColumnName="CT" />
+                <ScalarProperty Name="UPDATE_TIME" ColumnName="UPDATE_TIME" />
+                <ScalarProperty Name="US_ID" ColumnName="US_ID" />
+                <ScalarProperty Name="CU_ID" ColumnName="CU_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COMPANY_CHILD">
+            <EntityTypeMapping TypeName="ServiceHomeDB.COMPANY_CHILD">
+              <MappingFragment StoreEntitySet="COMPANY_CHILD">
+                <ScalarProperty Name="CHILD_ID" ColumnName="CHILD_ID" />
+                <ScalarProperty Name="CITYID" ColumnName="CITYID" />
+                <ScalarProperty Name="CHILD_NAME" ColumnName="CHILD_NAME" />
+                <ScalarProperty Name="CHILD_MANAGER" ColumnName="CHILD_MANAGER" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COMPANY_DETAIL_ITEM">
+            <EntityTypeMapping TypeName="ServiceHomeDB.COMPANY_DETAIL_ITEM">
+              <MappingFragment StoreEntitySet="COMPANY_DETAIL_ITEM">
+                <ScalarProperty Name="ITEM_ID" ColumnName="ITEM_ID" />
+                <ScalarProperty Name="CHILD_ID" ColumnName="CHILD_ID" />
+                <ScalarProperty Name="DETAIL_CODE" ColumnName="DETAIL_CODE" />
+                <ScalarProperty Name="CODE" ColumnName="CODE" />
+                <ScalarProperty Name="DETAIL" ColumnName="DETAIL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COUPON_INFO">
+            <EntityTypeMapping TypeName="ServiceHomeDB.COUPON_INFO">
+              <MappingFragment StoreEntitySet="COUPON_INFO">
+                <ScalarProperty Name="COUPON_ID" ColumnName="COUPON_ID" />
+                <ScalarProperty Name="CITY_SERVICE_ID" ColumnName="CITY_SERVICE_ID" />
+                <ScalarProperty Name="COUPON_NAME" ColumnName="COUPON_NAME" />
+                <ScalarProperty Name="SUMMARY" ColumnName="SUMMARY" />
+                <ScalarProperty Name="PIC" ColumnName="PIC" />
+                <ScalarProperty Name="PROVISION" ColumnName="PROVISION" />
+                <ScalarProperty Name="DOWNLOADS" ColumnName="DOWNLOADS" />
+                <ScalarProperty Name="DOWNLOAD_FLAG" ColumnName="DOWNLOAD_FLAG" />
+                <ScalarProperty Name="START_TIME" ColumnName="START_TIME" />
+                <ScalarProperty Name="END_TIME" ColumnName="END_TIME" />
+                <ScalarProperty Name="SUBMIT_TIME" ColumnName="SUBMIT_TIME" />
+                <ScalarProperty Name="ISSUE_TIME" ColumnName="ISSUE_TIME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COUPON_RECORD">
+            <EntityTypeMapping TypeName="ServiceHomeDB.COUPON_RECORD">
+              <MappingFragment StoreEntitySet="COUPON_RECORD">
+                <ScalarProperty Name="RECORD_ID" ColumnName="RECORD_ID" />
+                <ScalarProperty Name="COUPON_ID" ColumnName="COUPON_ID" />
+                <ScalarProperty Name="USERID" ColumnName="USERID" />
+                <ScalarProperty Name="CITY_SERVICE_ID" ColumnName="CITY_SERVICE_ID" />
+                <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+                <ScalarProperty Name="DOWNLOAD_TIME" ColumnName="DOWNLOAD_TIME" />
+                <ScalarProperty Name="ISUSED" ColumnName="ISUSED" />
+                <ScalarProperty Name="USETIME" ColumnName="USETIME" />
+                <ScalarProperty Name="CHANNEL" ColumnName="CHANNEL" />
+                <ScalarProperty Name="START_TIME" ColumnName="START_TIME" />
+                <ScalarProperty Name="END_TIME" ColumnName="END_TIME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DETAIL_ITEM">
+            <EntityTypeMapping TypeName="ServiceHomeDB.DETAIL_ITEM">
+              <MappingFragment StoreEntitySet="DETAIL_ITEM">
+                <ScalarProperty Name="DETAIL_CODE" ColumnName="DETAIL_CODE" />
+                <ScalarProperty Name="DETAIL_NAME" ColumnName="DETAIL_NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EXTRA_DEMAND">
+            <EntityTypeMapping TypeName="ServiceHomeDB.EXTRA_DEMAND">
+              <MappingFragment StoreEntitySet="EXTRA_DEMAND">
+                <ScalarProperty Name="EXTRA_ID" ColumnName="EXTRA_ID" />
+                <ScalarProperty Name="ORDERID" ColumnName="ORDERID" />
+                <ScalarProperty Name="SPECIAL_ID" ColumnName="SPECIAL_ID" />
+                <ScalarProperty Name="REMARK" ColumnName="REMARK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FEEDBACK">
+            <EntityTypeMapping TypeName="ServiceHomeDB.FEEDBACK">
+              <MappingFragment StoreEntitySet="FEEDBACK">
+                <ScalarProperty Name="FEEDBACK_ID" ColumnName="FEEDBACK_ID" />
+                <ScalarProperty Name="CONTENT" ColumnName="CONTENT" />
+                <ScalarProperty Name="STAFFID" ColumnName="STAFFID" />
+                <ScalarProperty Name="USERID" ColumnName="USERID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MASTERS">
+            <EntityTypeMapping TypeName="ServiceHomeDB.MASTERS">
+              <MappingFragment StoreEntitySet="MASTERS">
+                <ScalarProperty Name="MASTER_ID" ColumnName="MASTER_ID" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="MASTER_NAME" ColumnName="MASTER_NAME" />
+                <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MEMBERSHIP_PACKAGE">
+            <EntityTypeMapping TypeName="ServiceHomeDB.MEMBERSHIP_PACKAGE">
+              <MappingFragment StoreEntitySet="MEMBERSHIP_PACKAGE">
+                <ScalarProperty Name="MEM_PACK_ID" ColumnName="MEM_PACK_ID" />
+                <ScalarProperty Name="PACK_NAME" ColumnName="PACK_NAME" />
+                <ScalarProperty Name="CT" ColumnName="CT" />
+                <ScalarProperty Name="ISOPEN" ColumnName="ISOPEN" />
+                <ScalarProperty Name="CU_ID" ColumnName="CU_ID" />
+                <ScalarProperty Name="PACK_TYPE_ID" ColumnName="PACK_TYPE_ID" />
+                <ScalarProperty Name="REMARK" ColumnName="REMARK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MODULES">
+            <EntityTypeMapping TypeName="ServiceHomeDB.MODULES">
+              <MappingFragment StoreEntitySet="MODULES">
+                <ScalarProperty Name="MODULE_ID" ColumnName="MODULE_ID" />
+                <ScalarProperty Name="MODULE_NAME" ColumnName="MODULE_NAME" />
+                <ScalarProperty Name="MODULE_URL" ColumnName="MODULE_URL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OPERATION_LOG">
+            <EntityTypeMapping TypeName="ServiceHomeDB.OPERATION_LOG">
+              <MappingFragment StoreEntitySet="OPERATION_LOG">
+                <ScalarProperty Name="LOG_ID" ColumnName="LOG_ID" />
+                <ScalarProperty Name="TYPE" ColumnName="TYPE" />
+                <ScalarProperty Name="CONTENT" ColumnName="CONTENT" />
+                <ScalarProperty Name="CT" ColumnName="CT" />
+                <ScalarProperty Name="APPID" ColumnName="APPID" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ORDER_ITEM">
+            <EntityTypeMapping TypeName="ServiceHomeDB.ORDER_ITEM">
+              <MappingFragment StoreEntitySet="ORDER_ITEM">
+                <ScalarProperty Name="ORDER_DETAIL_ID" ColumnName="ORDER_DETAIL_ID" />
+                <ScalarProperty Name="ORDERID" ColumnName="ORDERID" />
+                <ScalarProperty Name="RATEPLAN_ID" ColumnName="RATEPLAN_ID" />
+                <ScalarProperty Name="CT" ColumnName="CT" />
+                <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ORDERS">
+            <EntityTypeMapping TypeName="ServiceHomeDB.ORDERS">
+              <MappingFragment StoreEntitySet="ORDERS">
+                <ScalarProperty Name="ORDERID" ColumnName="ORDERID" />
+                <ScalarProperty Name="STAFFID" ColumnName="STAFFID" />
+                <ScalarProperty Name="USERID" ColumnName="USERID" />
+                <ScalarProperty Name="CT" ColumnName="CT" />
+                <ScalarProperty Name="BEGINTIME" ColumnName="BEGINTIME" />
+                <ScalarProperty Name="ENDTIME" ColumnName="ENDTIME" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="ISREJECT" ColumnName="ISREJECT" />
+                <ScalarProperty Name="REJECT_TYPE" ColumnName="REJECT_TYPE" />
+                <ScalarProperty Name="REJECT_DETAIL" ColumnName="REJECT_DETAIL" />
+                <ScalarProperty Name="STARRATE" ColumnName="STARRATE" />
+                <ScalarProperty Name="USERCOMMENT" ColumnName="USERCOMMENT" />
+                <ScalarProperty Name="REMARK" ColumnName="REMARK" />
+                <ScalarProperty Name="PAY_TYPE" ColumnName="PAY_TYPE" />
+                <ScalarProperty Name="ISCASHPAYED" ColumnName="ISCASHPAYED" />
+                <ScalarProperty Name="ALLCOUNT" ColumnName="ALLCOUNT" />
+                <ScalarProperty Name="ORDERCOST" ColumnName="ORDERCOST" />
+                <ScalarProperty Name="ORDERINCOME" ColumnName="ORDERINCOME" />
+                <ScalarProperty Name="SERVICE_LOCATION" ColumnName="SERVICE_LOCATION" />
+                <ScalarProperty Name="SERVICE_POS" ColumnName="SERVICE_POS" />
+                <ScalarProperty Name="ACTUAL_START_TIME" ColumnName="ACTUAL_START_TIME" />
+                <ScalarProperty Name="ACTUAL_END_TIME" ColumnName="ACTUAL_END_TIME" />
+                <ScalarProperty Name="ISGIVENTIP" ColumnName="ISGIVENTIP" />
+                <ScalarProperty Name="AMOUNT_TIP" ColumnName="AMOUNT_TIP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PACK_TYPE">
+            <EntityTypeMapping TypeName="ServiceHomeDB.PACK_TYPE">
+              <MappingFragment StoreEntitySet="PACK_TYPE">
+                <ScalarProperty Name="PACK_TYPE_ID" ColumnName="PACK_TYPE_ID" />
+                <ScalarProperty Name="PACK_TYPE_NAME" ColumnName="PACK_TYPE_NAME" />
+                <ScalarProperty Name="PACK_TYPE_CODE" ColumnName="PACK_TYPE_CODE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PROVICE">
+            <EntityTypeMapping TypeName="ServiceHomeDB.PROVICE">
+              <MappingFragment StoreEntitySet="PROVICE">
+                <ScalarProperty Name="PROVINCEID" ColumnName="PROVINCEID" />
+                <ScalarProperty Name="PROVINCENAME" ColumnName="PROVINCENAME" />
+                <ScalarProperty Name="CT" ColumnName="CT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PROVINCE_BASIC_SERVICE">
+            <EntityTypeMapping TypeName="ServiceHomeDB.PROVINCE_BASIC_SERVICE">
+              <MappingFragment StoreEntitySet="PROVINCE_BASIC_SERVICE">
+                <ScalarProperty Name="CITY_SERVICE_ID" ColumnName="CITY_SERVICE_ID" />
+                <ScalarProperty Name="SERVICE_ITEM_ID" ColumnName="SERVICE_ITEM_ID" />
+                <ScalarProperty Name="CITYID" ColumnName="CITYID" />
+                <ScalarProperty Name="ISOPEN" ColumnName="ISOPEN" />
+                <ScalarProperty Name="CT" ColumnName="CT" />
+                <ScalarProperty Name="SERVICECOST" ColumnName="SERVICECOST" />
+                <ScalarProperty Name="CUID" ColumnName="CUID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RATEPLAN">
+            <EntityTypeMapping TypeName="ServiceHomeDB.RATEPLAN">
+              <MappingFragment StoreEntitySet="RATEPLAN">
+                <ScalarProperty Name="RATEPLAN_ID" ColumnName="RATEPLAN_ID" />
+                <ScalarProperty Name="CITY_SERVICE_ID" ColumnName="CITY_SERVICE_ID" />
+                <ScalarProperty Name="RATEPLAN_NAME" ColumnName="RATEPLAN_NAME" />
+                <ScalarProperty Name="COST" ColumnName="COST" />
+                <ScalarProperty Name="单位名称" ColumnName="单位名称" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="REALMESSAGE">
+            <EntityTypeMapping TypeName="ServiceHomeDB.REALMESSAGE">
+              <MappingFragment StoreEntitySet="REALMESSAGE">
+                <ScalarProperty Name="MESSAGE_ID" ColumnName="MESSAGE_ID" />
+                <ScalarProperty Name="CONTENT" ColumnName="CONTENT" />
+                <ScalarProperty Name="ISSUCESS" ColumnName="ISSUCESS" />
+                <ScalarProperty Name="RETRY_COUNT" ColumnName="RETRY_COUNT" />
+                <ScalarProperty Name="CT" ColumnName="CT" />
+                <ScalarProperty Name="ISOUTDATE" ColumnName="ISOUTDATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="REBACK_ITEM">
+            <EntityTypeMapping TypeName="ServiceHomeDB.REBACK_ITEM">
+              <MappingFragment StoreEntitySet="REBACK_ITEM">
+                <ScalarProperty Name="REBACK_ITEM_ID" ColumnName="REBACK_ITEM_ID" />
+                <ScalarProperty Name="RECHARGE_ID" ColumnName="RECHARGE_ID" />
+                <ScalarProperty Name="CITY_SERVICE_ID" ColumnName="CITY_SERVICE_ID" />
+                <ScalarProperty Name="COUNT" ColumnName="COUNT" />
+                <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RECHARGE">
+            <EntityTypeMapping TypeName="ServiceHomeDB.RECHARGE">
+              <MappingFragment StoreEntitySet="RECHARGE">
+                <ScalarProperty Name="RECHARGE_ID" ColumnName="RECHARGE_ID" />
+                <ScalarProperty Name="MEM_PACK_ID" ColumnName="MEM_PACK_ID" />
+                <ScalarProperty Name="RECHARGE_NAME" ColumnName="RECHARGE_NAME" />
+                <ScalarProperty Name="RECHARGE_COUNT" ColumnName="RECHARGE_COUNT" />
+                <ScalarProperty Name="GIFT_COUNT" ColumnName="GIFT_COUNT" />
+                <ScalarProperty Name="ISCASHGIFT" ColumnName="ISCASHGIFT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SALRY">
+            <EntityTypeMapping TypeName="ServiceHomeDB.SALRY">
+              <MappingFragment StoreEntitySet="SALRY">
+                <ScalarProperty Name="SALARY_ID" ColumnName="SALARY_ID" />
+                <ScalarProperty Name="STAFFID" ColumnName="STAFFID" />
+                <ScalarProperty Name="YEAR" ColumnName="YEAR" />
+                <ScalarProperty Name="MONTH" ColumnName="MONTH" />
+                <ScalarProperty Name="COMPLETE_ORDER_COUNT" ColumnName="COMPLETE_ORDER_COUNT" />
+                <ScalarProperty Name="REJECT_ORDER_COUNT" ColumnName="REJECT_ORDER_COUNT" />
+                <ScalarProperty Name="INCOME" ColumnName="INCOME" />
+                <ScalarProperty Name="TARE" ColumnName="TARE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SELFSERVICE">
+            <EntityTypeMapping TypeName="ServiceHomeDB.SELFSERVICE">
+              <MappingFragment StoreEntitySet="SELFSERVICE">
+                <ScalarProperty Name="SPECIAL_ID" ColumnName="SPECIAL_ID" />
+                <ScalarProperty Name="CITY_SERVICE_ID" ColumnName="CITY_SERVICE_ID" />
+                <ScalarProperty Name="SELFSERVICE_NAME" ColumnName="SELFSERVICE_NAME" />
+                <ScalarProperty Name="ISOPEN" ColumnName="ISOPEN" />
+                <ScalarProperty Name="COST" ColumnName="COST" />
+                <ScalarProperty Name="ISHOURCOST" ColumnName="ISHOURCOST" />
+                <ScalarProperty Name="ISAREACOST" ColumnName="ISAREACOST" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SERVICE_ITEM">
+            <EntityTypeMapping TypeName="ServiceHomeDB.SERVICE_ITEM">
+              <MappingFragment StoreEntitySet="SERVICE_ITEM">
+                <ScalarProperty Name="SERVICE_ID" ColumnName="SERVICE_ID" />
+                <ScalarProperty Name="PARENT_SERVICE_ID" ColumnName="PARENT_SERVICE_ID" />
+                <ScalarProperty Name="SERVICE_ITEM_NAME" ColumnName="SERVICE_ITEM_NAME" />
+                <ScalarProperty Name="SERVICECONTENT" ColumnName="SERVICECONTENT" />
+                <ScalarProperty Name="CT" ColumnName="CT" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="ISLEAF" ColumnName="ISLEAF" />
+                <ScalarProperty Name="PICURL" ColumnName="PICURL" />
+                <ScalarProperty Name="LEAF_DEPT" ColumnName="LEAF_DEPT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STAFF">
+            <EntityTypeMapping TypeName="ServiceHomeDB.STAFF">
+              <MappingFragment StoreEntitySet="STAFF">
+                <ScalarProperty Name="STAFFID" ColumnName="STAFFID" />
+                <ScalarProperty Name="STAFFNAME" ColumnName="STAFFNAME" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="ADDR" ColumnName="ADDR" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+                <ScalarProperty Name="CT" ColumnName="CT" />
+                <ScalarProperty Name="LASTUPDATETIME" ColumnName="LASTUPDATETIME" />
+                <ScalarProperty Name="IDCARD" ColumnName="IDCARD" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="SEX" ColumnName="SEX" />
+                <ScalarProperty Name="QQ" ColumnName="QQ" />
+                <ScalarProperty Name="STATE" ColumnName="STATE" />
+                <ScalarProperty Name="LASTIP" ColumnName="LASTIP" />
+                <ScalarProperty Name="LASTACTION" ColumnName="LASTACTION" />
+                <ScalarProperty Name="STAFF_LEVEL" ColumnName="STAFF_LEVEL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STAFF_LEVEL">
+            <EntityTypeMapping TypeName="ServiceHomeDB.STAFF_LEVEL">
+              <MappingFragment StoreEntitySet="STAFF_LEVEL">
+                <ScalarProperty Name="LEVELID" ColumnName="LEVELID" />
+                <ScalarProperty Name="LEVELNAME" ColumnName="LEVELNAME" />
+                <ScalarProperty Name="等级说明" ColumnName="等级说明" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="ServiceHomeDB.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USER">
+            <EntityTypeMapping TypeName="ServiceHomeDB.USER">
+              <MappingFragment StoreEntitySet="USER">
+                <ScalarProperty Name="USERID" ColumnName="USERID" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="ADDR" ColumnName="ADDR" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+                <ScalarProperty Name="CT" ColumnName="CT" />
+                <ScalarProperty Name="LASTUPDATETIME" ColumnName="LASTUPDATETIME" />
+                <ScalarProperty Name="IDCARD" ColumnName="IDCARD" />
+                <ScalarProperty Name="QQ" ColumnName="QQ" />
+                <ScalarProperty Name="STATE" ColumnName="STATE" />
+                <ScalarProperty Name="LASTIP" ColumnName="LASTIP" />
+                <ScalarProperty Name="LASTACTION" ColumnName="LASTACTION" />
+                <ScalarProperty Name="USER_LEVEL" ColumnName="USER_LEVEL" />
+                <ScalarProperty Name="CASH_ALL" ColumnName="CASH_ALL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USER_LEVEL">
+            <EntityTypeMapping TypeName="ServiceHomeDB.USER_LEVEL">
+              <MappingFragment StoreEntitySet="USER_LEVEL">
+                <ScalarProperty Name="LEVELID" ColumnName="LEVELID" />
+                <ScalarProperty Name="LEVELNAME" ColumnName="LEVELNAME" />
+                <ScalarProperty Name="LEVEL_DESC" ColumnName="LEVEL_DESC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WORKOFF">
+            <EntityTypeMapping TypeName="ServiceHomeDB.WORKOFF">
+              <MappingFragment StoreEntitySet="WORKOFF">
+                <ScalarProperty Name="OFFID" ColumnName="OFFID" />
+                <ScalarProperty Name="STAFFID" ColumnName="STAFFID" />
+                <ScalarProperty Name="OFFDATE" ColumnName="OFFDATE" />
+                <ScalarProperty Name="CT" ColumnName="CT" />
+                <ScalarProperty Name="REMARK" ColumnName="REMARK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
