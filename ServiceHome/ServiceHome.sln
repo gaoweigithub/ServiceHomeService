@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceHome.Service", "Serv
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceHome.Model", "ServiceHome.Model\ServiceHome.Model.csproj", "{BD257ECB-DE6E-40B0-898C-4558EECFB1D6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopSdk", "taobao-sdk\TopSdk.csproj", "{9C11CAE5-5188-4E71-825B-68FC3135728A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonTool", "CommonTool\CommonTool.csproj", "{6B133206-6126-4374-AF43-D36E63280CE0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{BD257ECB-DE6E-40B0-898C-4558EECFB1D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD257ECB-DE6E-40B0-898C-4558EECFB1D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD257ECB-DE6E-40B0-898C-4558EECFB1D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C11CAE5-5188-4E71-825B-68FC3135728A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C11CAE5-5188-4E71-825B-68FC3135728A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C11CAE5-5188-4E71-825B-68FC3135728A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C11CAE5-5188-4E71-825B-68FC3135728A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B133206-6126-4374-AF43-D36E63280CE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B133206-6126-4374-AF43-D36E63280CE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B133206-6126-4374-AF43-D36E63280CE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B133206-6126-4374-AF43-D36E63280CE0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
