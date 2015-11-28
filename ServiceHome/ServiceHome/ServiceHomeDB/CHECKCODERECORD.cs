@@ -12,14 +12,12 @@ namespace ServiceHome.ServiceHomeDB
     using System;
     using System.Collections.Generic;
     
-    public partial class OPERATION_LOG
+    public partial class CHECKCODERECORD
     {
-        public int LOG_ID { get; set; }
-        public string TYPE { get; set; }
-        public string CONTENT { get; set; }
-        public Nullable<System.DateTime> CT { get; set; }
-        public string APPID { get; set; }
-        public string IP { get; set; }
-        public string LOGTITLE { get; set; }
+        public decimal CHECKCODEID { get; set; }
+        public string PHONENO { get; set; }
+        public string CHECKCODE { get; set; }
+        public System.DateTime CREATETIME { get; set; }
+        public string ISCHECKED { get; set; }
     }
 }

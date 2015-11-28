@@ -27,6 +27,7 @@ namespace ServiceHome.ServiceHomeDB
     
         public virtual DbSet<AUTHORMODULES> AUTHORMODULES { get; set; }
         public virtual DbSet<CASH_LOG> CASH_LOG { get; set; }
+        public virtual DbSet<CHECKCODERECORD> CHECKCODERECORD { get; set; }
         public virtual DbSet<CITY> CITY { get; set; }
         public virtual DbSet<COMMISION_RULE> COMMISION_RULE { get; set; }
         public virtual DbSet<COMMISION_RULE_ITEM> COMMISION_RULE_ITEM { get; set; }

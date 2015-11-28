@@ -6,6 +6,5 @@ using ServiceStack;
 namespace ServiceHome
 {
     public abstract class BaseService:Service
-    {
-    }
+    {    }
 }

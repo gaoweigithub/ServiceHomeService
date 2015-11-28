@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ServiceHomeDB.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="housekeepingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AUTHORMODULES">
           <Key>
             <PropertyRef Name="AUTHOR_ID" />
@@ -28,6 +28,16 @@
           <Property Name="TYPE" Type="int" Nullable="false" />
           <Property Name="COUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="OP_TIME" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CHECKCODERECORD">
+          <Key>
+            <PropertyRef Name="CHECKCODEID" />
+          </Key>
+          <Property Name="CHECKCODEID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PHONENO" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="CHECKCODE" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="CREATETIME" Type="datetime" Nullable="false" />
+          <Property Name="ISCHECKED" Type="varchar" MaxLength="10" Nullable="false" />
         </EntityType>
         <EntityType Name="CITY">
           <Key>
@@ -179,8 +189,9 @@
           <Property Name="TYPE" Type="varchar" MaxLength="1" />
           <Property Name="CONTENT" Type="varchar" MaxLength="500" />
           <Property Name="CT" Type="datetime" />
-          <Property Name="APPID" Type="binary" MaxLength="2" />
+          <Property Name="APPID" Type="varchar" MaxLength="10" />
           <Property Name="IP" Type="varchar" MaxLength="20" />
+          <Property Name="LOGTITLE" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="ORDER_ITEM">
           <Key>
@@ -815,9 +826,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="ServiceHomeDBStoreContainer">
+        <EntityContainer Name="housekeepingModelStoreContainer">
           <EntitySet Name="AUTHORMODULES" EntityType="Self.AUTHORMODULES" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CASH_LOG" EntityType="Self.CASH_LOG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CHECKCODERECORD" EntityType="Self.CHECKCODERECORD" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CITY" EntityType="Self.CITY" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="COMMISION_RULE" EntityType="Self.COMMISION_RULE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="COMMISION_RULE_ITEM" EntityType="Self.COMMISION_RULE_ITEM" Schema="dbo" store:Type="Tables" />
@@ -991,7 +1003,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="ServiceHomeDB" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="housekeepingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="AUTHORMODULES">
           <Key>
             <PropertyRef Name="AUTHOR_ID" />
@@ -1018,6 +1030,16 @@
           <Property Name="COUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="OP_TIME" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="USER" Relationship="Self.FK_CASH_LOG_REFERENCE_USER" FromRole="CASH_LOG" ToRole="USER" />
+        </EntityType>
+        <EntityType Name="CHECKCODERECORD">
+          <Key>
+            <PropertyRef Name="CHECKCODEID" />
+          </Key>
+          <Property Name="CHECKCODEID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PHONENO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CHECKCODE" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CREATETIME" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ISCHECKED" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityType Name="CITY">
           <Key>
@@ -1195,8 +1217,9 @@
           <Property Name="TYPE" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
           <Property Name="CONTENT" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="CT" Type="DateTime" Precision="3" />
-          <Property Name="APPID" Type="Binary" MaxLength="2" FixedLength="true" />
+          <Property Name="APPID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="IP" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="LOGTITLE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="ORDER_ITEM">
           <Key>
@@ -1873,6 +1896,7 @@
         <EntityContainer Name="housekeepingEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AUTHORMODULES" EntityType="Self.AUTHORMODULES" />
           <EntitySet Name="CASH_LOG" EntityType="Self.CASH_LOG" />
+          <EntitySet Name="CHECKCODERECORD" EntityType="Self.CHECKCODERECORD" />
           <EntitySet Name="CITY" EntityType="Self.CITY" />
           <EntitySet Name="COMMISION_RULE" EntityType="Self.COMMISION_RULE" />
           <EntitySet Name="COMMISION_RULE_ITEM" EntityType="Self.COMMISION_RULE_ITEM" />
@@ -2047,9 +2071,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ServiceHomeDBStoreContainer" CdmEntityContainer="housekeepingEntities">
+        <EntityContainerMapping StorageEntityContainer="housekeepingModelStoreContainer" CdmEntityContainer="housekeepingEntities">
           <EntitySetMapping Name="AUTHORMODULES">
-            <EntityTypeMapping TypeName="ServiceHomeDB.AUTHORMODULES">
+            <EntityTypeMapping TypeName="housekeepingModel.AUTHORMODULES">
               <MappingFragment StoreEntitySet="AUTHORMODULES">
                 <ScalarProperty Name="AUTHOR_ID" ColumnName="AUTHOR_ID" />
                 <ScalarProperty Name="MASTER_ID" ColumnName="MASTER_ID" />
@@ -2064,7 +2088,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CASH_LOG">
-            <EntityTypeMapping TypeName="ServiceHomeDB.CASH_LOG">
+            <EntityTypeMapping TypeName="housekeepingModel.CASH_LOG">
               <MappingFragment StoreEntitySet="CASH_LOG">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="USERID" ColumnName="USERID" />
@@ -2074,8 +2098,19 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="CHECKCODERECORD">
+            <EntityTypeMapping TypeName="housekeepingModel.CHECKCODERECORD">
+              <MappingFragment StoreEntitySet="CHECKCODERECORD">
+                <ScalarProperty Name="CHECKCODEID" ColumnName="CHECKCODEID" />
+                <ScalarProperty Name="PHONENO" ColumnName="PHONENO" />
+                <ScalarProperty Name="CHECKCODE" ColumnName="CHECKCODE" />
+                <ScalarProperty Name="CREATETIME" ColumnName="CREATETIME" />
+                <ScalarProperty Name="ISCHECKED" ColumnName="ISCHECKED" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="CITY">
-            <EntityTypeMapping TypeName="ServiceHomeDB.CITY">
+            <EntityTypeMapping TypeName="housekeepingModel.CITY">
               <MappingFragment StoreEntitySet="CITY">
                 <ScalarProperty Name="CITYID" ColumnName="CITYID" />
                 <ScalarProperty Name="PROVINCEID" ColumnName="PROVINCEID" />
@@ -2086,7 +2121,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="COMMISION_RULE">
-            <EntityTypeMapping TypeName="ServiceHomeDB.COMMISION_RULE">
+            <EntityTypeMapping TypeName="housekeepingModel.COMMISION_RULE">
               <MappingFragment StoreEntitySet="COMMISION_RULE">
                 <ScalarProperty Name="RULE_ID" ColumnName="RULE_ID" />
                 <ScalarProperty Name="CITYID" ColumnName="CITYID" />
@@ -2099,7 +2134,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="COMMISION_RULE_ITEM">
-            <EntityTypeMapping TypeName="ServiceHomeDB.COMMISION_RULE_ITEM">
+            <EntityTypeMapping TypeName="housekeepingModel.COMMISION_RULE_ITEM">
               <MappingFragment StoreEntitySet="COMMISION_RULE_ITEM">
                 <ScalarProperty Name="RULE_ITEM_ID" ColumnName="RULE_ITEM_ID" />
                 <ScalarProperty Name="SERVICEID" ColumnName="SERVICEID" />
@@ -2113,7 +2148,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="COMPANY_CHILD">
-            <EntityTypeMapping TypeName="ServiceHomeDB.COMPANY_CHILD">
+            <EntityTypeMapping TypeName="housekeepingModel.COMPANY_CHILD">
               <MappingFragment StoreEntitySet="COMPANY_CHILD">
                 <ScalarProperty Name="CHILD_ID" ColumnName="CHILD_ID" />
                 <ScalarProperty Name="CITYID" ColumnName="CITYID" />
@@ -2123,7 +2158,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="COMPANY_DETAIL_ITEM">
-            <EntityTypeMapping TypeName="ServiceHomeDB.COMPANY_DETAIL_ITEM">
+            <EntityTypeMapping TypeName="housekeepingModel.COMPANY_DETAIL_ITEM">
               <MappingFragment StoreEntitySet="COMPANY_DETAIL_ITEM">
                 <ScalarProperty Name="ITEM_ID" ColumnName="ITEM_ID" />
                 <ScalarProperty Name="CHILD_ID" ColumnName="CHILD_ID" />
@@ -2134,7 +2169,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="COUPON_INFO">
-            <EntityTypeMapping TypeName="ServiceHomeDB.COUPON_INFO">
+            <EntityTypeMapping TypeName="housekeepingModel.COUPON_INFO">
               <MappingFragment StoreEntitySet="COUPON_INFO">
                 <ScalarProperty Name="COUPON_ID" ColumnName="COUPON_ID" />
                 <ScalarProperty Name="CITY_SERVICE_ID" ColumnName="CITY_SERVICE_ID" />
@@ -2152,7 +2187,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="COUPON_RECORD">
-            <EntityTypeMapping TypeName="ServiceHomeDB.COUPON_RECORD">
+            <EntityTypeMapping TypeName="housekeepingModel.COUPON_RECORD">
               <MappingFragment StoreEntitySet="COUPON_RECORD">
                 <ScalarProperty Name="RECORD_ID" ColumnName="RECORD_ID" />
                 <ScalarProperty Name="COUPON_ID" ColumnName="COUPON_ID" />
@@ -2169,7 +2204,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DETAIL_ITEM">
-            <EntityTypeMapping TypeName="ServiceHomeDB.DETAIL_ITEM">
+            <EntityTypeMapping TypeName="housekeepingModel.DETAIL_ITEM">
               <MappingFragment StoreEntitySet="DETAIL_ITEM">
                 <ScalarProperty Name="DETAIL_CODE" ColumnName="DETAIL_CODE" />
                 <ScalarProperty Name="DETAIL_NAME" ColumnName="DETAIL_NAME" />
@@ -2177,7 +2212,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="EXTRA_DEMAND">
-            <EntityTypeMapping TypeName="ServiceHomeDB.EXTRA_DEMAND">
+            <EntityTypeMapping TypeName="housekeepingModel.EXTRA_DEMAND">
               <MappingFragment StoreEntitySet="EXTRA_DEMAND">
                 <ScalarProperty Name="EXTRA_ID" ColumnName="EXTRA_ID" />
                 <ScalarProperty Name="ORDERID" ColumnName="ORDERID" />
@@ -2187,7 +2222,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="FEEDBACK">
-            <EntityTypeMapping TypeName="ServiceHomeDB.FEEDBACK">
+            <EntityTypeMapping TypeName="housekeepingModel.FEEDBACK">
               <MappingFragment StoreEntitySet="FEEDBACK">
                 <ScalarProperty Name="FEEDBACK_ID" ColumnName="FEEDBACK_ID" />
                 <ScalarProperty Name="CONTENT" ColumnName="CONTENT" />
@@ -2197,7 +2232,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="MASTERS">
-            <EntityTypeMapping TypeName="ServiceHomeDB.MASTERS">
+            <EntityTypeMapping TypeName="housekeepingModel.MASTERS">
               <MappingFragment StoreEntitySet="MASTERS">
                 <ScalarProperty Name="MASTER_ID" ColumnName="MASTER_ID" />
                 <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
@@ -2208,7 +2243,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="MEMBERSHIP_PACKAGE">
-            <EntityTypeMapping TypeName="ServiceHomeDB.MEMBERSHIP_PACKAGE">
+            <EntityTypeMapping TypeName="housekeepingModel.MEMBERSHIP_PACKAGE">
               <MappingFragment StoreEntitySet="MEMBERSHIP_PACKAGE">
                 <ScalarProperty Name="MEM_PACK_ID" ColumnName="MEM_PACK_ID" />
                 <ScalarProperty Name="PACK_NAME" ColumnName="PACK_NAME" />
@@ -2221,7 +2256,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="MODULES">
-            <EntityTypeMapping TypeName="ServiceHomeDB.MODULES">
+            <EntityTypeMapping TypeName="housekeepingModel.MODULES">
               <MappingFragment StoreEntitySet="MODULES">
                 <ScalarProperty Name="MODULE_ID" ColumnName="MODULE_ID" />
                 <ScalarProperty Name="MODULE_NAME" ColumnName="MODULE_NAME" />
@@ -2230,7 +2265,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OPERATION_LOG">
-            <EntityTypeMapping TypeName="ServiceHomeDB.OPERATION_LOG">
+            <EntityTypeMapping TypeName="housekeepingModel.OPERATION_LOG">
               <MappingFragment StoreEntitySet="OPERATION_LOG">
                 <ScalarProperty Name="LOG_ID" ColumnName="LOG_ID" />
                 <ScalarProperty Name="TYPE" ColumnName="TYPE" />
@@ -2238,11 +2273,12 @@
                 <ScalarProperty Name="CT" ColumnName="CT" />
                 <ScalarProperty Name="APPID" ColumnName="APPID" />
                 <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="LOGTITLE" ColumnName="LOGTITLE" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ORDER_ITEM">
-            <EntityTypeMapping TypeName="ServiceHomeDB.ORDER_ITEM">
+            <EntityTypeMapping TypeName="housekeepingModel.ORDER_ITEM">
               <MappingFragment StoreEntitySet="ORDER_ITEM">
                 <ScalarProperty Name="ORDER_DETAIL_ID" ColumnName="ORDER_DETAIL_ID" />
                 <ScalarProperty Name="ORDERID" ColumnName="ORDERID" />
@@ -2253,7 +2289,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ORDERS">
-            <EntityTypeMapping TypeName="ServiceHomeDB.ORDERS">
+            <EntityTypeMapping TypeName="housekeepingModel.ORDERS">
               <MappingFragment StoreEntitySet="ORDERS">
                 <ScalarProperty Name="ORDERID" ColumnName="ORDERID" />
                 <ScalarProperty Name="STAFFID" ColumnName="STAFFID" />
@@ -2283,7 +2319,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PACK_TYPE">
-            <EntityTypeMapping TypeName="ServiceHomeDB.PACK_TYPE">
+            <EntityTypeMapping TypeName="housekeepingModel.PACK_TYPE">
               <MappingFragment StoreEntitySet="PACK_TYPE">
                 <ScalarProperty Name="PACK_TYPE_ID" ColumnName="PACK_TYPE_ID" />
                 <ScalarProperty Name="PACK_TYPE_NAME" ColumnName="PACK_TYPE_NAME" />
@@ -2292,7 +2328,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PROVICE">
-            <EntityTypeMapping TypeName="ServiceHomeDB.PROVICE">
+            <EntityTypeMapping TypeName="housekeepingModel.PROVICE">
               <MappingFragment StoreEntitySet="PROVICE">
                 <ScalarProperty Name="PROVINCEID" ColumnName="PROVINCEID" />
                 <ScalarProperty Name="PROVINCENAME" ColumnName="PROVINCENAME" />
@@ -2301,7 +2337,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PROVINCE_BASIC_SERVICE">
-            <EntityTypeMapping TypeName="ServiceHomeDB.PROVINCE_BASIC_SERVICE">
+            <EntityTypeMapping TypeName="housekeepingModel.PROVINCE_BASIC_SERVICE">
               <MappingFragment StoreEntitySet="PROVINCE_BASIC_SERVICE">
                 <ScalarProperty Name="CITY_SERVICE_ID" ColumnName="CITY_SERVICE_ID" />
                 <ScalarProperty Name="SERVICE_ITEM_ID" ColumnName="SERVICE_ITEM_ID" />
@@ -2314,7 +2350,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="RATEPLAN">
-            <EntityTypeMapping TypeName="ServiceHomeDB.RATEPLAN">
+            <EntityTypeMapping TypeName="housekeepingModel.RATEPLAN">
               <MappingFragment StoreEntitySet="RATEPLAN">
                 <ScalarProperty Name="RATEPLAN_ID" ColumnName="RATEPLAN_ID" />
                 <ScalarProperty Name="CITY_SERVICE_ID" ColumnName="CITY_SERVICE_ID" />
@@ -2325,7 +2361,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="REALMESSAGE">
-            <EntityTypeMapping TypeName="ServiceHomeDB.REALMESSAGE">
+            <EntityTypeMapping TypeName="housekeepingModel.REALMESSAGE">
               <MappingFragment StoreEntitySet="REALMESSAGE">
                 <ScalarProperty Name="MESSAGE_ID" ColumnName="MESSAGE_ID" />
                 <ScalarProperty Name="CONTENT" ColumnName="CONTENT" />
@@ -2337,7 +2373,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="REBACK_ITEM">
-            <EntityTypeMapping TypeName="ServiceHomeDB.REBACK_ITEM">
+            <EntityTypeMapping TypeName="housekeepingModel.REBACK_ITEM">
               <MappingFragment StoreEntitySet="REBACK_ITEM">
                 <ScalarProperty Name="REBACK_ITEM_ID" ColumnName="REBACK_ITEM_ID" />
                 <ScalarProperty Name="RECHARGE_ID" ColumnName="RECHARGE_ID" />
@@ -2348,7 +2384,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="RECHARGE">
-            <EntityTypeMapping TypeName="ServiceHomeDB.RECHARGE">
+            <EntityTypeMapping TypeName="housekeepingModel.RECHARGE">
               <MappingFragment StoreEntitySet="RECHARGE">
                 <ScalarProperty Name="RECHARGE_ID" ColumnName="RECHARGE_ID" />
                 <ScalarProperty Name="MEM_PACK_ID" ColumnName="MEM_PACK_ID" />
@@ -2360,7 +2396,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SALRY">
-            <EntityTypeMapping TypeName="ServiceHomeDB.SALRY">
+            <EntityTypeMapping TypeName="housekeepingModel.SALRY">
               <MappingFragment StoreEntitySet="SALRY">
                 <ScalarProperty Name="SALARY_ID" ColumnName="SALARY_ID" />
                 <ScalarProperty Name="STAFFID" ColumnName="STAFFID" />
@@ -2374,7 +2410,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SELFSERVICE">
-            <EntityTypeMapping TypeName="ServiceHomeDB.SELFSERVICE">
+            <EntityTypeMapping TypeName="housekeepingModel.SELFSERVICE">
               <MappingFragment StoreEntitySet="SELFSERVICE">
                 <ScalarProperty Name="SPECIAL_ID" ColumnName="SPECIAL_ID" />
                 <ScalarProperty Name="CITY_SERVICE_ID" ColumnName="CITY_SERVICE_ID" />
@@ -2387,7 +2423,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SERVICE_ITEM">
-            <EntityTypeMapping TypeName="ServiceHomeDB.SERVICE_ITEM">
+            <EntityTypeMapping TypeName="housekeepingModel.SERVICE_ITEM">
               <MappingFragment StoreEntitySet="SERVICE_ITEM">
                 <ScalarProperty Name="SERVICE_ID" ColumnName="SERVICE_ID" />
                 <ScalarProperty Name="PARENT_SERVICE_ID" ColumnName="PARENT_SERVICE_ID" />
@@ -2402,7 +2438,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="STAFF">
-            <EntityTypeMapping TypeName="ServiceHomeDB.STAFF">
+            <EntityTypeMapping TypeName="housekeepingModel.STAFF">
               <MappingFragment StoreEntitySet="STAFF">
                 <ScalarProperty Name="STAFFID" ColumnName="STAFFID" />
                 <ScalarProperty Name="STAFFNAME" ColumnName="STAFFNAME" />
@@ -2424,7 +2460,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="STAFF_LEVEL">
-            <EntityTypeMapping TypeName="ServiceHomeDB.STAFF_LEVEL">
+            <EntityTypeMapping TypeName="housekeepingModel.STAFF_LEVEL">
               <MappingFragment StoreEntitySet="STAFF_LEVEL">
                 <ScalarProperty Name="LEVELID" ColumnName="LEVELID" />
                 <ScalarProperty Name="LEVELNAME" ColumnName="LEVELNAME" />
@@ -2433,7 +2469,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="ServiceHomeDB.sysdiagrams">
+            <EntityTypeMapping TypeName="housekeepingModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -2444,7 +2480,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="USER">
-            <EntityTypeMapping TypeName="ServiceHomeDB.USER">
+            <EntityTypeMapping TypeName="housekeepingModel.USER">
               <MappingFragment StoreEntitySet="USER">
                 <ScalarProperty Name="USERID" ColumnName="USERID" />
                 <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
@@ -2465,7 +2501,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="USER_LEVEL">
-            <EntityTypeMapping TypeName="ServiceHomeDB.USER_LEVEL">
+            <EntityTypeMapping TypeName="housekeepingModel.USER_LEVEL">
               <MappingFragment StoreEntitySet="USER_LEVEL">
                 <ScalarProperty Name="LEVELID" ColumnName="LEVELID" />
                 <ScalarProperty Name="LEVELNAME" ColumnName="LEVELNAME" />
@@ -2474,7 +2510,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="WORKOFF">
-            <EntityTypeMapping TypeName="ServiceHomeDB.WORKOFF">
+            <EntityTypeMapping TypeName="housekeepingModel.WORKOFF">
               <MappingFragment StoreEntitySet="WORKOFF">
                 <ScalarProperty Name="OFFID" ColumnName="OFFID" />
                 <ScalarProperty Name="STAFFID" ColumnName="STAFFID" />
