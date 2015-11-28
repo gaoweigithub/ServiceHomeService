@@ -11,6 +11,7 @@ namespace ServiceHome.Services
         public object Any(CheckAndLoginRequest request)
         {
             CheckAndLoginResponse response = null;
+            bool result = false;
             try
             {
                 if (!CommonTool.CommonHelper.IsMobile(request.PhoneNO))
@@ -20,10 +21,26 @@ namespace ServiceHome.Services
                 if (DAL.CheckCodeHelper.GetLastInsertCode(request.PhoneNO) == request.CheckCode)
                 {
                     //sucess
-                    
+                    if (!DAL.UserHelper.ifExistsUser(request.PhoneNO))
+                    {
+                        result = DAL.UserHelper.AddUser(new ServiceHomeDB.USER
+                        {
+                            CT = DateTime.Now,
+                            USERNAME = request.PhoneNO,
+                            STATE = 0,
+                            PHONE = request.PhoneNO,
+                            PASSWORD = request.CheckCode,
+                            LASTUPDATETIME = DateTime.Now,
+                        });
+                    }
                 }
-
-
+                response = new CheckAndLoginResponse
+                {
+                    ResponseStatus = new Model.Common.ResponseStatus
+                    {
+                        isSuccess = result
+                    }
+                };
             }
             catch (Exception ex)
             {

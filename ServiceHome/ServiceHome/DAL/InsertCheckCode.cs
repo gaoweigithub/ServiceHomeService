@@ -35,9 +35,16 @@ namespace ServiceHome.DAL
 
             return false;
         }
+        /// <summary>
+        /// 插入验证码
+        /// </summary>
+        /// <param name="PhoneNo"></param>
+        /// <param name="checkCode"></param>
+        /// <returns></returns>
         public static bool InsertCheckCode(string PhoneNo, string checkCode)
         {
             int i = 0;
+            bool result = false;
             try
             {
                 ServiceHomeDB.housekeepingEntities db = new ServiceHomeDB.housekeepingEntities();
@@ -50,12 +57,18 @@ namespace ServiceHome.DAL
                     CREATETIME = DateTime.Now
                 };
                 i = db.SaveChanges();
+                result = i > 0 ? true : false;
+                if (result)
+                {
+                    //add cache
+                    CommonTool.MemoryCacheHelper.Set(UserHelper.cache_UserKeyHead + PhoneNo, checkCode);
+                }
             }
             catch (Exception ex)
             {
                 AddOperationLog.Error("写入验证码错误", ex.Message);
             }
-            return i > 0 ? true : false;
+            return result;
         }
         /// <summary>
         /// 获取最新插入未验证的验证码
