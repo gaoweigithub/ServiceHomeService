@@ -348,7 +348,7 @@
           <Property Name="SERVICE_PLACE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="USERID" Type="int" Nullable="false" />
           <Property Name="PLACE_DETAIL" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="PHONE" Type="binary" MaxLength="11" Nullable="false" />
+          <Property Name="PHONE" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="LAST_TIME" Type="datetime" Nullable="false" />
           <Property Name="CREATE_TIME" Type="datetime" Nullable="false" />
           <Property Name="ADDR_TITLE" Type="varchar" MaxLength="50" Nullable="false" />
@@ -1416,7 +1416,7 @@
           <Property Name="SERVICE_PLACE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="USERID" Type="Int32" Nullable="false" />
           <Property Name="PLACE_DETAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="PHONE" Type="Binary" MaxLength="11" FixedLength="true" Nullable="false" />
+          <Property Name="PHONE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="LAST_TIME" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="CREATE_TIME" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="ADDR_TITLE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />

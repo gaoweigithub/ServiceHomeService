@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="080c07ee34554a24b31c9e39387c325e" Name="Diagram1">
+      <Diagram DiagramId="544dc1fa28f340c8b70e0005e9024de8" Name="Diagram1">
         <EntityTypeShape EntityType="housekeepingModel.AUTHORMODULES" Width="1.5" PointX="17" PointY="18.875" IsExpanded="true" />
         <EntityTypeShape EntityType="housekeepingModel.CASH_LOG" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="housekeepingModel.CHECKCODERECORD" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />

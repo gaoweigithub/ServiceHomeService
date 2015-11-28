@@ -11,7 +11,7 @@ namespace ServiceHome.ServiceHomeDB
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class SERVICEPLACES
     {
         public int SERVICE_PLACE_ID { get; set; }
