@@ -3,9 +3,9 @@ using ServiceStack;
 using ServiceHome.Model.Common;
 namespace ServiceHome.Services
 {
-    public class CheckAndLogin : BaseService
+    public class CheckAndLogin : BaseService<CheckAndLoginRequest, CheckAndLoginResponse>
     {
-        public CheckAndLoginResponse Any(CheckAndLoginRequest request)
+        public override CheckAndLoginResponse Excute(CheckAndLoginRequest request)
         {
             CheckAndLoginResponse response = null;
             bool result = true;
@@ -61,7 +61,7 @@ namespace ServiceHome.Services
 
         }
     }
-    [Route("/CheckAndLogin")]
+    [Route("/CheckAndLogin", "POST")]
     public class CheckAndLoginRequest : RequestBase
     {
         public string PhoneNO { get; set; }

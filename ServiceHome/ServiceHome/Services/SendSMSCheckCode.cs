@@ -3,9 +3,9 @@ using ServiceStack;
 using ServiceHome.Model.Common;
 namespace ServiceHome.Services
 {
-    public class SendSMSCheckCode : BaseService
+    public class SendSMSCheckCode : BaseService<SendSMSCheckCodeRequest, SendSMSCheckCodeResponse>
     {
-        public SendSMSCheckCodeResponse Any(SendSMSCheckCodeRequest request)
+        public override SendSMSCheckCodeResponse Excute(SendSMSCheckCodeRequest request)
         {
             SendSMSCheckCodeResponse response = null;
             try
@@ -62,7 +62,7 @@ namespace ServiceHome.Services
             return response;
         }
     }
-    [Route("/SendSMSCheckCode")]
+    [Route("/SendSMSCheckCode", "POST")]
     public class SendSMSCheckCodeRequest : RequestBase
     {
         public string PhoneNO { get; set; }

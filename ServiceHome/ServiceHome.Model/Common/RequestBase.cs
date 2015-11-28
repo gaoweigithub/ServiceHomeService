@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ServiceHome.Model.Common
 {
-    public abstract class RequestBase
+    public class RequestBase
     {
         public RequestHead requestHeader { get; set; }
     }

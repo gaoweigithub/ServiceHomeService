@@ -54,6 +54,7 @@ namespace ServiceHome.ServiceHomeDB
         public virtual DbSet<SALRY> SALRY { get; set; }
         public virtual DbSet<SELFSERVICE> SELFSERVICE { get; set; }
         public virtual DbSet<SERVICE_ITEM> SERVICE_ITEM { get; set; }
+        public virtual DbSet<SERVICEPLACES> SERVICEPLACES { get; set; }
         public virtual DbSet<STAFF> STAFF { get; set; }
         public virtual DbSet<STAFF_LEVEL> STAFF_LEVEL { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }

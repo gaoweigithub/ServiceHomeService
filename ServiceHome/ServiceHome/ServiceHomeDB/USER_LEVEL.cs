@@ -18,6 +18,7 @@ namespace ServiceHome.ServiceHomeDB
         public USER_LEVEL()
         {
             this.USERS = new HashSet<USERS>();
+            this.USERS1 = new HashSet<USERS>();
         }
     
         public int LEVELID { get; set; }
@@ -26,5 +27,7 @@ namespace ServiceHome.ServiceHomeDB
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<USERS> USERS { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<USERS> USERS1 { get; set; }
     }
 }

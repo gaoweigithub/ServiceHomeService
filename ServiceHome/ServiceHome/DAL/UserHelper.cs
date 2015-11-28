@@ -4,34 +4,70 @@ namespace ServiceHome.DAL
 {
     public class UserHelper
     {
-        public static string cache_UserKeyHead = "PHO_";
-        public static bool CheckPermmisson(string phoneNO, string checkCode)
+        public static string cache_UserKeyHead = "CC_";
+        //public static bool CheckPermmisson(string phoneNO, string checkCode)
+        //{
+        //    string phoneNo_Key = cache_UserKeyHead + phoneNO;
+        //    try
+        //    {
+        //        if (CommonTool.MemoryCacheHelper.IsExist(phoneNo_Key.Trim()))
+        //        {
+        //            return (CommonTool.MemoryCacheHelper.GetValue(phoneNo_Key) as string) == checkCode;
+        //        }
+        //        else
+        //        {
+        //            ServiceHomeDB.housekeepingEntities db = new ServiceHomeDB.housekeepingEntities();
+        //            bool result = db.USERS.Select(a => a.USERNAME == phoneNO && a.PASSWORD == checkCode).Count() > 0 ? true : false;
+        //            if (result)
+        //            {
+        //                //add to cache  30minutes out date
+        //                CommonTool.MemoryCacheHelper.Set(phoneNo_Key, checkCode, DateTimeOffset.Now + new TimeSpan(0, 30, 0));
+        //            }
+        //            return result;
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        DAL.AddOperationLog.Error(string.Format("CheckPermmisson:{0},{1}", phoneNO, checkCode), ex.Message);
+        //        return false;
+        //    }
+        //}
+        /// <summary>
+        /// 权限检查 true=check wright false=error
+        /// </summary>
+        /// <param name="userid"></param>
+        /// <param name="checkCode"></param>
+        /// <returns></returns>
+        public static bool CheckPermmisson(int userid, string checkCode)
         {
-            string phoneNo_Key = cache_UserKeyHead + phoneNO;
+            if (userid < 1 || string.IsNullOrWhiteSpace(checkCode))
+            {
+                return false;
+            }
+            string checkCode_key = cache_UserKeyHead + userid.ToString();
             try
             {
-                if (CommonTool.MemoryCacheHelper.IsExist(phoneNo_Key.Trim()))
+                if (CommonTool.MemoryCacheHelper.IsExist(checkCode_key.Trim()))
                 {
-                    return (CommonTool.MemoryCacheHelper.GetValue(phoneNo_Key) as string) == checkCode;
+                    return (CommonTool.MemoryCacheHelper.GetValue(checkCode_key) as string) == checkCode;
                 }
                 else
                 {
                     ServiceHomeDB.housekeepingEntities db = new ServiceHomeDB.housekeepingEntities();
-                    bool result = db.USERS.Select(a => a.USERNAME == phoneNO && a.PASSWORD == checkCode).Count() > 0 ? true : false;
+                    bool result = db.USERS.Select(a => a.USERID == userid && a.PASSWORD == checkCode).Count() > 0 ? true : false;
                     if (result)
                     {
                         //add to cache  30minutes out date
-                        CommonTool.MemoryCacheHelper.Set(phoneNo_Key, checkCode, DateTimeOffset.Now + new TimeSpan(0, 30, 0));
+                        CommonTool.MemoryCacheHelper.Set(checkCode_key, checkCode, DateTimeOffset.Now + new TimeSpan(0, 30, 0));
                     }
                     return result;
                 }
             }
             catch (Exception ex)
             {
-                DAL.AddOperationLog.Error(string.Format("CheckPermmisson:{0},{1}", phoneNO, checkCode), ex.Message);
+                DAL.AddOperationLog.Error(string.Format("CheckPermmisson:{0},{1}", userid.ToString(), checkCode), ex.Message);
                 return false;
             }
-
         }
         /// <summary>
         /// 是否存在该用户

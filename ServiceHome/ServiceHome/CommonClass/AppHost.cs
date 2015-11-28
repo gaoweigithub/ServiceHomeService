@@ -7,7 +7,7 @@ namespace ServiceHome
 {
     public class ServiceHomeHost : AppHostBase
     {
-        public ServiceHomeHost() : base("HomeService Services", typeof(BaseService).Assembly) { }
+        public ServiceHomeHost() : base("HomeService Services", typeof(BaseService<Model.Common.RequestBase, Model.Common.ResponseBase>).Assembly) { }
         public override void Configure(Funq.Container container)
         {
             //register any dependencies your services use, e.g:

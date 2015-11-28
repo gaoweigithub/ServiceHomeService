@@ -2,13 +2,13 @@
 using ServiceHome.ServiceHomeDB;
 namespace ServiceHome
 {
-    public class AddUserService : BaseService
+    public class AddUserService : BaseService<AddUserRequest, AddUserResponse>
     {
-        public object Post(AddUserRequest request)
+        public override AddUserResponse Excute(AddUserRequest request)
         {
             housekeepingEntities db = new housekeepingEntities();
             USERS uu = db.USERS.Add(request.User);
-            int iRow=db.SaveChanges();
+            int iRow = db.SaveChanges();
             if (iRow != 0)
             {
                 return new AddUserResponse()

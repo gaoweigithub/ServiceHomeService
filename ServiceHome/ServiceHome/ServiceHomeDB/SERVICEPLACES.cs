@@ -11,13 +11,15 @@ namespace ServiceHome.ServiceHomeDB
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class CASH_LOG
+
+    public partial class SERVICEPLACES
     {
-        public int ID { get; set; }
-        public Nullable<int> USERID { get; set; }
-        public int TYPE { get; set; }
-        public decimal COUNT { get; set; }
-        public System.DateTime OP_TIME { get; set; }
+        public int SERVICE_PLACE_ID { get; set; }
+        public int USERID { get; set; }
+        public string PLACE_DETAIL { get; set; }
+        public string PHONE { get; set; }
+        public System.DateTime LAST_TIME { get; set; }
+        public System.DateTime CREATE_TIME { get; set; }
+        public string ADDR_TITLE { get; set; }
     }
 }

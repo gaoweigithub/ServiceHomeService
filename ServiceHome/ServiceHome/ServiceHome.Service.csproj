@@ -136,6 +136,7 @@
     <Compile Include="CommonClass\BaseService.cs" />
     <Compile Include="DAL\AddOperationLog.cs" />
     <Compile Include="DAL\InsertCheckCode.cs" />
+    <Compile Include="DAL\ServicePlace.cs" />
     <Compile Include="DAL\UserHelper.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -241,6 +242,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ServiceHome.edmx</DependentUpon>
     </Compile>
+    <Compile Include="ServiceHomeDB\SERVICEPLACES.cs">
+      <DependentUpon>ServiceHome.tt</DependentUpon>
+    </Compile>
     <Compile Include="ServiceHomeDB\SERVICE_ITEM.cs">
       <DependentUpon>ServiceHome.tt</DependentUpon>
     </Compile>
@@ -264,6 +268,7 @@
     </Compile>
     <Compile Include="Services\AddUserService.cs" />
     <Compile Include="Services\CheckAndLogin.cs" />
+    <Compile Include="Services\ServicePlace.cs" />
     <Compile Include="Services\HomeServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Requests\Ping.cs" />

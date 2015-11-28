@@ -1,6 +1,6 @@
 ﻿namespace ServiceHome.Model.Common
 {
-    public abstract class ResponseBase
+    public class ResponseBase
     {
         public ResponseStatus ResponseStatus { get; set; }
     }

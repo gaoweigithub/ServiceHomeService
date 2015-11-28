@@ -341,6 +341,18 @@
           <Property Name="PICURL" Type="varchar" MaxLength="50" />
           <Property Name="LEAF_DEPT" Type="int" />
         </EntityType>
+        <EntityType Name="SERVICEPLACES">
+          <Key>
+            <PropertyRef Name="SERVICE_PLACE_ID" />
+          </Key>
+          <Property Name="SERVICE_PLACE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USERID" Type="int" Nullable="false" />
+          <Property Name="PLACE_DETAIL" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="PHONE" Type="binary" MaxLength="11" Nullable="false" />
+          <Property Name="LAST_TIME" Type="datetime" Nullable="false" />
+          <Property Name="CREATE_TIME" Type="datetime" Nullable="false" />
+          <Property Name="ADDR_TITLE" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="STAFF">
           <Key>
             <PropertyRef Name="STAFFID" />
@@ -439,18 +451,6 @@
             </Principal>
             <Dependent Role="AUTHORMODULES">
               <PropertyRef Name="MODULE_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CASH_LOG_REFERENCE_USER">
-          <End Role="USERS" Type="Self.USERS" Multiplicity="0..1" />
-          <End Role="CASH_LOG" Type="Self.CASH_LOG" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="USERS">
-              <PropertyRef Name="USERID" />
-            </Principal>
-            <Dependent Role="CASH_LOG">
-              <PropertyRef Name="USERID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -814,6 +814,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_USERS_REFERENCE_USER_LEV">
+          <End Role="USER_LEVEL" Type="Self.USER_LEVEL" Multiplicity="0..1" />
+          <End Role="USERS" Type="Self.USERS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER_LEVEL">
+              <PropertyRef Name="LEVELID" />
+            </Principal>
+            <Dependent Role="USERS">
+              <PropertyRef Name="USER_LEVEL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_WORKOFF_REFERENCE_STAFF">
           <End Role="STAFF" Type="Self.STAFF" Multiplicity="0..1" />
           <End Role="WORKOFF" Type="Self.WORKOFF" Multiplicity="*" />
@@ -856,6 +868,7 @@
           <EntitySet Name="SALRY" EntityType="Self.SALRY" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SELFSERVICE" EntityType="Self.SELFSERVICE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SERVICE_ITEM" EntityType="Self.SERVICE_ITEM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SERVICEPLACES" EntityType="Self.SERVICEPLACES" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="STAFF" EntityType="Self.STAFF" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="STAFF_LEVEL" EntityType="Self.STAFF_LEVEL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
@@ -869,10 +882,6 @@
           <AssociationSet Name="FK_AUTHORMO_REFERENCE_MODULES" Association="Self.FK_AUTHORMO_REFERENCE_MODULES">
             <End Role="MODULES" EntitySet="MODULES" />
             <End Role="AUTHORMODULES" EntitySet="AUTHORMODULES" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CASH_LOG_REFERENCE_USER" Association="Self.FK_CASH_LOG_REFERENCE_USER">
-            <End Role="USERS" EntitySet="USERS" />
-            <End Role="CASH_LOG" EntitySet="CASH_LOG" />
           </AssociationSet>
           <AssociationSet Name="FK_CITY_REFERENCE_PROVICE" Association="Self.FK_CITY_REFERENCE_PROVICE">
             <End Role="PROVICE" EntitySet="PROVICE" />
@@ -994,6 +1003,10 @@
             <End Role="USER_LEVEL" EntitySet="USER_LEVEL" />
             <End Role="USERS" EntitySet="USERS" />
           </AssociationSet>
+          <AssociationSet Name="FK_USERS_REFERENCE_USER_LEV" Association="Self.FK_USERS_REFERENCE_USER_LEV">
+            <End Role="USER_LEVEL" EntitySet="USER_LEVEL" />
+            <End Role="USERS" EntitySet="USERS" />
+          </AssociationSet>
           <AssociationSet Name="FK_WORKOFF_REFERENCE_STAFF" Association="Self.FK_WORKOFF_REFERENCE_STAFF">
             <End Role="STAFF" EntitySet="STAFF" />
             <End Role="WORKOFF" EntitySet="WORKOFF" />
@@ -1029,7 +1042,6 @@
           <Property Name="TYPE" Type="Int32" Nullable="false" />
           <Property Name="COUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="OP_TIME" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="USERS" Relationship="Self.FK_CASH_LOG_REFERENCE_USER" FromRole="CASH_LOG" ToRole="USERS" />
         </EntityType>
         <EntityType Name="CHECKCODERECORD">
           <Key>
@@ -1397,6 +1409,18 @@
           <NavigationProperty Name="SERVICE_ITEM1" Relationship="Self.FK_SERVICE__REFERENCE_SERVICE_" FromRole="SERVICE_ITEM" ToRole="SERVICE_ITEM1" />
           <NavigationProperty Name="SERVICE_ITEM2" Relationship="Self.FK_SERVICE__REFERENCE_SERVICE_" FromRole="SERVICE_ITEM1" ToRole="SERVICE_ITEM" />
         </EntityType>
+        <EntityType Name="SERVICEPLACES">
+          <Key>
+            <PropertyRef Name="SERVICE_PLACE_ID" />
+          </Key>
+          <Property Name="SERVICE_PLACE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USERID" Type="Int32" Nullable="false" />
+          <Property Name="PLACE_DETAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PHONE" Type="Binary" MaxLength="11" FixedLength="true" Nullable="false" />
+          <Property Name="LAST_TIME" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CREATE_TIME" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ADDR_TITLE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
         <EntityType Name="STAFF">
           <Key>
             <PropertyRef Name="STAFFID" />
@@ -1449,6 +1473,7 @@
           <Property Name="LEVELNAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="LEVEL_DESC" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="USERS" Relationship="Self.FK_USER_REFERENCE_USER_LEV" FromRole="USER_LEVEL" ToRole="USERS" />
+          <NavigationProperty Name="USERS1" Relationship="Self.FK_USERS_REFERENCE_USER_LEV" FromRole="USER_LEVEL" ToRole="USERS" />
         </EntityType>
         <EntityType Name="USERS">
           <Key>
@@ -1469,10 +1494,10 @@
           <Property Name="LASTACTION" Type="DateTime" Precision="3" />
           <Property Name="USER_LEVEL" Type="Int32" />
           <Property Name="CASH_ALL" Type="Double" />
-          <NavigationProperty Name="CASH_LOG" Relationship="Self.FK_CASH_LOG_REFERENCE_USER" FromRole="USERS" ToRole="CASH_LOG" />
           <NavigationProperty Name="COUPON_RECORD" Relationship="Self.FK_COUPON_R_REFERENCE_USER" FromRole="USERS" ToRole="COUPON_RECORD" />
           <NavigationProperty Name="ORDERS" Relationship="Self.FK_ORDERS_REFERENCE_USER" FromRole="USERS" ToRole="ORDERS" />
           <NavigationProperty Name="USER_LEVEL1" Relationship="Self.FK_USER_REFERENCE_USER_LEV" FromRole="USERS" ToRole="USER_LEVEL" />
+          <NavigationProperty Name="USER_LEVEL2" Relationship="Self.FK_USERS_REFERENCE_USER_LEV" FromRole="USERS" ToRole="USER_LEVEL" />
         </EntityType>
         <EntityType Name="WORKOFF">
           <Key>
@@ -1506,18 +1531,6 @@
             </Principal>
             <Dependent Role="AUTHORMODULES">
               <PropertyRef Name="MODULE_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CASH_LOG_REFERENCE_USER">
-          <End Role="USERS" Type="Self.USERS" Multiplicity="0..1" />
-          <End Role="CASH_LOG" Type="Self.CASH_LOG" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="USERS">
-              <PropertyRef Name="USERID" />
-            </Principal>
-            <Dependent Role="CASH_LOG">
-              <PropertyRef Name="USERID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1893,6 +1906,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_USERS_REFERENCE_USER_LEV">
+          <End Role="USER_LEVEL" Type="Self.USER_LEVEL" Multiplicity="0..1" />
+          <End Role="USERS" Type="Self.USERS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER_LEVEL">
+              <PropertyRef Name="LEVELID" />
+            </Principal>
+            <Dependent Role="USERS">
+              <PropertyRef Name="USER_LEVEL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="housekeepingEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AUTHORMODULES" EntityType="Self.AUTHORMODULES" />
           <EntitySet Name="CASH_LOG" EntityType="Self.CASH_LOG" />
@@ -1923,6 +1948,7 @@
           <EntitySet Name="SALRY" EntityType="Self.SALRY" />
           <EntitySet Name="SELFSERVICE" EntityType="Self.SELFSERVICE" />
           <EntitySet Name="SERVICE_ITEM" EntityType="Self.SERVICE_ITEM" />
+          <EntitySet Name="SERVICEPLACES" EntityType="Self.SERVICEPLACES" />
           <EntitySet Name="STAFF" EntityType="Self.STAFF" />
           <EntitySet Name="STAFF_LEVEL" EntityType="Self.STAFF_LEVEL" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
@@ -1936,10 +1962,6 @@
           <AssociationSet Name="FK_AUTHORMO_REFERENCE_MODULES" Association="Self.FK_AUTHORMO_REFERENCE_MODULES">
             <End Role="MODULES" EntitySet="MODULES" />
             <End Role="AUTHORMODULES" EntitySet="AUTHORMODULES" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CASH_LOG_REFERENCE_USER" Association="Self.FK_CASH_LOG_REFERENCE_USER">
-            <End Role="USERS" EntitySet="USERS" />
-            <End Role="CASH_LOG" EntitySet="CASH_LOG" />
           </AssociationSet>
           <AssociationSet Name="FK_CITY_REFERENCE_PROVICE" Association="Self.FK_CITY_REFERENCE_PROVICE">
             <End Role="PROVICE" EntitySet="PROVICE" />
@@ -2062,6 +2084,10 @@
             <End Role="WORKOFF" EntitySet="WORKOFF" />
           </AssociationSet>
           <AssociationSet Name="FK_USER_REFERENCE_USER_LEV" Association="Self.FK_USER_REFERENCE_USER_LEV">
+            <End Role="USER_LEVEL" EntitySet="USER_LEVEL" />
+            <End Role="USERS" EntitySet="USERS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USERS_REFERENCE_USER_LEV" Association="Self.FK_USERS_REFERENCE_USER_LEV">
             <End Role="USER_LEVEL" EntitySet="USER_LEVEL" />
             <End Role="USERS" EntitySet="USERS" />
           </AssociationSet>
@@ -2434,6 +2460,19 @@
                 <ScalarProperty Name="ISLEAF" ColumnName="ISLEAF" />
                 <ScalarProperty Name="PICURL" ColumnName="PICURL" />
                 <ScalarProperty Name="LEAF_DEPT" ColumnName="LEAF_DEPT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SERVICEPLACES">
+            <EntityTypeMapping TypeName="housekeepingModel.SERVICEPLACES">
+              <MappingFragment StoreEntitySet="SERVICEPLACES">
+                <ScalarProperty Name="SERVICE_PLACE_ID" ColumnName="SERVICE_PLACE_ID" />
+                <ScalarProperty Name="USERID" ColumnName="USERID" />
+                <ScalarProperty Name="PLACE_DETAIL" ColumnName="PLACE_DETAIL" />
+                <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+                <ScalarProperty Name="LAST_TIME" ColumnName="LAST_TIME" />
+                <ScalarProperty Name="CREATE_TIME" ColumnName="CREATE_TIME" />
+                <ScalarProperty Name="ADDR_TITLE" ColumnName="ADDR_TITLE" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

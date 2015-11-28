@@ -5,9 +5,9 @@ using System.Web;
 using ServiceStack;
 namespace ServiceHome
 {
-    public class HomeServices : BaseService
+    public class HomeServices : BaseService<PingRequest, PingResponse>
     {
-        public object Any(PingRequest request)
+        public override PingResponse Excute(PingRequest request)
         {
             return new PingResponse()
             {
