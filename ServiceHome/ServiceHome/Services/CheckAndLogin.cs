@@ -1,17 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using ServiceStack;
 using ServiceHome.Model.Common;
 namespace ServiceHome.Services
 {
-    public class CheckAndLogin
+    public class CheckAndLogin : BaseService
     {
-        public object Any(CheckAndLoginRequest request)
+        public CheckAndLoginResponse Any(CheckAndLoginRequest request)
         {
             CheckAndLoginResponse response = null;
-            bool result = false;
+            bool result = true;
             try
             {
                 if (!CommonTool.CommonHelper.IsMobile(request.PhoneNO))
@@ -23,7 +20,7 @@ namespace ServiceHome.Services
                     //sucess
                     if (!DAL.UserHelper.ifExistsUser(request.PhoneNO))
                     {
-                        result = DAL.UserHelper.AddUser(new ServiceHomeDB.USER
+                        result = DAL.UserHelper.AddUser(new ServiceHomeDB.USERS
                         {
                             CT = DateTime.Now,
                             USERNAME = request.PhoneNO,
@@ -33,6 +30,12 @@ namespace ServiceHome.Services
                             LASTUPDATETIME = DateTime.Now,
                         });
                     }
+                    //设置结束
+                    DAL.CheckCodeHelper.SetCheckFinishAndUpdateUser(request.PhoneNO, request.CheckCode);
+                }
+                else
+                {
+                    result = false;
                 }
                 response = new CheckAndLoginResponse
                 {
@@ -58,6 +61,7 @@ namespace ServiceHome.Services
 
         }
     }
+    [Route("/CheckAndLogin")]
     public class CheckAndLoginRequest : RequestBase
     {
         public string PhoneNO { get; set; }

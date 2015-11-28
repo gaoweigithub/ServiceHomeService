@@ -17,7 +17,7 @@ namespace ServiceHome.ServiceHomeDB
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public USER_LEVEL()
         {
-            this.USER = new HashSet<USER>();
+            this.USERS = new HashSet<USERS>();
         }
     
         public int LEVELID { get; set; }
@@ -25,6 +25,6 @@ namespace ServiceHome.ServiceHomeDB
         public string LEVEL_DESC { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<USER> USER { get; set; }
+        public virtual ICollection<USERS> USERS { get; set; }
     }
 }

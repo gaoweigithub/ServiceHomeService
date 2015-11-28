@@ -57,8 +57,8 @@ namespace ServiceHome.ServiceHomeDB
         public virtual DbSet<STAFF> STAFF { get; set; }
         public virtual DbSet<STAFF_LEVEL> STAFF_LEVEL { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
-        public virtual DbSet<USER> USER { get; set; }
         public virtual DbSet<USER_LEVEL> USER_LEVEL { get; set; }
+        public virtual DbSet<USERS> USERS { get; set; }
         public virtual DbSet<WORKOFF> WORKOFF { get; set; }
     }
 }

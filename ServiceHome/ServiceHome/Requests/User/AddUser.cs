@@ -12,6 +12,6 @@ namespace ServiceHome
     [Route("/AddUser/{requestHeader}/{User}","POST")]
     public class AddUserRequest : RequestBase
     {
-        public USER User { get; set; }
+        public USERS User { get; set; }
     }
 }

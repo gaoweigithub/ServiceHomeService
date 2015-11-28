@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Top.Api;
+﻿using Top.Api;
 using Top.Api.Request;
 using Top.Api.Response;
 namespace CommonTool

@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using ServiceStack;
 using ServiceHome.Model.Common;
 namespace ServiceHome.Services
 {
     public class SendSMSCheckCode : BaseService
     {
-        public object Any(SendSMSCheckCodeRequest request)
+        public SendSMSCheckCodeResponse Any(SendSMSCheckCodeRequest request)
         {
             SendSMSCheckCodeResponse response = null;
             try
@@ -19,7 +16,7 @@ namespace ServiceHome.Services
                     throw new Exception("wrong phoneNO:" + request.PhoneNO);
                 }
 
-                if (DAL.CheckCodeHelper.IsOutDate(request.PhoneNO))
+                if (!DAL.CheckCodeHelper.IsOutDate(request.PhoneNO))
                 {
                     throw new Exception("phoneno:{0} send code twice in 3 minutes");
                 }
@@ -30,7 +27,7 @@ namespace ServiceHome.Services
                 //code
                 string randomCode = CommonTool.CommonHelper.GetNextCheckCode();
 
-                if (DAL.CheckCodeHelper.InsertCheckCode(request.PhoneNO, randomCode))
+                if (!DAL.CheckCodeHelper.InsertCheckCode(request.PhoneNO, randomCode))
                 {
                     throw new Exception(request.PhoneNO + ";insert checkcode into db error");
                 }
@@ -65,7 +62,7 @@ namespace ServiceHome.Services
             return response;
         }
     }
-
+    [Route("/SendSMSCheckCode")]
     public class SendSMSCheckCodeRequest : RequestBase
     {
         public string PhoneNO { get; set; }

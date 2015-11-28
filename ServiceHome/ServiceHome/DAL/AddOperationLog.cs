@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace ServiceHome.DAL
 {
@@ -24,7 +21,7 @@ namespace ServiceHome.DAL
             try
             {
                 ServiceHomeDB.housekeepingEntities db = new ServiceHomeDB.housekeepingEntities();
-
+                content = content.Length > 500 ? content.Substring(0, 499) : content;
                 db.OPERATION_LOG.Add(new ServiceHomeDB.OPERATION_LOG { APPID = Appid, CONTENT = content, CT = DateTime.Now, IP = Ip, TYPE = logType.ToString(), LOGTITLE = logTitle });
                 db.SaveChanges();
             }

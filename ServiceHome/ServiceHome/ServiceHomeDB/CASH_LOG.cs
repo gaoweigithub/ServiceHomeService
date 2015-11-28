@@ -20,6 +20,6 @@ namespace ServiceHome.ServiceHomeDB
         public decimal COUNT { get; set; }
         public System.DateTime OP_TIME { get; set; }
     
-        public virtual USER USER { get; set; }
+        public virtual USERS USERS { get; set; }
     }
 }

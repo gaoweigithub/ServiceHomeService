@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using ServiceHome.Model;
+﻿using System.Collections.Generic;
 using ServiceHome.ServiceHomeDB;
 namespace ServiceHome
 {
@@ -11,7 +7,7 @@ namespace ServiceHome
         public object Post(AddUserRequest request)
         {
             housekeepingEntities db = new housekeepingEntities();
-            USER uu = db.USER.Add(request.User);
+            USERS uu = db.USERS.Add(request.User);
             int iRow=db.SaveChanges();
             if (iRow != 0)
             {

@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 namespace ServiceHome.DAL
 {
     public class UserHelper
@@ -19,7 +17,7 @@ namespace ServiceHome.DAL
                 else
                 {
                     ServiceHomeDB.housekeepingEntities db = new ServiceHomeDB.housekeepingEntities();
-                    bool result = db.USER.Select(a => a.USERNAME == phoneNO && a.PASSWORD == checkCode).Count() > 0 ? true : false;
+                    bool result = db.USERS.Select(a => a.USERNAME == phoneNO && a.PASSWORD == checkCode).Count() > 0 ? true : false;
                     if (result)
                     {
                         //add to cache  30minutes out date
@@ -46,8 +44,8 @@ namespace ServiceHome.DAL
             {
                 ServiceHomeDB.housekeepingEntities db = new ServiceHomeDB.housekeepingEntities();
 
-                var result = db.USER.Select(a => a.PHONE == PhoneNO);
-                if (result.Count() > 0)
+                var result = db.USERS.Where(u => u.USERNAME == PhoneNO).Count();
+                if (result > 0)
                 {
                     return true;
                 }
@@ -63,14 +61,14 @@ namespace ServiceHome.DAL
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public static bool AddUser(ServiceHomeDB.USER model)
+        public static bool AddUser(ServiceHomeDB.USERS model)
         {
             int i = 0;
             try
             {
                 ServiceHomeDB.housekeepingEntities db = new ServiceHomeDB.housekeepingEntities();
 
-                db.USER.Add(model);
+                db.USERS.Add(model);
                 i = db.SaveChanges();
             }
             catch (Exception ex)

@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-
+using System.Transactions;
 namespace ServiceHome.DAL
 {
     public class CheckCodeHelper
@@ -20,9 +18,9 @@ namespace ServiceHome.DAL
 
                 DateTime dt = (from t in db.CHECKCODERECORD
                                where t.PHONENO == phoneNO && t.ISCHECKED == "F"
-                               select t.CREATETIME).Max();
+                               select t.CREATETIME).FirstOrDefault();
 
-                if ((DateTime.Now - dt) > new TimeSpan(0, 3, 0))
+                if (dt == DateTime.MinValue && (DateTime.Now - dt) > new TimeSpan(0, 3, 0))
                 {
                     return true;
                 }
@@ -56,6 +54,7 @@ namespace ServiceHome.DAL
                     ISCHECKED = "F",
                     CREATETIME = DateTime.Now
                 };
+                db.CHECKCODERECORD.Add(mdoel);
                 i = db.SaveChanges();
                 result = i > 0 ? true : false;
                 if (result)
@@ -84,13 +83,39 @@ namespace ServiceHome.DAL
 
                 code = (from t in db.CHECKCODERECORD
                         where t.PHONENO == PhoneNO && t.ISCHECKED == "F"
-                        select t.CHECKCODE).Max();
+                        orderby t.CREATETIME descending
+                        select t.CHECKCODE).FirstOrDefault();
             }
             catch (Exception ex)
             {
                 AddOperationLog.Error("获取验证码错误", PhoneNO + ex.Message);
             }
             return code;
+        }
+        /// <summary>
+        /// 设置验证码验证结束并更新用户表字段
+        /// </summary>
+        public static void SetCheckFinishAndUpdateUser(string PhoneNO, string checkCode)
+        {
+            using (TransactionScope tran = new TransactionScope())
+            {
+                try
+                {
+
+                    ServiceHomeDB.housekeepingEntities db = new ServiceHomeDB.housekeepingEntities();
+                    string sql1 = "update CHECKCODERECORD set ISCHECKED='T' where PHONENO={0} and ISCHECKED='F'";
+                    string sql2 = "update USERS set PASSWORD='{0}' where USERNAME='{1}'";
+                    db.Database.ExecuteSqlCommand(string.Format(sql1, PhoneNO));
+                    db.Database.ExecuteSqlCommand(string.Format(sql2, PhoneNO, checkCode));
+                    db.SaveChanges();
+                    tran.Complete();
+                }
+
+                catch (Exception ex)
+                {
+                    AddOperationLog.Error("设置验证码验证结束错误", PhoneNO + ex.Message);
+                }
+            }
         }
         /// <summary>
         /// 设置验证码验证结束
@@ -100,9 +125,8 @@ namespace ServiceHome.DAL
             try
             {
                 ServiceHomeDB.housekeepingEntities db = new ServiceHomeDB.housekeepingEntities();
-
-                string sql = "update CHECKCODERECORD set ISCHECKED='T',ISCHECKED='T' where PHONENO={0} and ISCHECKED='F'";
-                db.CHECKCODERECORD.SqlQuery(string.Format(sql, PhoneNO));
+                string sql = "update CHECKCODERECORD set ISCHECKED='T' where PHONENO={0} and ISCHECKED='F'";
+                db.Database.ExecuteSqlCommand(string.Format(sql, PhoneNO));
                 db.SaveChanges();
             }
             catch (Exception ex)

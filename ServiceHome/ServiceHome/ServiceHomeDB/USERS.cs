@@ -12,10 +12,10 @@ namespace ServiceHome.ServiceHomeDB
     using System;
     using System.Collections.Generic;
     
-    public partial class USER
+    public partial class USERS
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public USER()
+        public USERS()
         {
             this.CASH_LOG = new HashSet<CASH_LOG>();
             this.COUPON_RECORD = new HashSet<COUPON_RECORD>();
@@ -32,11 +32,11 @@ namespace ServiceHome.ServiceHomeDB
         public Nullable<System.DateTime> LASTUPDATETIME { get; set; }
         public string IDCARD { get; set; }
         public string QQ { get; set; }
-        public int STATE { get; set; }
+        public Nullable<int> STATE { get; set; }
         public string LASTIP { get; set; }
         public Nullable<System.DateTime> LASTACTION { get; set; }
         public Nullable<int> USER_LEVEL { get; set; }
-        public double CASH_ALL { get; set; }
+        public Nullable<double> CASH_ALL { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CASH_LOG> CASH_LOG { get; set; }

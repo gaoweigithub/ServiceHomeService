@@ -28,6 +28,6 @@ namespace ServiceHome.ServiceHomeDB
     
         public virtual COUPON_INFO COUPON_INFO { get; set; }
         public virtual PROVINCE_BASIC_SERVICE PROVINCE_BASIC_SERVICE { get; set; }
-        public virtual USER USER { get; set; }
+        public virtual USERS USERS { get; set; }
     }
 }
