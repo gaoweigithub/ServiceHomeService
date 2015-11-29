@@ -34,10 +34,10 @@ namespace ServiceHome.Services
         {
             AddServicePlaceResponse response = null;
 
-            if (request.SERVICEPLACE == null
+            if (!(request.SERVICEPLACE == null
                 || string.IsNullOrWhiteSpace(request.SERVICEPLACE.ADDR_TITLE)
                 || string.IsNullOrWhiteSpace(request.SERVICEPLACE.PLACE_DETAIL)
-                || string.IsNullOrWhiteSpace(request.SERVICEPLACE.PHONE))
+                || string.IsNullOrWhiteSpace(request.SERVICEPLACE.PHONE)))
             {
                 request.SERVICEPLACE.CREATE_TIME = DateTime.Now;
                 request.SERVICEPLACE.LAST_TIME = DateTime.Now;

@@ -19,6 +19,7 @@ namespace ServiceHome.ServiceHomeDB
         {
             this.COUPON_RECORD = new HashSet<COUPON_RECORD>();
             this.ORDERS = new HashSet<ORDERS>();
+            this.SERVICEPLACES = new HashSet<SERVICEPLACES>();
         }
     
         public int USERID { get; set; }
@@ -41,6 +42,8 @@ namespace ServiceHome.ServiceHomeDB
         public virtual ICollection<COUPON_RECORD> COUPON_RECORD { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ORDERS> ORDERS { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SERVICEPLACES> SERVICEPLACES { get; set; }
         public virtual USER_LEVEL USER_LEVEL1 { get; set; }
         public virtual USER_LEVEL USER_LEVEL2 { get; set; }
     }

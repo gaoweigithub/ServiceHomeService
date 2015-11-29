@@ -45,7 +45,7 @@
           </Key>
           <Property Name="CITYID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PROVINCEID" Type="int" />
-          <Property Name="CITYNAME" Type="binary" MaxLength="50" />
+          <Property Name="CITYNAME" Type="varchar" MaxLength="50" />
           <Property Name="CT" Type="datetime" />
           <Property Name="ISOPEN" Type="bit" Nullable="false" />
         </EntityType>
@@ -245,7 +245,7 @@
             <PropertyRef Name="PROVINCEID" />
           </Key>
           <Property Name="PROVINCEID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="PROVINCENAME" Type="binary" MaxLength="50" />
+          <Property Name="PROVINCENAME" Type="varchar" MaxLength="50" />
           <Property Name="CT" Type="datetime" />
         </EntityType>
         <EntityType Name="PROVINCE_BASIC_SERVICE">
@@ -352,6 +352,9 @@
           <Property Name="LAST_TIME" Type="datetime" Nullable="false" />
           <Property Name="CREATE_TIME" Type="datetime" Nullable="false" />
           <Property Name="ADDR_TITLE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CITYID" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="LNG" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="LAT" Type="numeric" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="STAFF">
           <Key>
@@ -790,6 +793,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_SERVICEP_REFERENCE_USERS">
+          <End Role="USERS" Type="Self.USERS" Multiplicity="1" />
+          <End Role="SERVICEPLACES" Type="Self.SERVICEPLACES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="USERID" />
+            </Principal>
+            <Dependent Role="SERVICEPLACES">
+              <PropertyRef Name="USERID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_STAFF_REFERENCE_STAFF_LE">
           <End Role="STAFF_LEVEL" Type="Self.STAFF_LEVEL" Multiplicity="0..1" />
           <End Role="STAFF" Type="Self.STAFF" Multiplicity="*" />
@@ -995,6 +1010,10 @@
             <End Role="SERVICE_ITEM" EntitySet="SERVICE_ITEM" />
             <End Role="SERVICE_ITEM1" EntitySet="SERVICE_ITEM" />
           </AssociationSet>
+          <AssociationSet Name="FK_SERVICEP_REFERENCE_USERS" Association="Self.FK_SERVICEP_REFERENCE_USERS">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="SERVICEPLACES" EntitySet="SERVICEPLACES" />
+          </AssociationSet>
           <AssociationSet Name="FK_STAFF_REFERENCE_STAFF_LE" Association="Self.FK_STAFF_REFERENCE_STAFF_LE">
             <End Role="STAFF_LEVEL" EntitySet="STAFF_LEVEL" />
             <End Role="STAFF" EntitySet="STAFF" />
@@ -1059,7 +1078,7 @@
           </Key>
           <Property Name="CITYID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PROVINCEID" Type="Int32" />
-          <Property Name="CITYNAME" Type="Binary" MaxLength="50" FixedLength="true" />
+          <Property Name="CITYNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="CT" Type="DateTime" Precision="3" />
           <Property Name="ISOPEN" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="PROVICE" Relationship="Self.FK_CITY_REFERENCE_PROVICE" FromRole="CITY" ToRole="PROVICE" />
@@ -1292,7 +1311,7 @@
             <PropertyRef Name="PROVINCEID" />
           </Key>
           <Property Name="PROVINCEID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PROVINCENAME" Type="Binary" MaxLength="50" FixedLength="true" />
+          <Property Name="PROVINCENAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="CT" Type="DateTime" Precision="3" />
           <NavigationProperty Name="CITY" Relationship="Self.FK_CITY_REFERENCE_PROVICE" FromRole="PROVICE" ToRole="CITY" />
         </EntityType>
@@ -1420,6 +1439,10 @@
           <Property Name="LAST_TIME" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="CREATE_TIME" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="ADDR_TITLE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CITYID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LNG" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="LAT" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="USERS" Relationship="Self.FK_SERVICEP_REFERENCE_USERS" FromRole="SERVICEPLACES" ToRole="USERS" />
         </EntityType>
         <EntityType Name="STAFF">
           <Key>
@@ -1496,6 +1519,7 @@
           <Property Name="CASH_ALL" Type="Double" />
           <NavigationProperty Name="COUPON_RECORD" Relationship="Self.FK_COUPON_R_REFERENCE_USER" FromRole="USERS" ToRole="COUPON_RECORD" />
           <NavigationProperty Name="ORDERS" Relationship="Self.FK_ORDERS_REFERENCE_USER" FromRole="USERS" ToRole="ORDERS" />
+          <NavigationProperty Name="SERVICEPLACES" Relationship="Self.FK_SERVICEP_REFERENCE_USERS" FromRole="USERS" ToRole="SERVICEPLACES" />
           <NavigationProperty Name="USER_LEVEL1" Relationship="Self.FK_USER_REFERENCE_USER_LEV" FromRole="USERS" ToRole="USER_LEVEL" />
           <NavigationProperty Name="USER_LEVEL2" Relationship="Self.FK_USERS_REFERENCE_USER_LEV" FromRole="USERS" ToRole="USER_LEVEL" />
         </EntityType>
@@ -1870,6 +1894,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_SERVICEP_REFERENCE_USERS">
+          <End Role="USERS" Type="Self.USERS" Multiplicity="1" />
+          <End Role="SERVICEPLACES" Type="Self.SERVICEPLACES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="USERID" />
+            </Principal>
+            <Dependent Role="SERVICEPLACES">
+              <PropertyRef Name="USERID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_STAFF_REFERENCE_STAFF_LE">
           <End Role="STAFF_LEVEL" Type="Self.STAFF_LEVEL" Multiplicity="0..1" />
           <End Role="STAFF" Type="Self.STAFF" Multiplicity="*" />
@@ -2074,6 +2110,10 @@
           <AssociationSet Name="FK_SERVICE__REFERENCE_SERVICE_" Association="Self.FK_SERVICE__REFERENCE_SERVICE_">
             <End Role="SERVICE_ITEM" EntitySet="SERVICE_ITEM" />
             <End Role="SERVICE_ITEM1" EntitySet="SERVICE_ITEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SERVICEP_REFERENCE_USERS" Association="Self.FK_SERVICEP_REFERENCE_USERS">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="SERVICEPLACES" EntitySet="SERVICEPLACES" />
           </AssociationSet>
           <AssociationSet Name="FK_STAFF_REFERENCE_STAFF_LE" Association="Self.FK_STAFF_REFERENCE_STAFF_LE">
             <End Role="STAFF_LEVEL" EntitySet="STAFF_LEVEL" />
@@ -2473,6 +2513,9 @@
                 <ScalarProperty Name="LAST_TIME" ColumnName="LAST_TIME" />
                 <ScalarProperty Name="CREATE_TIME" ColumnName="CREATE_TIME" />
                 <ScalarProperty Name="ADDR_TITLE" ColumnName="ADDR_TITLE" />
+                <ScalarProperty Name="CITYID" ColumnName="CITYID" />
+                <ScalarProperty Name="LNG" ColumnName="LNG" />
+                <ScalarProperty Name="LAT" ColumnName="LAT" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

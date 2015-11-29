@@ -21,5 +21,10 @@ namespace ServiceHome.ServiceHomeDB
         public System.DateTime LAST_TIME { get; set; }
         public System.DateTime CREATE_TIME { get; set; }
         public string ADDR_TITLE { get; set; }
+        public string CITYID { get; set; }
+        public Nullable<decimal> LNG { get; set; }
+        public Nullable<decimal> LAT { get; set; }
+    
+        public virtual USERS USERS { get; set; }
     }
 }

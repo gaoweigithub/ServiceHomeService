@@ -24,7 +24,7 @@ namespace ServiceHome.ServiceHomeDB
     
         public int CITYID { get; set; }
         public Nullable<int> PROVINCEID { get; set; }
-        public byte[] CITYNAME { get; set; }
+        public string CITYNAME { get; set; }
         public Nullable<System.DateTime> CT { get; set; }
         public bool ISOPEN { get; set; }
     

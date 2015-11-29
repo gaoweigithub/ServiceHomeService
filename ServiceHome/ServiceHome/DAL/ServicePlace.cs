@@ -18,16 +18,7 @@ namespace ServiceHome.DAL
             {
                 ServiceHomeDB.housekeepingEntities db = new ServiceHomeDB.housekeepingEntities();
 
-                var result = db.SERVICEPLACES.Where(a => a.USERID == userID).Select(a => new ServiceHomeDB.SERVICEPLACES
-                {
-                    ADDR_TITLE = a.ADDR_TITLE,
-                    CREATE_TIME = a.CREATE_TIME,
-                    LAST_TIME = a.LAST_TIME,
-                    PLACE_DETAIL = a.PLACE_DETAIL,
-                    SERVICE_PLACE_ID = a.SERVICE_PLACE_ID,
-                    PHONE = a.PHONE,
-                    USERID = a.USERID
-                }).ToList();
+                var result = db.SERVICEPLACES.Where(s => s.USERID == userID).Select(s=>s).ToList();
 
                 return result;
             }
