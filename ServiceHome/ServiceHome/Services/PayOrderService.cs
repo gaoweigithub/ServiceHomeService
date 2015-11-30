@@ -19,7 +19,7 @@ namespace ServiceHome.Services
             return null;
         }
     }
-    [Route("PayOrder", "POST")]
+    [Route("/PayOrder", "POST")]
     public class PayOrderRequest : RequestBase
     {
         public int OrderID { get; set; }
