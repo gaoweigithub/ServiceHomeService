@@ -267,14 +267,16 @@
       <DependentUpon>ServiceHome.tt</DependentUpon>
     </Compile>
     <Compile Include="Services\AddUserService.cs" />
+    <Compile Include="Services\CancelOrderService.cs" />
     <Compile Include="Services\CheckAndLogin.cs" />
-    <Compile Include="Services\OrderService.cs" />
+    <Compile Include="Services\CreateOrderService.cs" />
     <Compile Include="Services\ServicePlace.cs" />
     <Compile Include="Services\HomeServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Requests\Ping.cs" />
     <Compile Include="Responses\PingResponse.cs" />
     <Compile Include="Services\SendSMSCheckCode.cs" />
+    <Compile Include="Services\UpdateOrderStatusService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CommonTool\CommonTool.csproj">

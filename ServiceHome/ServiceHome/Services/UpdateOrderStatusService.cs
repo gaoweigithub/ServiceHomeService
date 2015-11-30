@@ -18,6 +18,7 @@ namespace ServiceHome.Services
     public class UpdateOrderOrderRequest : RequestBase
     {
         public int OrderID { get; set; }
+        public 
     }
     public class UpdateOrderOrderResponse : ResponseBase
     {
