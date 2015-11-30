@@ -21,7 +21,7 @@ namespace ServiceHome.ServiceHomeDB
         }
     
         public int COUPON_ID { get; set; }
-        public Nullable<int> CITY_SERVICE_ID { get; set; }
+        public Nullable<int> SERVICE_ID { get; set; }
         public string COUPON_NAME { get; set; }
         public byte[] SUMMARY { get; set; }
         public byte[] PIC { get; set; }
@@ -33,7 +33,7 @@ namespace ServiceHome.ServiceHomeDB
         public System.DateTime SUBMIT_TIME { get; set; }
         public Nullable<System.DateTime> ISSUE_TIME { get; set; }
     
-        public virtual PROVINCE_BASIC_SERVICE PROVINCE_BASIC_SERVICE { get; set; }
+        public virtual SERVICE SERVICE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<COUPON_RECORD> COUPON_RECORD { get; set; }
     }

@@ -12,15 +12,13 @@ namespace ServiceHome.ServiceHomeDB
     using System;
     using System.Collections.Generic;
     
-    public partial class REBACK_ITEM
+    public partial class USER_PLACES
     {
-        public int REBACK_ITEM_ID { get; set; }
-        public Nullable<int> RECHARGE_ID { get; set; }
-        public Nullable<int> CITY_SERVICE_ID { get; set; }
-        public Nullable<int> COUNT { get; set; }
-        public int QUANTITY { get; set; }
-    
-        public virtual PROVINCE_BASIC_SERVICE PROVINCE_BASIC_SERVICE { get; set; }
-        public virtual RECHARGE RECHARGE { get; set; }
+        public decimal USER_PLACES_ID { get; set; }
+        public string PLACE_NAME { get; set; }
+        public string ADDRESS { get; set; }
+        public string CITYID { get; set; }
+        public decimal LNG { get; set; }
+        public decimal LAT { get; set; }
     }
 }

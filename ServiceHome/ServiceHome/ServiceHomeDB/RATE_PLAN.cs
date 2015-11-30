@@ -12,22 +12,30 @@ namespace ServiceHome.ServiceHomeDB
     using System;
     using System.Collections.Generic;
     
-    public partial class RATEPLAN
+    public partial class RATE_PLAN
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public RATEPLAN()
+        public RATE_PLAN()
         {
             this.ORDER_ITEM = new HashSet<ORDER_ITEM>();
         }
     
-        public int RATEPLAN_ID { get; set; }
-        public Nullable<int> CITY_SERVICE_ID { get; set; }
-        public string RATEPLAN_NAME { get; set; }
-        public decimal COST { get; set; }
-        public string 单位名称 { get; set; }
+        public int RATE_PLAN_ID { get; set; }
+        public Nullable<int> SERVICE_PLAN_ID { get; set; }
+        public Nullable<int> CITYID { get; set; }
+        public Nullable<int> PROPERTY_HEADER_ID { get; set; }
+        public Nullable<decimal> UNIT_COST { get; set; }
+        public string UNIT_NAME { get; set; }
+        public Nullable<decimal> ONE_COST { get; set; }
+        public string COST_TYPE { get; set; }
+        public System.DateTime BEGIN_TIME { get; set; }
+        public Nullable<System.DateTime> END_TIME { get; set; }
+        public bool IS_OUTDATE { get; set; }
     
+        public virtual CITY CITY { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ORDER_ITEM> ORDER_ITEM { get; set; }
-        public virtual PROVINCE_BASIC_SERVICE PROVINCE_BASIC_SERVICE { get; set; }
+        public virtual SERVICE_PROPERTY_HEADER SERVICE_PROPERTY_HEADER { get; set; }
+        public virtual SERVICE_PLAN SERVICE_PLAN { get; set; }
     }
 }

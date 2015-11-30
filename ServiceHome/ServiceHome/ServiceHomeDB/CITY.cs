@@ -17,23 +17,24 @@ namespace ServiceHome.ServiceHomeDB
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CITY()
         {
-            this.COMMISION_RULE = new HashSet<COMMISION_RULE>();
+            this.CITY_SERVICE = new HashSet<CITY_SERVICE>();
             this.COMPANY_CHILD = new HashSet<COMPANY_CHILD>();
-            this.PROVINCE_BASIC_SERVICE = new HashSet<PROVINCE_BASIC_SERVICE>();
+            this.RATE_PLAN = new HashSet<RATE_PLAN>();
         }
     
         public int CITYID { get; set; }
         public Nullable<int> PROVINCEID { get; set; }
-        public string CITYNAME { get; set; }
+        public byte[] CITYNAME { get; set; }
         public Nullable<System.DateTime> CT { get; set; }
         public bool ISOPEN { get; set; }
+        public string CITYCODE { get; set; }
     
         public virtual PROVICE PROVICE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<COMMISION_RULE> COMMISION_RULE { get; set; }
+        public virtual ICollection<CITY_SERVICE> CITY_SERVICE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<COMPANY_CHILD> COMPANY_CHILD { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PROVINCE_BASIC_SERVICE> PROVINCE_BASIC_SERVICE { get; set; }
+        public virtual ICollection<RATE_PLAN> RATE_PLAN { get; set; }
     }
 }

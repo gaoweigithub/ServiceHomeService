@@ -12,14 +12,14 @@ namespace ServiceHome.ServiceHomeDB
     using System;
     using System.Collections.Generic;
     
-    public partial class CASH_LOG
+    public partial class CITY_SERVICE
     {
-        public int ID { get; set; }
-        public Nullable<int> USERID { get; set; }
-        public int TYPE { get; set; }
-        public decimal COUNT { get; set; }
-        public System.DateTime OP_TIME { get; set; }
+        public decimal CITY_SERVICE1 { get; set; }
+        public Nullable<int> SERVICE_ID { get; set; }
+        public Nullable<int> CITYID { get; set; }
+        public Nullable<System.DateTime> CREATETIME { get; set; }
     
-        public virtual USERS USERS { get; set; }
+        public virtual CITY CITY { get; set; }
+        public virtual SERVICE SERVICE { get; set; }
     }
 }

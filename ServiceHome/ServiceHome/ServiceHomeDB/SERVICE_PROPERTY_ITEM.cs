@@ -12,14 +12,13 @@ namespace ServiceHome.ServiceHomeDB
     using System;
     using System.Collections.Generic;
     
-    public partial class EXTRA_DEMAND
+    public partial class SERVICE_PROPERTY_ITEM
     {
-        public int EXTRA_ID { get; set; }
-        public Nullable<int> ORDERID { get; set; }
-        public Nullable<int> SPECIAL_ID { get; set; }
-        public string REMARK { get; set; }
+        public Nullable<int> PROPERTY_ITEM_ID { get; set; }
+        public int SERVICE_PROPERTY_ID { get; set; }
+        public Nullable<int> PROPERTY_HEADER_ID { get; set; }
     
-        public virtual ORDERS ORDERS { get; set; }
-        public virtual SELFSERVICE SELFSERVICE { get; set; }
+        public virtual PROPERTY PROPERTY { get; set; }
+        public virtual SERVICE_PROPERTY_HEADER SERVICE_PROPERTY_HEADER { get; set; }
     }
 }

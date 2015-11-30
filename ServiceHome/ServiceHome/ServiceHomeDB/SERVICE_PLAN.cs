@@ -12,19 +12,24 @@ namespace ServiceHome.ServiceHomeDB
     using System;
     using System.Collections.Generic;
     
-    public partial class PACK_TYPE
+    public partial class SERVICE_PLAN
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public PACK_TYPE()
+        public SERVICE_PLAN()
         {
-            this.MEMBERSHIP_PACKAGE = new HashSet<MEMBERSHIP_PACKAGE>();
+            this.RATE_PLAN = new HashSet<RATE_PLAN>();
         }
     
-        public int PACK_TYPE_ID { get; set; }
-        public string PACK_TYPE_NAME { get; set; }
-        public string PACK_TYPE_CODE { get; set; }
+        public int SERVICE_PLAN_ID { get; set; }
+        public Nullable<int> SERVICE_ID { get; set; }
+        public string SERVICE_PLAN_NAME { get; set; }
+        public string SERVICE_PLAN_DESC { get; set; }
+        public string SERVICE_PLAN_URL { get; set; }
+        public string SERVICE_LIMIT { get; set; }
+        public string SERVICE_STANDARD { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MEMBERSHIP_PACKAGE> MEMBERSHIP_PACKAGE { get; set; }
+        public virtual ICollection<RATE_PLAN> RATE_PLAN { get; set; }
+        public virtual SERVICE SERVICE { get; set; }
     }
 }

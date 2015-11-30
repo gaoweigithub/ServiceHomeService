@@ -16,11 +16,11 @@ namespace ServiceHome.DAL
             {
                 ServiceHomeDB.housekeepingEntities db = new ServiceHomeDB.housekeepingEntities();
 
-                DateTime dt = (from t in db.CHECKCODERECORD
-                               where t.PHONENO == phoneNO && t.ISCHECKED == "F"
-                               select t.CREATETIME).FirstOrDefault();
+                var dt = (from t in db.CHECKCODERECORD
+                          where t.PHONENO == phoneNO && t.ISCHECKED == "F"
+                          select t.CREATETIME).FirstOrDefault();
 
-                if (dt == DateTime.MinValue && (DateTime.Now - dt) > new TimeSpan(0, 3, 0))
+                if (dt == null || dt == DateTime.MinValue || (DateTime.Now - dt) > new TimeSpan(0, 3, 0))
                 {
                     return true;
                 }

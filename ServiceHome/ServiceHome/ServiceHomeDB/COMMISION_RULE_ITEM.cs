@@ -15,15 +15,15 @@ namespace ServiceHome.ServiceHomeDB
     public partial class COMMISION_RULE_ITEM
     {
         public int RULE_ITEM_ID { get; set; }
-        public Nullable<int> SERVICEID { get; set; }
-        public Nullable<int> RULE_ID { get; set; }
+        public Nullable<int> SERVICE_ID { get; set; }
+        public Nullable<int> RULEID { get; set; }
         public Nullable<decimal> RULE_RATE { get; set; }
         public Nullable<System.DateTime> CT { get; set; }
         public Nullable<System.DateTime> UPDATE_TIME { get; set; }
-        public byte[] US_ID { get; set; }
-        public byte[] CU_ID { get; set; }
+        public string US_ID { get; set; }
+        public string CU_ID { get; set; }
     
         public virtual COMMISION_RULE COMMISION_RULE { get; set; }
-        public virtual SERVICE_ITEM SERVICE_ITEM { get; set; }
+        public virtual SERVICE SERVICE { get; set; }
     }
 }

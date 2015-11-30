@@ -12,12 +12,13 @@ namespace ServiceHome.ServiceHomeDB
     using System;
     using System.Collections.Generic;
     
-    public partial class sysdiagrams
+    public partial class OPERATE_QUEUE
     {
-        public string name { get; set; }
-        public int principal_id { get; set; }
-        public int diagram_id { get; set; }
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        public int QUEUE_ID { get; set; }
+        public Nullable<int> ORDER_ID { get; set; }
+        public string TYPE { get; set; }
+        public string RESULT { get; set; }
+        public Nullable<System.DateTime> CREATE_TIME { get; set; }
+        public Nullable<System.DateTime> UPDATE_TIME { get; set; }
     }
 }

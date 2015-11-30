@@ -12,23 +12,23 @@ namespace ServiceHome.ServiceHomeDB
     using System;
     using System.Collections.Generic;
     
-    public partial class RECHARGE
+    public partial class SERVICE_PROPERTY_HEADER
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public RECHARGE()
+        public SERVICE_PROPERTY_HEADER()
         {
-            this.REBACK_ITEM = new HashSet<REBACK_ITEM>();
+            this.RATE_PLAN = new HashSet<RATE_PLAN>();
+            this.SERVICE_PROPERTY_ITEM = new HashSet<SERVICE_PROPERTY_ITEM>();
         }
     
-        public int RECHARGE_ID { get; set; }
-        public Nullable<int> MEM_PACK_ID { get; set; }
-        public string RECHARGE_NAME { get; set; }
-        public Nullable<int> RECHARGE_COUNT { get; set; }
-        public Nullable<int> GIFT_COUNT { get; set; }
-        public Nullable<bool> ISCASHGIFT { get; set; }
+        public int PROPERTY_HEADER_ID { get; set; }
+        public string PROPERTY_HEADER_NAME { get; set; }
+        public Nullable<System.DateTime> CREATE_TIME { get; set; }
+        public string PROPERTY_HEADER_DESC { get; set; }
     
-        public virtual MEMBERSHIP_PACKAGE MEMBERSHIP_PACKAGE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<REBACK_ITEM> REBACK_ITEM { get; set; }
+        public virtual ICollection<RATE_PLAN> RATE_PLAN { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SERVICE_PROPERTY_ITEM> SERVICE_PROPERTY_ITEM { get; set; }
     }
 }

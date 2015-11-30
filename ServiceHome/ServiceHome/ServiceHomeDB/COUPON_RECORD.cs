@@ -17,7 +17,6 @@ namespace ServiceHome.ServiceHomeDB
         public int RECORD_ID { get; set; }
         public Nullable<int> COUPON_ID { get; set; }
         public Nullable<int> USERID { get; set; }
-        public Nullable<int> CITY_SERVICE_ID { get; set; }
         public string PHONE { get; set; }
         public System.DateTime DOWNLOAD_TIME { get; set; }
         public bool ISUSED { get; set; }
@@ -27,7 +26,6 @@ namespace ServiceHome.ServiceHomeDB
         public System.DateTime END_TIME { get; set; }
     
         public virtual COUPON_INFO COUPON_INFO { get; set; }
-        public virtual PROVINCE_BASIC_SERVICE PROVINCE_BASIC_SERVICE { get; set; }
         public virtual USERS USERS { get; set; }
     }
 }

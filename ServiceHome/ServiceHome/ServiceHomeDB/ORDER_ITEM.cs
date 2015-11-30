@@ -14,13 +14,16 @@ namespace ServiceHome.ServiceHomeDB
     
     public partial class ORDER_ITEM
     {
-        public int ORDER_DETAIL_ID { get; set; }
+        public int ORDER_ITEM_ID { get; set; }
         public Nullable<int> ORDERID { get; set; }
-        public Nullable<int> RATEPLAN_ID { get; set; }
-        public Nullable<System.DateTime> CT { get; set; }
+        public Nullable<int> RATE_PLAN_ID { get; set; }
+        public Nullable<int> SPECIAL_ID { get; set; }
+        public Nullable<System.DateTime> CREATE_TIME { get; set; }
         public Nullable<int> QUANTITY { get; set; }
+        public Nullable<decimal> COST { get; set; }
     
         public virtual ORDERS ORDERS { get; set; }
-        public virtual RATEPLAN RATEPLAN { get; set; }
+        public virtual RATE_PLAN RATE_PLAN { get; set; }
+        public virtual SELFSERVICE SELFSERVICE { get; set; }
     }
 }

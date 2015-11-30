@@ -12,19 +12,21 @@ namespace ServiceHome.ServiceHomeDB
     using System;
     using System.Collections.Generic;
     
-    public partial class PROVICE
+    public partial class CASH_RULE
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public PROVICE()
+        public CASH_RULE()
         {
-            this.CITY = new HashSet<CITY>();
+            this.CASH_RULE_ITEM = new HashSet<CASH_RULE_ITEM>();
         }
     
-        public int PROVINCEID { get; set; }
-        public byte[] PROVINCENAME { get; set; }
-        public Nullable<System.DateTime> CT { get; set; }
+        public int RULE_ID { get; set; }
+        public string RULE_NAME { get; set; }
+        public Nullable<System.DateTime> CREATE_TIME { get; set; }
+        public Nullable<System.DateTime> UPDATE_TIME { get; set; }
+        public Nullable<bool> ISUSE { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CITY> CITY { get; set; }
+        public virtual ICollection<CASH_RULE_ITEM> CASH_RULE_ITEM { get; set; }
     }
 }

@@ -38,6 +38,7 @@ namespace ServiceHome.ServiceHomeDB
         public string LASTIP { get; set; }
         public Nullable<System.DateTime> LASTACTION { get; set; }
         public Nullable<int> STAFF_LEVEL { get; set; }
+        public Nullable<int> RECENT_CITYID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ORDERS> ORDERS { get; set; }

@@ -12,25 +12,21 @@ namespace ServiceHome.ServiceHomeDB
     using System;
     using System.Collections.Generic;
     
-    public partial class MEMBERSHIP_PACKAGE
+    public partial class PROPERTY
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public MEMBERSHIP_PACKAGE()
+        public PROPERTY()
         {
-            this.RECHARGE = new HashSet<RECHARGE>();
+            this.SERVICE_PROPERTY_ITEM = new HashSet<SERVICE_PROPERTY_ITEM>();
         }
     
-        public int MEM_PACK_ID { get; set; }
-        public string PACK_NAME { get; set; }
-        public Nullable<System.DateTime> CT { get; set; }
-        public Nullable<bool> ISOPEN { get; set; }
-        public Nullable<int> CU_ID { get; set; }
-        public Nullable<int> PACK_TYPE_ID { get; set; }
-        public string REMARK { get; set; }
+        public int PROPERTY_ID { get; set; }
+        public string PROPERTY_NAME { get; set; }
+        public Nullable<System.DateTime> CREATE_TIME { get; set; }
+        public string PROPERTY_DESC { get; set; }
+        public string PIC_URL { get; set; }
     
-        public virtual MASTERS MASTERS { get; set; }
-        public virtual PACK_TYPE PACK_TYPE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RECHARGE> RECHARGE { get; set; }
+        public virtual ICollection<SERVICE_PROPERTY_ITEM> SERVICE_PROPERTY_ITEM { get; set; }
     }
 }

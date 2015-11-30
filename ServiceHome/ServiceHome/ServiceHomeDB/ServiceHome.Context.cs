@@ -25,10 +25,13 @@ namespace ServiceHome.ServiceHomeDB
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<AUTHORMODULES> AUTHORMODULES { get; set; }
+        public virtual DbSet<AUTHORS> AUTHORS { get; set; }
         public virtual DbSet<CASH_LOG> CASH_LOG { get; set; }
+        public virtual DbSet<CASH_RULE> CASH_RULE { get; set; }
+        public virtual DbSet<CASH_RULE_ITEM> CASH_RULE_ITEM { get; set; }
         public virtual DbSet<CHECKCODERECORD> CHECKCODERECORD { get; set; }
         public virtual DbSet<CITY> CITY { get; set; }
+        public virtual DbSet<CITY_SERVICE> CITY_SERVICE { get; set; }
         public virtual DbSet<COMMISION_RULE> COMMISION_RULE { get; set; }
         public virtual DbSet<COMMISION_RULE_ITEM> COMMISION_RULE_ITEM { get; set; }
         public virtual DbSet<COMPANY_CHILD> COMPANY_CHILD { get; set; }
@@ -36,29 +39,28 @@ namespace ServiceHome.ServiceHomeDB
         public virtual DbSet<COUPON_INFO> COUPON_INFO { get; set; }
         public virtual DbSet<COUPON_RECORD> COUPON_RECORD { get; set; }
         public virtual DbSet<DETAIL_ITEM> DETAIL_ITEM { get; set; }
-        public virtual DbSet<EXTRA_DEMAND> EXTRA_DEMAND { get; set; }
         public virtual DbSet<FEEDBACK> FEEDBACK { get; set; }
         public virtual DbSet<MASTERS> MASTERS { get; set; }
-        public virtual DbSet<MEMBERSHIP_PACKAGE> MEMBERSHIP_PACKAGE { get; set; }
         public virtual DbSet<MODULES> MODULES { get; set; }
+        public virtual DbSet<OPERATE_QUEUE> OPERATE_QUEUE { get; set; }
         public virtual DbSet<OPERATION_LOG> OPERATION_LOG { get; set; }
         public virtual DbSet<ORDER_ITEM> ORDER_ITEM { get; set; }
         public virtual DbSet<ORDERS> ORDERS { get; set; }
-        public virtual DbSet<PACK_TYPE> PACK_TYPE { get; set; }
+        public virtual DbSet<PROPERTY> PROPERTY { get; set; }
         public virtual DbSet<PROVICE> PROVICE { get; set; }
-        public virtual DbSet<PROVINCE_BASIC_SERVICE> PROVINCE_BASIC_SERVICE { get; set; }
-        public virtual DbSet<RATEPLAN> RATEPLAN { get; set; }
+        public virtual DbSet<RATE_PLAN> RATE_PLAN { get; set; }
         public virtual DbSet<REALMESSAGE> REALMESSAGE { get; set; }
-        public virtual DbSet<REBACK_ITEM> REBACK_ITEM { get; set; }
-        public virtual DbSet<RECHARGE> RECHARGE { get; set; }
         public virtual DbSet<SALRY> SALRY { get; set; }
         public virtual DbSet<SELFSERVICE> SELFSERVICE { get; set; }
-        public virtual DbSet<SERVICE_ITEM> SERVICE_ITEM { get; set; }
+        public virtual DbSet<SERVICE> SERVICE { get; set; }
+        public virtual DbSet<SERVICE_PLAN> SERVICE_PLAN { get; set; }
+        public virtual DbSet<SERVICE_PROPERTY_HEADER> SERVICE_PROPERTY_HEADER { get; set; }
+        public virtual DbSet<SERVICE_PROPERTY_ITEM> SERVICE_PROPERTY_ITEM { get; set; }
         public virtual DbSet<SERVICEPLACES> SERVICEPLACES { get; set; }
         public virtual DbSet<STAFF> STAFF { get; set; }
         public virtual DbSet<STAFF_LEVEL> STAFF_LEVEL { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<USER_LEVEL> USER_LEVEL { get; set; }
+        public virtual DbSet<USER_PLACES> USER_PLACES { get; set; }
         public virtual DbSet<USERS> USERS { get; set; }
         public virtual DbSet<WORKOFF> WORKOFF { get; set; }
     }

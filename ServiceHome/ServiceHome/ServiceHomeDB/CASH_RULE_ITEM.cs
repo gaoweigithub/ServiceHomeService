@@ -12,14 +12,16 @@ namespace ServiceHome.ServiceHomeDB
     using System;
     using System.Collections.Generic;
     
-    public partial class CASH_LOG
+    public partial class CASH_RULE_ITEM
     {
-        public int ID { get; set; }
-        public Nullable<int> USERID { get; set; }
-        public int TYPE { get; set; }
-        public decimal COUNT { get; set; }
-        public System.DateTime OP_TIME { get; set; }
+        public int RULE_ITEM_ID { get; set; }
+        public Nullable<int> RULE_ID { get; set; }
+        public decimal CASH_QUANTITY { get; set; }
+        public decimal RETURN_QUANTITY { get; set; }
+        public Nullable<System.DateTime> CREATE_TIME { get; set; }
+        public Nullable<System.DateTime> UPDATE_TIME { get; set; }
+        public string CREATE_USER { get; set; }
     
-        public virtual USERS USERS { get; set; }
+        public virtual CASH_RULE CASH_RULE { get; set; }
     }
 }

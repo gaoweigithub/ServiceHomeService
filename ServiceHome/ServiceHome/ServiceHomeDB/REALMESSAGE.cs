@@ -16,9 +16,11 @@ namespace ServiceHome.ServiceHomeDB
     {
         public int MESSAGE_ID { get; set; }
         public string CONTENT { get; set; }
-        public Nullable<bool> ISSUCESS { get; set; }
-        public Nullable<int> RETRY_COUNT { get; set; }
-        public Nullable<System.DateTime> CT { get; set; }
-        public Nullable<bool> ISOUTDATE { get; set; }
+        public string URL { get; set; }
+        public Nullable<int> ORDER_ID { get; set; }
+        public Nullable<bool> IS_READ { get; set; }
+        public Nullable<bool> IS_PUSHED { get; set; }
+        public Nullable<System.DateTime> CREATE_TIME { get; set; }
+        public Nullable<System.DateTime> UPDATE_TIME { get; set; }
     }
 }

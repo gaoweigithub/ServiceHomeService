@@ -136,6 +136,7 @@
     <Compile Include="CommonClass\BaseService.cs" />
     <Compile Include="DAL\AddOperationLog.cs" />
     <Compile Include="DAL\InsertCheckCode.cs" />
+    <Compile Include="DAL\Order.cs" />
     <Compile Include="DAL\ServicePlace.cs" />
     <Compile Include="DAL\UserHelper.cs" />
     <Compile Include="Global.asax.cs">
@@ -143,16 +144,25 @@
     </Compile>
     <Compile Include="Requests\User\AddUser.cs" />
     <Compile Include="Responses\User\AddUserResponse.cs" />
-    <Compile Include="ServiceHomeDB\AUTHORMODULES.cs">
+    <Compile Include="ServiceHomeDB\AUTHORS.cs">
       <DependentUpon>ServiceHome.tt</DependentUpon>
     </Compile>
     <Compile Include="ServiceHomeDB\CASH_LOG.cs">
+      <DependentUpon>ServiceHome.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceHomeDB\CASH_RULE.cs">
+      <DependentUpon>ServiceHome.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceHomeDB\CASH_RULE_ITEM.cs">
       <DependentUpon>ServiceHome.tt</DependentUpon>
     </Compile>
     <Compile Include="ServiceHomeDB\CHECKCODERECORD.cs">
       <DependentUpon>ServiceHome.tt</DependentUpon>
     </Compile>
     <Compile Include="ServiceHomeDB\CITY.cs">
+      <DependentUpon>ServiceHome.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceHomeDB\CITY_SERVICE.cs">
       <DependentUpon>ServiceHome.tt</DependentUpon>
     </Compile>
     <Compile Include="ServiceHomeDB\COMMISION_RULE.cs">
@@ -176,19 +186,16 @@
     <Compile Include="ServiceHomeDB\DETAIL_ITEM.cs">
       <DependentUpon>ServiceHome.tt</DependentUpon>
     </Compile>
-    <Compile Include="ServiceHomeDB\EXTRA_DEMAND.cs">
-      <DependentUpon>ServiceHome.tt</DependentUpon>
-    </Compile>
     <Compile Include="ServiceHomeDB\FEEDBACK.cs">
       <DependentUpon>ServiceHome.tt</DependentUpon>
     </Compile>
     <Compile Include="ServiceHomeDB\MASTERS.cs">
       <DependentUpon>ServiceHome.tt</DependentUpon>
     </Compile>
-    <Compile Include="ServiceHomeDB\MEMBERSHIP_PACKAGE.cs">
+    <Compile Include="ServiceHomeDB\MODULES.cs">
       <DependentUpon>ServiceHome.tt</DependentUpon>
     </Compile>
-    <Compile Include="ServiceHomeDB\MODULES.cs">
+    <Compile Include="ServiceHomeDB\OPERATE_QUEUE.cs">
       <DependentUpon>ServiceHome.tt</DependentUpon>
     </Compile>
     <Compile Include="ServiceHomeDB\OPERATION_LOG.cs">
@@ -200,31 +207,25 @@
     <Compile Include="ServiceHomeDB\ORDER_ITEM.cs">
       <DependentUpon>ServiceHome.tt</DependentUpon>
     </Compile>
-    <Compile Include="ServiceHomeDB\PACK_TYPE.cs">
+    <Compile Include="ServiceHomeDB\PROPERTY.cs">
       <DependentUpon>ServiceHome.tt</DependentUpon>
     </Compile>
     <Compile Include="ServiceHomeDB\PROVICE.cs">
       <DependentUpon>ServiceHome.tt</DependentUpon>
     </Compile>
-    <Compile Include="ServiceHomeDB\PROVINCE_BASIC_SERVICE.cs">
-      <DependentUpon>ServiceHome.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ServiceHomeDB\RATEPLAN.cs">
+    <Compile Include="ServiceHomeDB\RATE_PLAN.cs">
       <DependentUpon>ServiceHome.tt</DependentUpon>
     </Compile>
     <Compile Include="ServiceHomeDB\REALMESSAGE.cs">
-      <DependentUpon>ServiceHome.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ServiceHomeDB\REBACK_ITEM.cs">
-      <DependentUpon>ServiceHome.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ServiceHomeDB\RECHARGE.cs">
       <DependentUpon>ServiceHome.tt</DependentUpon>
     </Compile>
     <Compile Include="ServiceHomeDB\SALRY.cs">
       <DependentUpon>ServiceHome.tt</DependentUpon>
     </Compile>
     <Compile Include="ServiceHomeDB\SELFSERVICE.cs">
+      <DependentUpon>ServiceHome.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceHomeDB\SERVICE.cs">
       <DependentUpon>ServiceHome.tt</DependentUpon>
     </Compile>
     <Compile Include="ServiceHomeDB\ServiceHome.Context.cs">
@@ -245,7 +246,13 @@
     <Compile Include="ServiceHomeDB\SERVICEPLACES.cs">
       <DependentUpon>ServiceHome.tt</DependentUpon>
     </Compile>
-    <Compile Include="ServiceHomeDB\SERVICE_ITEM.cs">
+    <Compile Include="ServiceHomeDB\SERVICE_PLAN.cs">
+      <DependentUpon>ServiceHome.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceHomeDB\SERVICE_PROPERTY_HEADER.cs">
+      <DependentUpon>ServiceHome.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceHomeDB\SERVICE_PROPERTY_ITEM.cs">
       <DependentUpon>ServiceHome.tt</DependentUpon>
     </Compile>
     <Compile Include="ServiceHomeDB\STAFF.cs">
@@ -254,13 +261,13 @@
     <Compile Include="ServiceHomeDB\STAFF_LEVEL.cs">
       <DependentUpon>ServiceHome.tt</DependentUpon>
     </Compile>
-    <Compile Include="ServiceHomeDB\sysdiagrams.cs">
-      <DependentUpon>ServiceHome.tt</DependentUpon>
-    </Compile>
     <Compile Include="ServiceHomeDB\USERS.cs">
       <DependentUpon>ServiceHome.tt</DependentUpon>
     </Compile>
     <Compile Include="ServiceHomeDB\USER_LEVEL.cs">
+      <DependentUpon>ServiceHome.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceHomeDB\USER_PLACES.cs">
       <DependentUpon>ServiceHome.tt</DependentUpon>
     </Compile>
     <Compile Include="ServiceHomeDB\WORKOFF.cs">
@@ -270,13 +277,13 @@
     <Compile Include="Services\CancelOrderService.cs" />
     <Compile Include="Services\CheckAndLogin.cs" />
     <Compile Include="Services\CreateOrderService.cs" />
+    <Compile Include="Services\PayOrderService.cs" />
     <Compile Include="Services\ServicePlace.cs" />
     <Compile Include="Services\HomeServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Requests\Ping.cs" />
     <Compile Include="Responses\PingResponse.cs" />
     <Compile Include="Services\SendSMSCheckCode.cs" />
-    <Compile Include="Services\UpdateOrderStatusService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CommonTool\CommonTool.csproj">

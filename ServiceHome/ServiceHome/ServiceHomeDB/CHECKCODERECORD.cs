@@ -17,7 +17,7 @@ namespace ServiceHome.ServiceHomeDB
         public decimal CHECKCODEID { get; set; }
         public string PHONENO { get; set; }
         public string CHECKCODE { get; set; }
-        public System.DateTime CREATETIME { get; set; }
+        public Nullable<System.DateTime> CREATETIME { get; set; }
         public string ISCHECKED { get; set; }
     }
 }

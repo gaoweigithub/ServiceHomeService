@@ -17,19 +17,20 @@ namespace ServiceHome.ServiceHomeDB
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public SELFSERVICE()
         {
-            this.EXTRA_DEMAND = new HashSet<EXTRA_DEMAND>();
+            this.ORDER_ITEM = new HashSet<ORDER_ITEM>();
         }
     
         public int SPECIAL_ID { get; set; }
-        public Nullable<int> CITY_SERVICE_ID { get; set; }
+        public Nullable<int> SERVICE_ID { get; set; }
         public string SELFSERVICE_NAME { get; set; }
         public Nullable<bool> ISOPEN { get; set; }
-        public double COST { get; set; }
-        public Nullable<bool> ISHOURCOST { get; set; }
-        public Nullable<bool> ISAREACOST { get; set; }
+        public Nullable<decimal> UNIT_COST { get; set; }
+        public string UNIT_NAME { get; set; }
+        public Nullable<decimal> ONE_COST { get; set; }
+        public string COST_TYPE { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EXTRA_DEMAND> EXTRA_DEMAND { get; set; }
-        public virtual PROVINCE_BASIC_SERVICE PROVINCE_BASIC_SERVICE { get; set; }
+        public virtual ICollection<ORDER_ITEM> ORDER_ITEM { get; set; }
+        public virtual SERVICE SERVICE { get; set; }
     }
 }

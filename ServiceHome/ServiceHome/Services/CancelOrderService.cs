@@ -11,7 +11,9 @@ namespace ServiceHome.Services
     {
         public override CancelOrderResponse Excute(CancelOrderRequest request)
         {
-            throw new NotImplementedException();
+            //ping++取消,退款
+            //to do ...
+            return null;
         }
     }
     [Route("/CancelOrder", "POST")]

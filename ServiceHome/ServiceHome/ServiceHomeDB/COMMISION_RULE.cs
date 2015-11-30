@@ -20,15 +20,13 @@ namespace ServiceHome.ServiceHomeDB
             this.COMMISION_RULE_ITEM = new HashSet<COMMISION_RULE_ITEM>();
         }
     
-        public int RULE_ID { get; set; }
-        public Nullable<int> CITYID { get; set; }
+        public int RULEID { get; set; }
         public string RULE_NAME { get; set; }
         public Nullable<System.DateTime> CT { get; set; }
         public Nullable<int> CU_ID { get; set; }
         public Nullable<bool> ISOPEN { get; set; }
         public Nullable<decimal> DEFAULT_RATE { get; set; }
     
-        public virtual CITY CITY { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<COMMISION_RULE_ITEM> COMMISION_RULE_ITEM { get; set; }
     }

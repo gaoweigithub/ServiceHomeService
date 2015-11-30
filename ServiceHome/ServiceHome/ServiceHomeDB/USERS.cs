@@ -17,6 +17,7 @@ namespace ServiceHome.ServiceHomeDB
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public USERS()
         {
+            this.CASH_LOG = new HashSet<CASH_LOG>();
             this.COUPON_RECORD = new HashSet<COUPON_RECORD>();
             this.ORDERS = new HashSet<ORDERS>();
             this.SERVICEPLACES = new HashSet<SERVICEPLACES>();
@@ -39,12 +40,13 @@ namespace ServiceHome.ServiceHomeDB
         public Nullable<double> CASH_ALL { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CASH_LOG> CASH_LOG { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<COUPON_RECORD> COUPON_RECORD { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ORDERS> ORDERS { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SERVICEPLACES> SERVICEPLACES { get; set; }
         public virtual USER_LEVEL USER_LEVEL1 { get; set; }
-        public virtual USER_LEVEL USER_LEVEL2 { get; set; }
     }
 }

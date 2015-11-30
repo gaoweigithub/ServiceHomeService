@@ -17,8 +17,7 @@ namespace ServiceHome.ServiceHomeDB
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public MASTERS()
         {
-            this.AUTHORMODULES = new HashSet<AUTHORMODULES>();
-            this.MEMBERSHIP_PACKAGE = new HashSet<MEMBERSHIP_PACKAGE>();
+            this.AUTHORS = new HashSet<AUTHORS>();
         }
     
         public int MASTER_ID { get; set; }
@@ -28,8 +27,6 @@ namespace ServiceHome.ServiceHomeDB
         public string EMAIL { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AUTHORMODULES> AUTHORMODULES { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MEMBERSHIP_PACKAGE> MEMBERSHIP_PACKAGE { get; set; }
+        public virtual ICollection<AUTHORS> AUTHORS { get; set; }
     }
 }
