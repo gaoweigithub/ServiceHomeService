@@ -209,7 +209,7 @@
           <Property Name="TYPE" Type="varchar" MaxLength="10" />
           <Property Name="CONTENT" Type="varchar" MaxLength="500" />
           <Property Name="CT" Type="datetime" />
-          <Property Name="APPID" Type="varchar" MaxLength="2" />
+          <Property Name="APPID" Type="varchar" MaxLength="20" />
           <Property Name="IP" Type="varchar" MaxLength="20" />
           <Property Name="LOGTITLE" Type="varchar" MaxLength="100" />
         </EntityType>
@@ -1269,7 +1269,7 @@
           <Property Name="TYPE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="CONTENT" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="CT" Type="DateTime" Precision="3" />
-          <Property Name="APPID" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="APPID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="IP" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="LOGTITLE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>

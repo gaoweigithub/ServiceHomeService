@@ -103,9 +103,9 @@ namespace ServiceHome.DAL
                 {
 
                     ServiceHomeDB.housekeepingEntities db = new ServiceHomeDB.housekeepingEntities();
-                    string sql1 = "update CHECKCODERECORD set ISCHECKED='T' where PHONENO={0} and ISCHECKED='F'";
+                    string sql1 = "update CHECKCODERECORD set ISCHECKED='T' where PHONENO={0} and CHECKCODE={1} and ISCHECKED='F'";
                     string sql2 = "update USERS set PASSWORD='{0}' where USERNAME='{1}'";
-                    db.Database.ExecuteSqlCommand(string.Format(sql1, PhoneNO));
+                    db.Database.ExecuteSqlCommand(string.Format(sql1, PhoneNO, checkCode));
                     db.Database.ExecuteSqlCommand(string.Format(sql2, PhoneNO, checkCode));
                     db.SaveChanges();
                     tran.Complete();
