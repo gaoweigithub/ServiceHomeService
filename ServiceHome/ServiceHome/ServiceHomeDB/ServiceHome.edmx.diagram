@@ -4,45 +4,45 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="eace9bdbbeea46428e2d143fe45a2878" Name="Diagram1">
-        <EntityTypeShape EntityType="housekeepingModel.AUTHORS" Width="1.5" PointX="6" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="housekeepingModel.CASH_LOG" Width="1.5" PointX="5.25" PointY="32.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="housekeepingModel.CASH_RULE" Width="1.5" PointX="5.75" PointY="6.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="housekeepingModel.CASH_RULE_ITEM" Width="1.5" PointX="8" PointY="6" IsExpanded="true" />
-        <EntityTypeShape EntityType="housekeepingModel.CHECKCODERECORD" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="housekeepingModel.CITY" Width="1.5" PointX="0.75" PointY="4.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="housekeepingModel.CITY_SERVICE" Width="1.5" PointX="3" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="housekeepingModel.COMMISION_RULE" Width="1.5" PointX="3.75" PointY="5.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="housekeepingModel.COMMISION_RULE_ITEM" Width="1.5" PointX="6" PointY="9.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="housekeepingModel.COMPANY_CHILD" Width="1.5" PointX="3" PointY="46.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="housekeepingModel.COMPANY_DETAIL_ITEM" Width="1.5" PointX="5.25" PointY="46.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="housekeepingModel.COUPON_INFO" Width="1.5" PointX="3" PointY="12" IsExpanded="true" />
-        <EntityTypeShape EntityType="housekeepingModel.COUPON_RECORD" Width="1.5" PointX="5.25" PointY="13.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="housekeepingModel.DETAIL_ITEM" Width="1.5" PointX="3" PointY="50" IsExpanded="true" />
-        <EntityTypeShape EntityType="housekeepingModel.FEEDBACK" Width="1.5" PointX="8.75" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="housekeepingModel.MASTERS" Width="1.5" PointX="3.75" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="housekeepingModel.MODULES" Width="1.5" PointX="3.75" PointY="40.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="housekeepingModel.OPERATE_QUEUE" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="housekeepingModel.OPERATION_LOG" Width="1.5" PointX="10.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="housekeepingModel.ORDER_ITEM" Width="1.5" PointX="5.25" PointY="17.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="housekeepingModel.ORDERS" Width="1.5" PointX="3" PointY="32.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="housekeepingModel.PROPERTY" Width="1.5" PointX="3" PointY="43.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="housekeepingModel.PROVICE" Width="1.5" PointX="1.5" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="housekeepingModel.RATE_PLAN" Width="1.5" PointX="5.25" PointY="21.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="housekeepingModel.REALMESSAGE" Width="1.5" PointX="10.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="housekeepingModel.SALRY" Width="1.5" PointX="3" PointY="52.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="housekeepingModel.SELFSERVICE" Width="1.5" PointX="3" PointY="16.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="housekeepingModel.SERVICE" Width="1.5" PointX="0.75" PointY="8.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="housekeepingModel.SERVICE_PLAN" Width="1.5" PointX="3" PointY="19.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="housekeepingModel.SERVICE_PROPERTY_HEADER" Width="1.5" PointX="3" PointY="29.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="housekeepingModel.SERVICE_PROPERTY_ITEM" Width="1.5" PointX="5.25" PointY="29.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="housekeepingModel.SERVICEPLACES" Width="1.5" PointX="5.25" PointY="35.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="housekeepingModel.STAFF" Width="1.5" PointX="0.75" PointY="33.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="housekeepingModel.STAFF_LEVEL" Width="1.5" PointX="1.5" PointY="40.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="housekeepingModel.USER_LEVEL" Width="1.5" PointX="0.75" PointY="24.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="housekeepingModel.USER_PLACES" Width="1.5" PointX="10.75" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="housekeepingModel.USERS" Width="1.5" PointX="3" PointY="23.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="housekeepingModel.WORKOFF" Width="1.5" PointX="3" PointY="56" IsExpanded="true" />
+      <Diagram DiagramId="449d4798b9754b929852d9b9b93acab8" Name="Diagram1">
+        <EntityTypeShape EntityType="housekeepingModel.AUTHORS" Width="1.5" PointX="13" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="housekeepingModel.CASH_LOG" Width="1.5" PointX="5.25" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="housekeepingModel.CASH_RULE" Width="1.5" PointX="12.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="housekeepingModel.CASH_RULE_ITEM" Width="1.5" PointX="15" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="housekeepingModel.CHECKCODERECORD" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="housekeepingModel.CITY" Width="1.5" PointX="6" PointY="26.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="housekeepingModel.CITY_SERVICE" Width="1.5" PointX="11" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="housekeepingModel.COMMISION_RULE" Width="1.5" PointX="12.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="housekeepingModel.COMMISION_RULE_ITEM" Width="1.5" PointX="15" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="housekeepingModel.COMPANY_CHILD" Width="1.5" PointX="8.25" PointY="25.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="housekeepingModel.COMPANY_DETAIL_ITEM" Width="1.5" PointX="10.5" PointY="25.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="housekeepingModel.COUPON_INFO" Width="1.5" PointX="3" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="housekeepingModel.COUPON_RECORD" Width="1.5" PointX="5.25" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="housekeepingModel.DETAIL_ITEM" Width="1.5" PointX="8.25" PointY="22.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="housekeepingModel.FEEDBACK" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="housekeepingModel.MASTERS" Width="1.5" PointX="10.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="housekeepingModel.MODULES" Width="1.5" PointX="10.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="housekeepingModel.OPERATE_QUEUE" Width="1.5" PointX="13.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="housekeepingModel.OPERATION_LOG" Width="1.5" PointX="15.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="housekeepingModel.ORDER_ITEM" Width="1.5" PointX="10.5" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="housekeepingModel.ORDERS" Width="1.5" PointX="8.25" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="housekeepingModel.PROPERTY" Width="1.5" PointX="6" PointY="36" IsExpanded="true" />
+        <EntityTypeShape EntityType="housekeepingModel.PROVICE" Width="1.5" PointX="3.75" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="housekeepingModel.RATE_PLAN" Width="1.5" PointX="8.25" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="housekeepingModel.REALMESSAGE" Width="1.5" PointX="15.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="housekeepingModel.SALRY" Width="1.5" PointX="8.25" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="housekeepingModel.SELFSERVICE" Width="1.5" PointX="8.25" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="housekeepingModel.SERVICE" Width="1.5" PointX="8.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="housekeepingModel.SERVICE_PLAN" Width="1.5" PointX="6" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="housekeepingModel.SERVICE_PROPERTY_HEADER" Width="1.5" PointX="6" PointY="33" IsExpanded="true" />
+        <EntityTypeShape EntityType="housekeepingModel.SERVICE_PROPERTY_ITEM" Width="1.5" PointX="8.25" PointY="34.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="housekeepingModel.SERVICEPLACES" Width="1.5" PointX="5.25" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="housekeepingModel.STAFF" Width="1.5" PointX="6" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="housekeepingModel.STAFF_LEVEL" Width="1.5" PointX="3.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="housekeepingModel.USER_LEVEL" Width="1.5" PointX="0.75" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="housekeepingModel.USER_PLACES" Width="1.5" PointX="17.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="housekeepingModel.USERS" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="housekeepingModel.WORKOFF" Width="1.5" PointX="8.25" PointY="39.125" IsExpanded="true" />
         <AssociationConnector Association="housekeepingModel.FK_AUTHORS_REFERENCE_MASTERS" ManuallyRouted="false" />
         <AssociationConnector Association="housekeepingModel.FK_AUTHORS_REFERENCE_MODULES" ManuallyRouted="false" />
         <AssociationConnector Association="housekeepingModel.FK_CASH_LOG_REFERENCE_USERS" ManuallyRouted="false" />
@@ -53,10 +53,8 @@
         <AssociationConnector Association="housekeepingModel.FK_RATE_PLA_REFERENCE_CITY" ManuallyRouted="false" />
         <AssociationConnector Association="housekeepingModel.FK_CITY_SER_REFERENCE_SERVICE" ManuallyRouted="false" />
         <AssociationConnector Association="housekeepingModel.FK_COMMISIO_REFERENCE_COMMISIO" ManuallyRouted="false" />
-        <AssociationConnector Association="housekeepingModel.FK_COMMISIO_REFERENCE_SERVICE8" ManuallyRouted="false" />
         <AssociationConnector Association="housekeepingModel.FK_COMPANY__REFERENCE_COMPANY_" ManuallyRouted="false" />
         <AssociationConnector Association="housekeepingModel.FK_COMPANY__REFERENCE_DETAIL_I" ManuallyRouted="false" />
-        <AssociationConnector Association="housekeepingModel.FK_COUPON_I_REFERENCE_SERVICE" ManuallyRouted="false" />
         <AssociationConnector Association="housekeepingModel.FK_COUPON_R_REFERENCE_COUPON_I" ManuallyRouted="false" />
         <AssociationConnector Association="housekeepingModel.FK_COUPON_R_REFERENCE_USERS" ManuallyRouted="false" />
         <AssociationConnector Association="housekeepingModel.FK_ORDER_IT_REFERENCE_ORDERS" ManuallyRouted="false" />
@@ -68,8 +66,6 @@
         <AssociationConnector Association="housekeepingModel.FK_RATE_PLA_REFERENCE_SERVICE_2" ManuallyRouted="false" />
         <AssociationConnector Association="housekeepingModel.FK_RATE_PLA_REFERENCE_SERVICE_4" ManuallyRouted="false" />
         <AssociationConnector Association="housekeepingModel.FK_SALRY_REFERENCE_STAFF" ManuallyRouted="false" />
-        <AssociationConnector Association="housekeepingModel.FK_SELFSERV_REFERENCE_SERVICE" ManuallyRouted="false" />
-        <AssociationConnector Association="housekeepingModel.FK_SERVICE__REFERENCE_SERVICE" ManuallyRouted="false" />
         <AssociationConnector Association="housekeepingModel.FK_SERVICE_REFERENCE_SERVICE" ManuallyRouted="false" />
         <AssociationConnector Association="housekeepingModel.FK_SERVICE__REFERENCE_SERVICE_" ManuallyRouted="false" />
         <AssociationConnector Association="housekeepingModel.FK_SERVICEP_REFERENCE_USERS" ManuallyRouted="false" />

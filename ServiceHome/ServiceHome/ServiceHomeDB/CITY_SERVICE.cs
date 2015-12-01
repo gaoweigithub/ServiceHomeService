@@ -14,7 +14,7 @@ namespace ServiceHome.ServiceHomeDB
     
     public partial class CITY_SERVICE
     {
-        public decimal CITY_SERVICE1 { get; set; }
+        public int CITY_SERVICE1 { get; set; }
         public Nullable<int> SERVICE_ID { get; set; }
         public Nullable<int> CITYID { get; set; }
         public Nullable<System.DateTime> CREATETIME { get; set; }

@@ -13,7 +13,7 @@ namespace CommonTool
         {
             try
             {
-                Console.WriteLine(SMSHelper.SendRegisterCheckCode("18612112092", "23123"));
+                //Console.WriteLine(SMSHelper.SendRegisterCheckCode("18612112092", "23123"));
             }
             catch (Exception ex)
             {

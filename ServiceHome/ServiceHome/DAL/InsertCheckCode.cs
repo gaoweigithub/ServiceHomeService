@@ -106,7 +106,7 @@ namespace ServiceHome.DAL
                     string sql1 = "update CHECKCODERECORD set ISCHECKED='T' where PHONENO={0} and CHECKCODE={1} and ISCHECKED='F'";
                     string sql2 = "update USERS set PASSWORD='{0}' where USERNAME='{1}'";
                     db.Database.ExecuteSqlCommand(string.Format(sql1, PhoneNO, checkCode));
-                    db.Database.ExecuteSqlCommand(string.Format(sql2, PhoneNO, checkCode));
+                    db.Database.ExecuteSqlCommand(string.Format(sql2, checkCode, PhoneNO));
                     db.SaveChanges();
                     tran.Complete();
                 }

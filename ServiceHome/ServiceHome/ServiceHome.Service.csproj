@@ -134,7 +134,10 @@
   <ItemGroup>
     <Compile Include="CommonClass\AppHost.cs" />
     <Compile Include="CommonClass\BaseService.cs" />
+    <Compile Include="CommonClass\ConstString.cs" />
     <Compile Include="DAL\AddOperationLog.cs" />
+    <Compile Include="DAL\CityDao.cs" />
+    <Compile Include="DAL\GetServices.cs" />
     <Compile Include="DAL\InsertCheckCode.cs" />
     <Compile Include="DAL\Order.cs" />
     <Compile Include="DAL\ServicePlace.cs" />
@@ -277,6 +280,7 @@
     <Compile Include="Services\CancelOrderService.cs" />
     <Compile Include="Services\CheckAndLogin.cs" />
     <Compile Include="Services\CreateOrderService.cs" />
+    <Compile Include="Services\GetCityService.cs" />
     <Compile Include="Services\PayOrderService.cs" />
     <Compile Include="Services\ServicePlace.cs" />
     <Compile Include="Services\HomeServices.cs" />
