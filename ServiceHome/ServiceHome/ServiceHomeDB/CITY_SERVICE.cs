@@ -20,6 +20,5 @@ namespace ServiceHome.ServiceHomeDB
         public Nullable<System.DateTime> CREATETIME { get; set; }
     
         public virtual CITY CITY { get; set; }
-        public virtual SERVICE SERVICE { get; set; }
     }
 }

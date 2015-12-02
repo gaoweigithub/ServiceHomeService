@@ -14,15 +14,7 @@ namespace ServiceHome.ServiceHomeDB
     
     public partial class SERVICE
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public SERVICE()
-        {
-            this.CITY_SERVICE = new HashSet<CITY_SERVICE>();
-            this.SERVICE1 = new HashSet<SERVICE>();
-        }
-    
         public int SERVICE_ID { get; set; }
-        public Nullable<int> PARENT_SERVICE_ID { get; set; }
         public string SERVICE_CODE { get; set; }
         public string SERVICE_NAME { get; set; }
         public Nullable<System.DateTime> CREATE_TIME { get; set; }
@@ -30,11 +22,6 @@ namespace ServiceHome.ServiceHomeDB
         public Nullable<bool> ISLEAF { get; set; }
         public string PICURL { get; set; }
         public string SERVICE_ITEMS { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CITY_SERVICE> CITY_SERVICE { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SERVICE> SERVICE1 { get; set; }
-        public virtual SERVICE SERVICE2 { get; set; }
+        public Nullable<int> PARENT_SERVICE_ID { get; set; }
     }
 }

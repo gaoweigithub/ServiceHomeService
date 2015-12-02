@@ -17,7 +17,7 @@ namespace ServiceHome.Services
         {
             GetCityServiceResponse response = new GetCityServiceResponse();
             response.ServiceList = new DAL.GetServices().GetServiceList(request.cityID);
-            response.ResponseStatus = new Model.Common.ResponseStatus { isSuccess=true };
+            response.ResponseStatus = new Model.Common.ResponseStatus { isSuccess = true };
             return response;
         }
     }

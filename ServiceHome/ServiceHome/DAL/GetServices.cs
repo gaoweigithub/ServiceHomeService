@@ -37,29 +37,11 @@ namespace ServiceHome.DAL
                     string sql = @"SELECT S.* FROM CITY C INNER JOIN CITY_SERVICE CS ON C.CITYID=CS.CITYID 
                                     INNER JOIN SERVICE S ON CS.SERVICE_ID=S.SERVICE_ID
                                     WHERE C.CITYID=@CITYID AND C.ISOPEN=1";
-                    List<ServiceHomeDB.SERVICE> tt = db.SERVICE.SqlQuery(sql, new SqlParameter("@CITYID", cityID)).ToList();
-                    if (tt != null)
-                    {
-                        tt.ForEach(item =>
-                        {
-                            listService.Add(new ServiceHomeDB.SERVICE
-                            {
-                                CITY_SERVICE = item.CITY_SERVICE,
-                                CREATE_TIME = item.CREATE_TIME,
-                                ISLEAF = item.ISLEAF,
-                                PARENT_SERVICE_ID = item.PARENT_SERVICE_ID,
-                                SERVICE_NAME = item.SERVICE_NAME,
-                                PICURL = item.PICURL,
-                                SERVICE_CODE = item.SERVICE_CODE,
-                                SERVICE_ID = item.SERVICE_ID,
-                                SERVICE_ITEMS = item.SERVICE_ITEMS,
-                                URL = item.URL
-                            });
-                        });
-                    }
+                    listService = db.SERVICE.SqlQuery(sql, new SqlParameter("@CITYID", cityID)).ToList();
 
                     //更新缓存
-                    MemoryCacheHelper.Set(key, listService);
+                    //半小时过期
+                    MemoryCacheHelper.Set(key, listService, DateTimeOffset.Now.AddHours(0.5));
                 }
             }
 

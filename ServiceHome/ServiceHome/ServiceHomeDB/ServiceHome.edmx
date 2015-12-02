@@ -336,7 +336,6 @@
             <PropertyRef Name="SERVICE_ID" />
           </Key>
           <Property Name="SERVICE_ID" Type="int" Nullable="false" />
-          <Property Name="PARENT_SERVICE_ID" Type="int" />
           <Property Name="SERVICE_CODE" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="SERVICE_NAME" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="CREATE_TIME" Type="datetime" />
@@ -344,6 +343,7 @@
           <Property Name="ISLEAF" Type="bit" />
           <Property Name="PICURL" Type="varchar" MaxLength="50" />
           <Property Name="SERVICE_ITEMS" Type="varchar" MaxLength="100" />
+          <Property Name="PARENT_SERVICE_ID" Type="int" />
         </EntityType>
         <EntityType Name="SERVICE_PLAN">
           <Key>
@@ -537,18 +537,6 @@
             </Principal>
             <Dependent Role="CITY_SERVICE">
               <PropertyRef Name="CITYID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CITY_SER_REFERENCE_SERVICE">
-          <End Role="SERVICE" Type="Self.SERVICE" Multiplicity="0..1" />
-          <End Role="CITY_SERVICE" Type="Self.CITY_SERVICE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SERVICE">
-              <PropertyRef Name="SERVICE_ID" />
-            </Principal>
-            <Dependent Role="CITY_SERVICE">
-              <PropertyRef Name="SERVICE_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -756,18 +744,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_SERVICE_REFERENCE_SERVICE">
-          <End Role="SERVICE" Type="Self.SERVICE" Multiplicity="0..1" />
-          <End Role="SERVICE1" Type="Self.SERVICE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SERVICE">
-              <PropertyRef Name="SERVICE_ID" />
-            </Principal>
-            <Dependent Role="SERVICE1">
-              <PropertyRef Name="PARENT_SERVICE_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_SERVICEP_REFERENCE_USERS">
           <End Role="USERS" Type="Self.USERS" Multiplicity="1" />
           <End Role="SERVICEPLACES" Type="Self.SERVICEPLACES" Multiplicity="*" />
@@ -879,10 +855,6 @@
             <End Role="CITY" EntitySet="CITY" />
             <End Role="CITY_SERVICE" EntitySet="CITY_SERVICE" />
           </AssociationSet>
-          <AssociationSet Name="FK_CITY_SER_REFERENCE_SERVICE" Association="Self.FK_CITY_SER_REFERENCE_SERVICE">
-            <End Role="SERVICE" EntitySet="SERVICE" />
-            <End Role="CITY_SERVICE" EntitySet="CITY_SERVICE" />
-          </AssociationSet>
           <AssociationSet Name="FK_COMMISIO_REFERENCE_COMMISIO" Association="Self.FK_COMMISIO_REFERENCE_COMMISIO">
             <End Role="COMMISION_RULE" EntitySet="COMMISION_RULE" />
             <End Role="COMMISION_RULE_ITEM" EntitySet="COMMISION_RULE_ITEM" />
@@ -950,10 +922,6 @@
           <AssociationSet Name="FK_SERVICE__REFERENCE_SERVICE_" Association="Self.FK_SERVICE__REFERENCE_SERVICE_">
             <End Role="SERVICE_PROPERTY_HEADER" EntitySet="SERVICE_PROPERTY_HEADER" />
             <End Role="SERVICE_PROPERTY_ITEM" EntitySet="SERVICE_PROPERTY_ITEM" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SERVICE_REFERENCE_SERVICE" Association="Self.FK_SERVICE_REFERENCE_SERVICE">
-            <End Role="SERVICE" EntitySet="SERVICE" />
-            <End Role="SERVICE1" EntitySet="SERVICE" />
           </AssociationSet>
           <AssociationSet Name="FK_SERVICEP_REFERENCE_USERS" Association="Self.FK_SERVICEP_REFERENCE_USERS">
             <End Role="USERS" EntitySet="USERS" />
@@ -1062,7 +1030,6 @@
           <Property Name="CITYID" Type="Int32" />
           <Property Name="CREATETIME" Type="DateTime" Precision="3" />
           <NavigationProperty Name="CITY" Relationship="Self.FK_CITY_SER_REFERENCE_CITY" FromRole="CITY_SERVICE" ToRole="CITY" />
-          <NavigationProperty Name="SERVICE" Relationship="Self.FK_CITY_SER_REFERENCE_SERVICE" FromRole="CITY_SERVICE" ToRole="SERVICE" />
         </EntityType>
         <EntityType Name="COMMISION_RULE">
           <Key>
@@ -1345,7 +1312,6 @@
             <PropertyRef Name="SERVICE_ID" />
           </Key>
           <Property Name="SERVICE_ID" Type="Int32" Nullable="false" />
-          <Property Name="PARENT_SERVICE_ID" Type="Int32" />
           <Property Name="SERVICE_CODE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="SERVICE_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CREATE_TIME" Type="DateTime" Precision="3" />
@@ -1353,9 +1319,7 @@
           <Property Name="ISLEAF" Type="Boolean" />
           <Property Name="PICURL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="SERVICE_ITEMS" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="CITY_SERVICE" Relationship="Self.FK_CITY_SER_REFERENCE_SERVICE" FromRole="SERVICE" ToRole="CITY_SERVICE" />
-          <NavigationProperty Name="SERVICE1" Relationship="Self.FK_SERVICE_REFERENCE_SERVICE" FromRole="SERVICE" ToRole="SERVICE1" />
-          <NavigationProperty Name="SERVICE2" Relationship="Self.FK_SERVICE_REFERENCE_SERVICE" FromRole="SERVICE1" ToRole="SERVICE" />
+          <Property Name="PARENT_SERVICE_ID" Type="Int32" />
         </EntityType>
         <EntityType Name="SERVICE_PLAN">
           <Key>
@@ -1594,18 +1558,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_CITY_SER_REFERENCE_SERVICE">
-          <End Role="SERVICE" Type="Self.SERVICE" Multiplicity="0..1" />
-          <End Role="CITY_SERVICE" Type="Self.CITY_SERVICE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SERVICE">
-              <PropertyRef Name="SERVICE_ID" />
-            </Principal>
-            <Dependent Role="CITY_SERVICE">
-              <PropertyRef Name="SERVICE_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_COMMISIO_REFERENCE_COMMISIO">
           <End Role="COMMISION_RULE" Type="Self.COMMISION_RULE" Multiplicity="0..1" />
           <End Role="COMMISION_RULE_ITEM" Type="Self.COMMISION_RULE_ITEM" Multiplicity="*" />
@@ -1774,18 +1726,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_SERVICE_REFERENCE_SERVICE">
-          <End Role="SERVICE" Type="Self.SERVICE" Multiplicity="0..1" />
-          <End Role="SERVICE1" Type="Self.SERVICE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SERVICE">
-              <PropertyRef Name="SERVICE_ID" />
-            </Principal>
-            <Dependent Role="SERVICE1">
-              <PropertyRef Name="PARENT_SERVICE_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_SERVICE__REFERENCE_SERVICE_">
           <End Role="SERVICE_PROPERTY_HEADER" Type="Self.SERVICE_PROPERTY_HEADER" Multiplicity="0..1" />
           <End Role="SERVICE_PROPERTY_ITEM" Type="Self.SERVICE_PROPERTY_ITEM" Multiplicity="*" />
@@ -1917,10 +1857,6 @@
             <End Role="CITY" EntitySet="CITY" />
             <End Role="RATE_PLAN" EntitySet="RATE_PLAN" />
           </AssociationSet>
-          <AssociationSet Name="FK_CITY_SER_REFERENCE_SERVICE" Association="Self.FK_CITY_SER_REFERENCE_SERVICE">
-            <End Role="SERVICE" EntitySet="SERVICE" />
-            <End Role="CITY_SERVICE" EntitySet="CITY_SERVICE" />
-          </AssociationSet>
           <AssociationSet Name="FK_COMMISIO_REFERENCE_COMMISIO" Association="Self.FK_COMMISIO_REFERENCE_COMMISIO">
             <End Role="COMMISION_RULE" EntitySet="COMMISION_RULE" />
             <End Role="COMMISION_RULE_ITEM" EntitySet="COMMISION_RULE_ITEM" />
@@ -1976,10 +1912,6 @@
           <AssociationSet Name="FK_SALRY_REFERENCE_STAFF" Association="Self.FK_SALRY_REFERENCE_STAFF">
             <End Role="STAFF" EntitySet="STAFF" />
             <End Role="SALRY" EntitySet="SALRY" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SERVICE_REFERENCE_SERVICE" Association="Self.FK_SERVICE_REFERENCE_SERVICE">
-            <End Role="SERVICE" EntitySet="SERVICE" />
-            <End Role="SERVICE1" EntitySet="SERVICE" />
           </AssociationSet>
           <AssociationSet Name="FK_SERVICE__REFERENCE_SERVICE_" Association="Self.FK_SERVICE__REFERENCE_SERVICE_">
             <End Role="SERVICE_PROPERTY_HEADER" EntitySet="SERVICE_PROPERTY_HEADER" />
@@ -2365,7 +2297,6 @@
             <EntityTypeMapping TypeName="housekeepingModel.SERVICE">
               <MappingFragment StoreEntitySet="SERVICE">
                 <ScalarProperty Name="SERVICE_ID" ColumnName="SERVICE_ID" />
-                <ScalarProperty Name="PARENT_SERVICE_ID" ColumnName="PARENT_SERVICE_ID" />
                 <ScalarProperty Name="SERVICE_CODE" ColumnName="SERVICE_CODE" />
                 <ScalarProperty Name="SERVICE_NAME" ColumnName="SERVICE_NAME" />
                 <ScalarProperty Name="CREATE_TIME" ColumnName="CREATE_TIME" />
@@ -2373,6 +2304,7 @@
                 <ScalarProperty Name="ISLEAF" ColumnName="ISLEAF" />
                 <ScalarProperty Name="PICURL" ColumnName="PICURL" />
                 <ScalarProperty Name="SERVICE_ITEMS" ColumnName="SERVICE_ITEMS" />
+                <ScalarProperty Name="PARENT_SERVICE_ID" ColumnName="PARENT_SERVICE_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
