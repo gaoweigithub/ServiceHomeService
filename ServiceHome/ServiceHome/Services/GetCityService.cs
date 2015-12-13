@@ -21,7 +21,7 @@ namespace ServiceHome.Services
             return response;
         }
     }
-    [Route("/GetCityService", "POST")]
+    [Route("/GetCityService")]
     public class GetCityServiceRequest : RequestBase
     {
         /// <summary>
