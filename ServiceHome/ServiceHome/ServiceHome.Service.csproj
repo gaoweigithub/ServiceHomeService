@@ -76,9 +76,9 @@
       <HintPath>..\packages\ServiceStack.OrmLite.SqlServer.4.0.46\lib\net45\ServiceStack.OrmLite.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="ServiceStack.Text, Version=4.0.46.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ServiceStack.Text.4.0.46\lib\net40\ServiceStack.Text.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="ServiceStack.Text, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLLS\ServiceStack.Text.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Runtime.Serialization" />
@@ -102,6 +102,25 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="DLLS\EntityFramework.dll" />
+    <Content Include="DLLS\EntityFramework.SqlServer.dll" />
+    <Content Include="DLLS\EntityFramework.SqlServer.xml" />
+    <Content Include="DLLS\EntityFramework.xml" />
+    <Content Include="DLLS\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll" />
+    <Content Include="DLLS\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml" />
+    <Content Include="DLLS\ServiceStack.Client.dll" />
+    <Content Include="DLLS\ServiceStack.Client.xml" />
+    <Content Include="DLLS\ServiceStack.Common.dll" />
+    <Content Include="DLLS\ServiceStack.Common.xml" />
+    <Content Include="DLLS\ServiceStack.dll" />
+    <Content Include="DLLS\ServiceStack.Interfaces.dll" />
+    <Content Include="DLLS\ServiceStack.OrmLite.dll" />
+    <Content Include="DLLS\ServiceStack.OrmLite.SqlServer.dll" />
+    <Content Include="DLLS\ServiceStack.OrmLite.xml" />
+    <Content Include="DLLS\ServiceStack.Text.dll" />
+    <Content Include="DLLS\ServiceStack.Text.pdb" />
+    <Content Include="DLLS\ServiceStack.Text.xml" />
+    <Content Include="DLLS\ServiceStack.xml" />
     <Content Include="packages.config" />
     <EntityDeploy Include="ServiceHomeDB\ServiceHome.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
