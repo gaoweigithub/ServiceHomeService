@@ -61,7 +61,7 @@ namespace ServiceHome.Services
 
         }
     }
-    [Route("/CheckAndLogin", "POST")]
+    [Route("/CheckAndLogin")]
     public class CheckAndLoginRequest : RequestBase
     {
         public string PhoneNO { get; set; }

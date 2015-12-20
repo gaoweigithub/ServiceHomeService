@@ -20,7 +20,7 @@ namespace ServiceHome.DAL
                           where t.PHONENO == phoneNO && t.ISCHECKED == "F"
                           select t.CREATETIME).FirstOrDefault();
 
-                if (dt == null || dt == DateTime.MinValue || (DateTime.Now - dt) > new TimeSpan(0, 3, 0))
+                if (dt == null || dt == DateTime.MinValue || (DateTime.Now - dt) > new TimeSpan(0, 1, 0))
                 {
                     return true;
                 }
@@ -28,7 +28,7 @@ namespace ServiceHome.DAL
             }
             catch (Exception ex)
             {
-                DAL.AddOperationLog.Error(" 判断是否重复验证码，三分钟之内", ex.Message);
+                DAL.AddOperationLog.Error(" 判断是否重复验证码，1分钟之内", ex.Message);
             }
 
             return false;

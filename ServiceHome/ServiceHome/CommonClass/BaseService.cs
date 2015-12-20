@@ -13,16 +13,16 @@ namespace ServiceHome
         {
             try
             {
-                int userID = int.Parse(Request.GetParam("userid"));
-                string accesscode = Request.GetParam("acode");
-                request.requestHeader = new Model.Common.RequestHead { UserID = userID, AccessCode = accesscode };
+
                 if (request is Services.SendSMSCheckCodeRequest
                     || request is Services.CheckAndLoginRequest)
                 {
                     //发送验证码和注册接口不需要权限验证
                     return Excute(request);
                 }
-
+                int userID = int.Parse(Request.GetParam("userid"));
+                string accesscode = Request.GetParam("acode");
+                request.requestHeader = new Model.Common.RequestHead { UserID = userID, AccessCode = accesscode };
                 //否则需要权限验证 
                 bool check = DAL.UserHelper.CheckPermmisson(request.requestHeader.UserID, request.requestHeader.AccessCode);
                 if (!check)
@@ -33,7 +33,7 @@ namespace ServiceHome
             }
             catch (Exception ex)
             {
-                DAL.AddOperationLog.Error(request.requestHeader.interfaceName, ex.Message + CommonTool.XmlHelper.Serializer(request));
+                //DAL.AddOperationLog.Error(request.requestHeader.interfaceName, ex.Message + CommonTool.XmlHelper.Serializer(request));
                 return new TResponse() { ResponseStatus = new Model.Common.ResponseStatus { isSuccess = false } };
             }
         }
