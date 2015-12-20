@@ -9,6 +9,8 @@ namespace ServiceHome.Services
         {
             CheckAndLoginResponse response = null;
             bool result = true;
+            long userid = -1;
+            bool isExsits = true;
             try
             {
                 if (!CommonTool.CommonHelper.IsMobile(request.PhoneNO))
@@ -20,6 +22,7 @@ namespace ServiceHome.Services
                     //sucess
                     if (!DAL.UserHelper.ifExistsUser(request.PhoneNO))
                     {
+                        isExsits = false;
                         result = DAL.UserHelper.AddUser(new ServiceHomeDB.USERS
                         {
                             CT = DateTime.Now,
@@ -28,10 +31,10 @@ namespace ServiceHome.Services
                             PHONE = request.PhoneNO,
                             PASSWORD = request.CheckCode,
                             LASTUPDATETIME = DateTime.Now,
-                        });
+                        }, out userid);
                     }
                     //设置结束
-                    DAL.CheckCodeHelper.SetCheckFinishAndUpdateUser(request.PhoneNO, request.CheckCode);
+                    DAL.CheckCodeHelper.SetCheckFinishAndUpdateUser(request.PhoneNO, request.CheckCode, isExsits, ref userid);
                 }
                 else
                 {
@@ -69,6 +72,9 @@ namespace ServiceHome.Services
     }
     public class CheckAndLoginResponse : ResponseBase
     {
-
+        /// <summary>
+        /// 数据库表中的user主键
+        /// </summary>
+        public string USERID { get; set; }
     }
 }

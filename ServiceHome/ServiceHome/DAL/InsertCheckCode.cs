@@ -95,7 +95,7 @@ namespace ServiceHome.DAL
         /// <summary>
         /// 设置验证码验证结束并更新用户表字段
         /// </summary>
-        public static void SetCheckFinishAndUpdateUser(string PhoneNO, string checkCode)
+        public static void SetCheckFinishAndUpdateUser(string PhoneNO, string checkCode, bool isExsits,ref long userid)
         {
             using (TransactionScope tran = new TransactionScope())
             {
@@ -107,6 +107,14 @@ namespace ServiceHome.DAL
                     string sql2 = "update USERS set PASSWORD='{0}' where USERNAME='{1}'";
                     db.Database.ExecuteSqlCommand(string.Format(sql1, PhoneNO, checkCode));
                     db.Database.ExecuteSqlCommand(string.Format(sql2, checkCode, PhoneNO));
+                    if (isExsits)
+                    {
+                        var query = (from u in db.USERS
+                                     where u.USERNAME == PhoneNO
+                                     select u.USERID).FirstOrDefault();
+                        userid = query;
+                    }
+
                     db.SaveChanges();
                     tran.Complete();
                 }

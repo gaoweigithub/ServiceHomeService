@@ -97,8 +97,9 @@ namespace ServiceHome.DAL
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public static bool AddUser(ServiceHomeDB.USERS model)
+        public static bool AddUser(ServiceHomeDB.USERS model,out long id)
         {
+            id = -1;
             int i = 0;
             try
             {
@@ -106,6 +107,7 @@ namespace ServiceHome.DAL
 
                 db.USERS.Add(model);
                 i = db.SaveChanges();
+                id = model.USERID;
             }
             catch (Exception ex)
             {
