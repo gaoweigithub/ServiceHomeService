@@ -33,6 +33,7 @@ namespace ServiceHome.ServiceHomeDB
         public System.DateTime SUBMIT_TIME { get; set; }
         public Nullable<System.DateTime> ISSUE_TIME { get; set; }
     
+        public virtual SERVICE SERVICE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<COUPON_RECORD> COUPON_RECORD { get; set; }
     }

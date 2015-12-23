@@ -14,6 +14,16 @@ namespace ServiceHome.ServiceHomeDB
     
     public partial class SERVICE
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public SERVICE()
+        {
+            this.CITY_SERVICE = new HashSet<CITY_SERVICE>();
+            this.COMMISION_RULE_ITEM = new HashSet<COMMISION_RULE_ITEM>();
+            this.COUPON_INFO = new HashSet<COUPON_INFO>();
+            this.SELFSERVICE = new HashSet<SELFSERVICE>();
+            this.SERVICE_PLAN = new HashSet<SERVICE_PLAN>();
+        }
+    
         public int SERVICE_ID { get; set; }
         public string SERVICE_CODE { get; set; }
         public string SERVICE_NAME { get; set; }
@@ -23,5 +33,16 @@ namespace ServiceHome.ServiceHomeDB
         public string PICURL { get; set; }
         public string SERVICE_ITEMS { get; set; }
         public Nullable<int> PARENT_SERVICE_ID { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CITY_SERVICE> CITY_SERVICE { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<COMMISION_RULE_ITEM> COMMISION_RULE_ITEM { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<COUPON_INFO> COUPON_INFO { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SELFSERVICE> SELFSERVICE { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SERVICE_PLAN> SERVICE_PLAN { get; set; }
     }
 }

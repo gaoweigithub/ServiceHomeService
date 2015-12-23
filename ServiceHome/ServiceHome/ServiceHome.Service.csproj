@@ -122,12 +122,12 @@
     <Content Include="DLLS\ServiceStack.Text.xml" />
     <Content Include="DLLS\ServiceStack.xml" />
     <Content Include="packages.config" />
-    <EntityDeploy Include="ServiceHomeDB\ServiceHome.edmx">
+    <EntityDeploy Include="ServiceHomeDB\ServiceHomeDB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ServiceHome.Designer.cs</LastGenOutput>
+      <LastGenOutput>ServiceHomeDB.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="ServiceHomeDB\ServiceHome.edmx.diagram">
-      <DependentUpon>ServiceHome.edmx</DependentUpon>
+    <Content Include="ServiceHomeDB\ServiceHomeDB.edmx.diagram">
+      <DependentUpon>ServiceHomeDB.edmx</DependentUpon>
     </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -138,15 +138,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
-    <Content Include="ServiceHomeDB\ServiceHome.Context.tt">
+    <Content Include="ServiceHomeDB\ServiceHomeDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ServiceHome.edmx</DependentUpon>
-      <LastGenOutput>ServiceHome.Context.cs</LastGenOutput>
+      <DependentUpon>ServiceHomeDB.edmx</DependentUpon>
+      <LastGenOutput>ServiceHomeDB.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="ServiceHomeDB\ServiceHome.tt">
+    <Content Include="ServiceHomeDB\ServiceHomeDB.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ServiceHome.edmx</DependentUpon>
-      <LastGenOutput>ServiceHome.cs</LastGenOutput>
+      <DependentUpon>ServiceHomeDB.edmx</DependentUpon>
+      <LastGenOutput>ServiceHomeDB.cs</LastGenOutput>
     </Content>
     <Content Include="Web.config" />
   </ItemGroup>
@@ -167,133 +167,133 @@
     <Compile Include="Requests\User\AddUser.cs" />
     <Compile Include="Responses\User\AddUserResponse.cs" />
     <Compile Include="ServiceHomeDB\AUTHORS.cs">
-      <DependentUpon>ServiceHome.tt</DependentUpon>
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ServiceHomeDB\CASH_LOG.cs">
-      <DependentUpon>ServiceHome.tt</DependentUpon>
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ServiceHomeDB\CASH_RULE.cs">
-      <DependentUpon>ServiceHome.tt</DependentUpon>
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ServiceHomeDB\CASH_RULE_ITEM.cs">
-      <DependentUpon>ServiceHome.tt</DependentUpon>
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ServiceHomeDB\CHECKCODERECORD.cs">
-      <DependentUpon>ServiceHome.tt</DependentUpon>
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ServiceHomeDB\CITY.cs">
-      <DependentUpon>ServiceHome.tt</DependentUpon>
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ServiceHomeDB\CITY_SERVICE.cs">
-      <DependentUpon>ServiceHome.tt</DependentUpon>
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ServiceHomeDB\COMMISION_RULE.cs">
-      <DependentUpon>ServiceHome.tt</DependentUpon>
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ServiceHomeDB\COMMISION_RULE_ITEM.cs">
-      <DependentUpon>ServiceHome.tt</DependentUpon>
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ServiceHomeDB\COMPANY_CHILD.cs">
-      <DependentUpon>ServiceHome.tt</DependentUpon>
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ServiceHomeDB\COMPANY_DETAIL_ITEM.cs">
-      <DependentUpon>ServiceHome.tt</DependentUpon>
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ServiceHomeDB\COUPON_INFO.cs">
-      <DependentUpon>ServiceHome.tt</DependentUpon>
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ServiceHomeDB\COUPON_RECORD.cs">
-      <DependentUpon>ServiceHome.tt</DependentUpon>
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ServiceHomeDB\DETAIL_ITEM.cs">
-      <DependentUpon>ServiceHome.tt</DependentUpon>
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ServiceHomeDB\FEEDBACK.cs">
-      <DependentUpon>ServiceHome.tt</DependentUpon>
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ServiceHomeDB\MASTERS.cs">
-      <DependentUpon>ServiceHome.tt</DependentUpon>
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ServiceHomeDB\MODULES.cs">
-      <DependentUpon>ServiceHome.tt</DependentUpon>
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ServiceHomeDB\OPERATE_QUEUE.cs">
-      <DependentUpon>ServiceHome.tt</DependentUpon>
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ServiceHomeDB\OPERATION_LOG.cs">
-      <DependentUpon>ServiceHome.tt</DependentUpon>
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ServiceHomeDB\ORDERS.cs">
-      <DependentUpon>ServiceHome.tt</DependentUpon>
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ServiceHomeDB\ORDER_ITEM.cs">
-      <DependentUpon>ServiceHome.tt</DependentUpon>
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ServiceHomeDB\PROPERTY.cs">
-      <DependentUpon>ServiceHome.tt</DependentUpon>
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ServiceHomeDB\PROVICE.cs">
-      <DependentUpon>ServiceHome.tt</DependentUpon>
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ServiceHomeDB\RATE_PLAN.cs">
-      <DependentUpon>ServiceHome.tt</DependentUpon>
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ServiceHomeDB\REALMESSAGE.cs">
-      <DependentUpon>ServiceHome.tt</DependentUpon>
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ServiceHomeDB\SALRY.cs">
-      <DependentUpon>ServiceHome.tt</DependentUpon>
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ServiceHomeDB\SELFSERVICE.cs">
-      <DependentUpon>ServiceHome.tt</DependentUpon>
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ServiceHomeDB\SERVICE.cs">
-      <DependentUpon>ServiceHome.tt</DependentUpon>
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="ServiceHomeDB\ServiceHome.Context.cs">
+    <Compile Include="ServiceHomeDB\ServiceHomeDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ServiceHome.Context.tt</DependentUpon>
+      <DependentUpon>ServiceHomeDB.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="ServiceHomeDB\ServiceHome.cs">
+    <Compile Include="ServiceHomeDB\ServiceHomeDB.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ServiceHome.tt</DependentUpon>
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="ServiceHomeDB\ServiceHome.Designer.cs">
+    <Compile Include="ServiceHomeDB\ServiceHomeDB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ServiceHome.edmx</DependentUpon>
+      <DependentUpon>ServiceHomeDB.edmx</DependentUpon>
     </Compile>
     <Compile Include="ServiceHomeDB\SERVICEPLACES.cs">
-      <DependentUpon>ServiceHome.tt</DependentUpon>
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ServiceHomeDB\SERVICE_PLAN.cs">
-      <DependentUpon>ServiceHome.tt</DependentUpon>
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ServiceHomeDB\SERVICE_PROPERTY_HEADER.cs">
-      <DependentUpon>ServiceHome.tt</DependentUpon>
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ServiceHomeDB\SERVICE_PROPERTY_ITEM.cs">
-      <DependentUpon>ServiceHome.tt</DependentUpon>
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ServiceHomeDB\STAFF.cs">
-      <DependentUpon>ServiceHome.tt</DependentUpon>
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ServiceHomeDB\STAFF_LEVEL.cs">
-      <DependentUpon>ServiceHome.tt</DependentUpon>
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ServiceHomeDB\USERS.cs">
-      <DependentUpon>ServiceHome.tt</DependentUpon>
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ServiceHomeDB\USER_LEVEL.cs">
-      <DependentUpon>ServiceHome.tt</DependentUpon>
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ServiceHomeDB\USER_PLACES.cs">
-      <DependentUpon>ServiceHome.tt</DependentUpon>
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ServiceHomeDB\WORKOFF.cs">
-      <DependentUpon>ServiceHome.tt</DependentUpon>
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Services\AddUserService.cs" />
     <Compile Include="Services\CancelOrderService.cs" />

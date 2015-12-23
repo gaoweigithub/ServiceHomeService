@@ -21,7 +21,7 @@ namespace ServiceHome.ServiceHomeDB
         }
     
         public int PROVINCEID { get; set; }
-        public string PROVINCENAME { get; set; }
+        public byte[] PROVINCENAME { get; set; }
         public Nullable<System.DateTime> CT { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

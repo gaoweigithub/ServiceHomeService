@@ -14,11 +14,12 @@ namespace ServiceHome.ServiceHomeDB
     
     public partial class CITY_SERVICE
     {
-        public int CITY_SERVICE1 { get; set; }
+        public decimal CITY_SERVICE_ID { get; set; }
         public Nullable<int> SERVICE_ID { get; set; }
         public Nullable<int> CITYID { get; set; }
         public Nullable<System.DateTime> CREATETIME { get; set; }
     
         public virtual CITY CITY { get; set; }
+        public virtual SERVICE SERVICE { get; set; }
     }
 }

@@ -24,5 +24,6 @@ namespace ServiceHome.ServiceHomeDB
         public string CU_ID { get; set; }
     
         public virtual COMMISION_RULE COMMISION_RULE { get; set; }
+        public virtual SERVICE SERVICE { get; set; }
     }
 }

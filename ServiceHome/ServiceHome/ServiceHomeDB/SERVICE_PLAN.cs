@@ -30,5 +30,6 @@ namespace ServiceHome.ServiceHomeDB
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RATE_PLAN> RATE_PLAN { get; set; }
+        public virtual SERVICE SERVICE { get; set; }
     }
 }

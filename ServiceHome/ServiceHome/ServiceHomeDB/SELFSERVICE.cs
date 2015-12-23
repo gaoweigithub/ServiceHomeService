@@ -31,5 +31,6 @@ namespace ServiceHome.ServiceHomeDB
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ORDER_ITEM> ORDER_ITEM { get; set; }
+        public virtual SERVICE SERVICE { get; set; }
     }
 }
