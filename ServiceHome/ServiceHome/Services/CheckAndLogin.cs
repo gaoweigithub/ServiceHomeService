@@ -42,6 +42,7 @@ namespace ServiceHome.Services
                 }
                 response = new CheckAndLoginResponse
                 {
+                    USERID= userid.ToString(),
                     ResponseStatus = new Model.Common.ResponseStatus
                     {
                         isSuccess = result
