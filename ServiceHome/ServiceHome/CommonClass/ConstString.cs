@@ -20,5 +20,13 @@ namespace ServiceHome
             //cityservice
             return string.Format("CS_{0}", cityID);
         }
+        /// <summary>
+        /// 获取已开通城市列表key
+        /// </summary>
+        /// <returns></returns>
+        public static string GetOpenedCityListKey
+        {
+            get { return "OCL"; }
+        }
     }
 }

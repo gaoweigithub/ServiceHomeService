@@ -67,7 +67,7 @@
           </Key>
           <Property Name="CITYID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PROVINCEID" Type="int" />
-          <Property Name="CITYNAME" Type="binary" MaxLength="50" />
+          <Property Name="CITYNAME" Type="varchar" MaxLength="50" />
           <Property Name="CT" Type="datetime" />
           <Property Name="ISOPEN" Type="bit" Nullable="false" />
           <Property Name="CITYCODE" Type="varchar" MaxLength="20" Nullable="false" />
@@ -111,7 +111,7 @@
           </Key>
           <Property Name="CHILD_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CITYID" Type="int" />
-          <Property Name="CHILD_NAME" Type="binary" MaxLength="100" Nullable="false" />
+          <Property Name="CHILD_NAME" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="CHILD_MANAGER" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="COMPANY_DETAIL_ITEM">
@@ -237,7 +237,7 @@
           <Property Name="ENDTIME" Type="datetime" />
           <Property Name="STATUS" Type="varchar" MaxLength="10" />
           <Property Name="ISREJECT" Type="bit" />
-          <Property Name="REJECT_TYPE" Type="binary" MaxLength="1" />
+          <Property Name="REJECT_TYPE" Type="varchar" MaxLength="1" />
           <Property Name="REJECT_DETAIL" Type="varchar" MaxLength="50" />
           <Property Name="STARRATE" Type="varchar" MaxLength="1" />
           <Property Name="USERCOMMENT" Type="binary" MaxLength="50" />
@@ -273,7 +273,7 @@
             <PropertyRef Name="PROVINCEID" />
           </Key>
           <Property Name="PROVINCEID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="PROVINCENAME" Type="binary" MaxLength="50" />
+          <Property Name="PROVINCENAME" Type="varchar" MaxLength="50" />
           <Property Name="CT" Type="datetime" />
         </EntityType>
         <EntityType Name="RATE_PLAN">
@@ -1092,7 +1092,7 @@
           </Key>
           <Property Name="CITYID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PROVINCEID" Type="Int32" />
-          <Property Name="CITYNAME" Type="Binary" MaxLength="50" FixedLength="true" />
+          <Property Name="CITYNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="CT" Type="DateTime" Precision="3" />
           <Property Name="ISOPEN" Type="Boolean" Nullable="false" />
           <Property Name="CITYCODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
@@ -1145,7 +1145,7 @@
           </Key>
           <Property Name="CHILD_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CITYID" Type="Int32" />
-          <Property Name="CHILD_NAME" Type="Binary" MaxLength="100" FixedLength="true" Nullable="false" />
+          <Property Name="CHILD_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CHILD_MANAGER" Type="Int32" Nullable="false" />
           <NavigationProperty Name="CITY" Relationship="Self.FK_COMPANY__REFERENCE_CITY" FromRole="COMPANY_CHILD" ToRole="CITY" />
           <NavigationProperty Name="COMPANY_DETAIL_ITEM" Relationship="Self.FK_COMPANY__REFERENCE_COMPANY_" FromRole="COMPANY_CHILD" ToRole="COMPANY_DETAIL_ITEM" />
@@ -1285,7 +1285,7 @@
           <Property Name="ENDTIME" Type="DateTime" Precision="3" />
           <Property Name="STATUS" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="ISREJECT" Type="Boolean" />
-          <Property Name="REJECT_TYPE" Type="Binary" MaxLength="1" FixedLength="true" />
+          <Property Name="REJECT_TYPE" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
           <Property Name="REJECT_DETAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="STARRATE" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
           <Property Name="USERCOMMENT" Type="Binary" MaxLength="50" FixedLength="true" />
@@ -1325,7 +1325,7 @@
             <PropertyRef Name="PROVINCEID" />
           </Key>
           <Property Name="PROVINCEID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PROVINCENAME" Type="Binary" MaxLength="50" FixedLength="true" />
+          <Property Name="PROVINCENAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="CT" Type="DateTime" Precision="3" />
           <NavigationProperty Name="CITY" Relationship="Self.FK_CITY_REFERENCE_PROVICE" FromRole="PROVICE" ToRole="CITY" />
         </EntityType>

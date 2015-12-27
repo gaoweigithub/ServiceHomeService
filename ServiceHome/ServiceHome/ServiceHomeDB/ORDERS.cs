@@ -28,7 +28,7 @@ namespace ServiceHome.ServiceHomeDB
         public Nullable<System.DateTime> ENDTIME { get; set; }
         public string STATUS { get; set; }
         public Nullable<bool> ISREJECT { get; set; }
-        public byte[] REJECT_TYPE { get; set; }
+        public string REJECT_TYPE { get; set; }
         public string REJECT_DETAIL { get; set; }
         public string STARRATE { get; set; }
         public byte[] USERCOMMENT { get; set; }

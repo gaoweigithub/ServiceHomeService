@@ -22,7 +22,7 @@ namespace ServiceHome.ServiceHomeDB
     
         public int CHILD_ID { get; set; }
         public Nullable<int> CITYID { get; set; }
-        public byte[] CHILD_NAME { get; set; }
+        public string CHILD_NAME { get; set; }
         public int CHILD_MANAGER { get; set; }
     
         public virtual CITY CITY { get; set; }

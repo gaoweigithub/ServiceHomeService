@@ -15,21 +15,31 @@ namespace ServiceHome
             {
 
                 if (request is Services.SendSMSCheckCodeRequest
-                    || request is Services.CheckAndLoginRequest)
+                    || request is Services.CheckAndLoginRequest
+                    ||request is Services.GetOpenedCityRequest)
                 {
                     //发送验证码和注册接口不需要权限验证
                     return Excute(request);
                 }
-                int userID = int.Parse(Request.GetParam("userid"));
-                string accesscode = Request.GetParam("acode");
-                request.requestHeader = new Model.Common.RequestHead { UserID = userID, AccessCode = accesscode };
-                //否则需要权限验证 
-                bool check = DAL.UserHelper.CheckPermmisson(request.requestHeader.UserID, request.requestHeader.AccessCode);
-                if (!check)
+                int userID = -1;
+                if (!string.IsNullOrWhiteSpace(Request.GetParam("userid")) && int.TryParse(Request.GetParam("userid").Trim(), out userID))
                 {
-                    return new TResponse() { ResponseStatus = new Model.Common.ResponseStatus { isSuccess = false } };
+                    string accesscode = Request.GetParam("acode");
+                    request.requestHeader = new Model.Common.RequestHead { UserID = userID, AccessCode = accesscode };
+                    //否则需要权限验证 
+                    bool check = DAL.UserHelper.CheckPermmisson(request.requestHeader.UserID, request.requestHeader.AccessCode);
+                    if (!check)
+                    {
+                        return new TResponse() { ResponseStatus = new Model.Common.ResponseStatus { isSuccess = false } };
+                    }
+                    return Excute(request);
                 }
-                return Excute(request);
+                else
+                {
+                    throw new Exception("无效userid");
+                }
+
+
             }
             catch (Exception ex)
             {

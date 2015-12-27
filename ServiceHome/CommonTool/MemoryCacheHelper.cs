@@ -15,13 +15,10 @@ namespace CommonTool
         {
             return MemoryCache.Default[key];
         }
-        public static Tuple<bool, object> GetValueIfExist(string key)
-        {
-            return new Tuple<bool, object>(IsExist(key), GetValue(key));
-        }
         public static void Set(string key, object value)
         {
-            MemoryCache.Default.Set(key, value, new CacheItemPolicy());
+            //默认一小时
+            MemoryCache.Default.Set(key, value, DateTimeOffset.Now.AddHours(1));
         }
         public static void Set(string key, object value, DateTimeOffset outDate)
         {
