@@ -13,10 +13,10 @@ namespace ServiceHome
         {
             try
             {
-
                 if (request is Services.SendSMSCheckCodeRequest
                     || request is Services.CheckAndLoginRequest
-                    ||request is Services.GetOpenedCityRequest)
+                    ||request is Services.GetOpenedCityRequest
+                    ||request is Services.GetCityServiceRequest)
                 {
                     //发送验证码和注册接口不需要权限验证
                     return Excute(request);

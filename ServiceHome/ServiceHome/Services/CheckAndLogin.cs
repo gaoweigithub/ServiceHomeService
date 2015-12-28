@@ -35,6 +35,9 @@ namespace ServiceHome.Services
                     }
                     //设置结束
                     DAL.CheckCodeHelper.SetCheckFinishAndUpdateUser(request.PhoneNO, request.CheckCode, isExsits, ref userid);
+
+                    DAL.UserHelper.UpdateCache(userid, request.CheckCode);
+
                 }
                 else
                 {
