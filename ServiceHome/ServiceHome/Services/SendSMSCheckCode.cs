@@ -56,7 +56,8 @@ namespace ServiceHome.Services
                 {
                     ResponseStatus = new Model.Common.ResponseStatus
                     {
-                        isSuccess = false
+                        isSuccess = false,
+                        ErrorList = new System.Collections.Generic.List<string> { ex.Message, ex.StackTrace }
                     }
                 };
             }

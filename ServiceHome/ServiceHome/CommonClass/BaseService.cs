@@ -15,8 +15,8 @@ namespace ServiceHome
             {
                 if (request is Services.SendSMSCheckCodeRequest
                     || request is Services.CheckAndLoginRequest
-                    ||request is Services.GetOpenedCityRequest
-                    ||request is Services.GetCityServiceRequest)
+                    || request is Services.GetOpenedCityRequest
+                    || request is Services.GetCityServiceRequest)
                 {
                     //发送验证码和注册接口不需要权限验证
                     return Excute(request);
@@ -44,7 +44,14 @@ namespace ServiceHome
             catch (Exception ex)
             {
                 //DAL.AddOperationLog.Error(request.requestHeader.interfaceName, ex.Message + CommonTool.XmlHelper.Serializer(request));
-                return new TResponse() { ResponseStatus = new Model.Common.ResponseStatus { isSuccess = false } };
+                return new TResponse()
+                {
+                    ResponseStatus = new Model.Common.ResponseStatus
+                    {
+                        isSuccess = false,
+                        ErrorList = new List<string> { ex.Message, ex.StackTrace }
+                    }
+                };
             }
         }
         public abstract TResponse Excute(TRequest request);

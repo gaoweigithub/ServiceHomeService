@@ -29,6 +29,7 @@ namespace ServiceHome.DAL
             catch (Exception ex)
             {
                 DAL.AddOperationLog.Error(" 判断是否重复验证码，1分钟之内", ex.Message);
+                throw ex;
             }
 
             return false;
@@ -95,7 +96,7 @@ namespace ServiceHome.DAL
         /// <summary>
         /// 设置验证码验证结束并更新用户表字段
         /// </summary>
-        public static void SetCheckFinishAndUpdateUser(string PhoneNO, string checkCode, bool isExsits,ref long userid)
+        public static void SetCheckFinishAndUpdateUser(string PhoneNO, string checkCode, bool isExsits, ref long userid)
         {
             using (TransactionScope tran = new TransactionScope())
             {
