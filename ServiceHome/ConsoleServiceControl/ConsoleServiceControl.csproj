@@ -1,0 +1,332 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DF16D01E-4223-4EC5-BF92-E5E03A626CC6}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ConsoleServiceControl</RootNamespace>
+    <AssemblyName>ConsoleServiceControl</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CommonTool">
+      <HintPath>..\CommonTool\bin\Debug\CommonTool.exe</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ServiceHome.Model">
+      <HintPath>..\ServiceHome.Model\bin\Debug\ServiceHome.Model.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack, Version=4.0.50.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ServiceStack.4.0.50\lib\net40\ServiceStack.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ServiceStack.Client, Version=4.0.50.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ServiceStack.Client.4.0.50\lib\net40\ServiceStack.Client.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ServiceStack.Common, Version=4.0.50.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ServiceStack.Common.4.0.50\lib\net40\ServiceStack.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ServiceStack.Interfaces, Version=4.0.0.0, Culture=neutral, PublicKeyToken=e06fbc6124f57c43, processorArchitecture=MSIL">
+      <HintPath>..\packages\ServiceStack.Interfaces.4.0.50\lib\portable-wp80+sl5+net40+win8+monotouch+monoandroid+xamarin.ios10\ServiceStack.Interfaces.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ServiceStack.OrmLite, Version=4.0.50.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ServiceStack.OrmLite.4.0.50\lib\net45\ServiceStack.OrmLite.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ServiceStack.OrmLite.SqlServer, Version=4.0.50.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ServiceStack.OrmLite.SqlServer.4.0.50\lib\net45\ServiceStack.OrmLite.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ServiceStack.Razor, Version=4.0.50.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ServiceStack.Razor.4.0.50\lib\net45\ServiceStack.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ServiceStack.Redis, Version=4.0.50.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ServiceStack.Redis.4.0.50\lib\net40\ServiceStack.Redis.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ServiceStack.Server, Version=4.0.50.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ServiceStack.Server.4.0.50\lib\net45\ServiceStack.Server.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ServiceStack.Text, Version=4.0.50.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ServiceStack.Text.4.0.50\lib\net40\ServiceStack.Text.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=e06fbc6124f57c43, processorArchitecture=MSIL">
+      <HintPath>..\packages\ServiceStack.Razor.4.0.50\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WebActivator, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivator.1.5\lib\net40\WebActivator.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\AppHost.cs" />
+    <Compile Include="App_Start\PageBase.cs" />
+    <Compile Include="App_Start\WebServiceExamples.cs" />
+    <Compile Include="CommonClass\AppHost.cs" />
+    <Compile Include="CommonClass\BaseService.cs" />
+    <Compile Include="CommonClass\ConstString.cs" />
+    <Compile Include="DAL\AddOperationLog.cs" />
+    <Compile Include="DAL\CityDao.cs" />
+    <Compile Include="DAL\GetServices.cs" />
+    <Compile Include="DAL\InsertCheckCode.cs" />
+    <Compile Include="DAL\Order.cs" />
+    <Compile Include="DAL\ServicePlace.cs" />
+    <Compile Include="DAL\UserHelper.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Requests\Ping.cs" />
+    <Compile Include="Requests\User\AddUser.cs" />
+    <Compile Include="Responses\PingResponse.cs" />
+    <Compile Include="Responses\User\AddUserResponse.cs" />
+    <Compile Include="ServiceHomeDB\AUTHORS.cs">
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceHomeDB\CASH_LOG.cs">
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceHomeDB\CASH_RULE.cs">
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceHomeDB\CASH_RULE_ITEM.cs">
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceHomeDB\CHECKCODERECORD.cs">
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceHomeDB\CITY.cs">
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceHomeDB\CITY_SERVICE.cs">
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceHomeDB\COMMISION_RULE.cs">
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceHomeDB\COMMISION_RULE_ITEM.cs">
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceHomeDB\COMPANY_CHILD.cs">
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceHomeDB\COMPANY_DETAIL_ITEM.cs">
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceHomeDB\COUPON_INFO.cs">
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceHomeDB\COUPON_RECORD.cs">
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceHomeDB\DETAIL_ITEM.cs">
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceHomeDB\FEEDBACK.cs">
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceHomeDB\MASTERS.cs">
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceHomeDB\MODULES.cs">
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceHomeDB\OPERATE_QUEUE.cs">
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceHomeDB\OPERATION_LOG.cs">
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceHomeDB\ORDERS.cs">
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceHomeDB\ORDER_ITEM.cs">
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceHomeDB\PROPERTY.cs">
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceHomeDB\PROVICE.cs">
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceHomeDB\RATE_PLAN.cs">
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceHomeDB\REALMESSAGE.cs">
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceHomeDB\SALRY.cs">
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceHomeDB\SELFSERVICE.cs">
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceHomeDB\SERVICE.cs">
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceHomeDB\ServiceHomeDB.Context.cs">
+      <DependentUpon>ServiceHomeDB.Context.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="ServiceHomeDB\ServiceHomeDB.cs">
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="ServiceHomeDB\ServiceHomeDB.Designer.cs">
+      <DependentUpon>ServiceHomeDB.edmx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="ServiceHomeDB\SERVICEPLACES.cs">
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceHomeDB\SERVICE_PLAN.cs">
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceHomeDB\SERVICE_PROPERTY_HEADER.cs">
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceHomeDB\SERVICE_PROPERTY_ITEM.cs">
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceHomeDB\STAFF.cs">
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceHomeDB\STAFF_LEVEL.cs">
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceHomeDB\USERS.cs">
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceHomeDB\USER_LEVEL.cs">
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceHomeDB\USER_PLACES.cs">
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceHomeDB\WORKOFF.cs">
+      <DependentUpon>ServiceHomeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\AddUserService.cs" />
+    <Compile Include="Services\CancelOrderService.cs" />
+    <Compile Include="Services\CheckAndLogin.cs" />
+    <Compile Include="Services\CreateOrderService.cs" />
+    <Compile Include="Services\GetCityService.cs" />
+    <Compile Include="Services\GetOpenedCity.cs" />
+    <Compile Include="Services\HomeServices.cs" />
+    <Compile Include="Services\PayOrderService.cs" />
+    <Compile Include="Services\SendSMSCheckCode.cs" />
+    <Compile Include="Services\ServicePlace.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="default.htm" />
+    <Content Include="jqunback-1.51.min.js" />
+    <Content Include="README.txt" />
+    <Content Include="ServiceHomeDB\ServiceHomeDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ServiceHomeDB.edmx</DependentUpon>
+      <LastGenOutput>ServiceHomeDB.cs</LastGenOutput>
+    </Content>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+    <EntityDeploy Include="ServiceHomeDB\ServiceHomeDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ServiceHomeDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="ServiceHomeDB\ServiceHomeDB.edmx.diagram">
+      <DependentUpon>ServiceHomeDB.edmx</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="DLLS\EntityFramework.dll" />
+    <Content Include="DLLS\EntityFramework.SqlServer.dll" />
+    <Content Include="DLLS\EntityFramework.SqlServer.xml" />
+    <Content Include="DLLS\EntityFramework.xml" />
+    <Content Include="DLLS\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll" />
+    <Content Include="DLLS\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml" />
+    <Content Include="DLLS\ServiceStack.Client.dll" />
+    <Content Include="DLLS\ServiceStack.Client.xml" />
+    <Content Include="DLLS\ServiceStack.Common.dll" />
+    <Content Include="DLLS\ServiceStack.Common.xml" />
+    <Content Include="DLLS\ServiceStack.dll" />
+    <Content Include="DLLS\ServiceStack.Interfaces.dll" />
+    <Content Include="DLLS\ServiceStack.OrmLite.dll" />
+    <Content Include="DLLS\ServiceStack.OrmLite.SqlServer.dll" />
+    <Content Include="DLLS\ServiceStack.OrmLite.xml" />
+    <Content Include="DLLS\ServiceStack.Text.dll" />
+    <Content Include="DLLS\ServiceStack.Text.xml" />
+    <Content Include="DLLS\ServiceStack.xml" />
+    <Content Include="ServiceHomeDB\ServiceHomeDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ServiceHomeDB.edmx</DependentUpon>
+      <LastGenOutput>ServiceHomeDB.Context.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
