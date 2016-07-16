@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace Top.Api.Request
 {
     /// <summary>
-    /// TOP请求接口。
+    /// TOP请求接口。asd
     /// </summary>
     public interface ITopRequest<T> where T : TopResponse
     {
